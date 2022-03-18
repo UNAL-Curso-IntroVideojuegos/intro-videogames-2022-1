@@ -33,7 +33,7 @@
 - **Clase 16:** Comodin.
 
 ## Profesor
-- J. Alejandro Álvarez.
+- J. Alejandro Álvarez. juaalvarezme@unal.edu.co
 
 ## Disclaimer
 Este repositorio se contruye con fines académicos y de enseñanza. 
