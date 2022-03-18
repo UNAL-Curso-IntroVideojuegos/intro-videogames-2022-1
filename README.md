@@ -35,6 +35,9 @@
 ## Profesor
 - J. Alejandro Álvarez. juaalvarezme@unal.edu.co
 
+## Recursos
+Todos los recursos (diapositivas, assets, trabajos, etc.) los puede encontrar en [Drive](https://drive.google.com/drive/u/3/folders/15jgDYMw0vqBL88seILhfxZcdDW4PUyGf).
+
 ## Disclaimer
 Este repositorio se contruye con fines académicos y de enseñanza. 
 Todos los recursos usados son de creación propia o de uso gratis
