@@ -2,11 +2,12 @@
 > Universidad Nacional de Colombia, sede Medellín. 2022-2
 
 ## Contenido
-- **Clase 1:** Introducción - [Video](https:**//www.youtube.com/watch?v=5G81ZNHyEjE&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4)
-- **Clase 2:** Intro. al desarrollo en unity .
+- **Clase 1:** Introducción - [Video](https://www.youtube.com/watch?v=5G81ZNHyEjE&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4)
+- **Clase 2:** Intro. al desarrollo en unity - [Video](https://www.youtube.com/watch?v=ngyY3IzKhLw&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=2)
 	- Game Loop y Orden de ejecución.
-	- Inputs y Transform.
-- **Clase 3:** Intro. a físicas.
+	- Transform y Movimiento.
+- **Clase 3:** Movimiento y Intro. a físicas.
+	- Inputs y Movimiento.
 	- Rigidbody y Colliders.
 - **Clase 4:** Físicas: Proyectiles, Colisiones y Rays.
 - **Clase 5:** Del 2D al 3D.
@@ -18,7 +19,7 @@
 - **Clase 8:** <u>Asesoria Proyectos</u>.
 - **Clase 9:** Sistema de daño y UI (User Interface).
 - **Clase 10:** Polish & Game feeling.
-	- VFX:** Particulas, Trails y Shaders.
+	- VFX: Particulas, Trails y Shaders.
 	- Coroutinas y Tweens.
 	- Audio.
 - **Clase 11:** Patrones de diseño en vidoejuegos.
