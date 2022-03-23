@@ -3,7 +3,13 @@
 
 ## Contenido
 - **Clase 1:** Introducción - [Video](https://www.youtube.com/watch?v=5G81ZNHyEjE&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4)
+	- Historia de los videojuegos
+	- Industria local y global
+	- Proceso de desarrollo
+	- Game Engines
 - **Clase 2:** Intro. al desarrollo en unity - [Video](https://www.youtube.com/watch?v=ngyY3IzKhLw&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=2)
+	- Game Engines - Manejo de memoria
+	- Intro. a Unity
 	- Game Loop y Orden de ejecución.
 	- Transform y Movimiento.
 - **Clase 3:** Movimiento y Intro. a físicas.
