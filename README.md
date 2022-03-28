@@ -12,8 +12,10 @@
 	- Intro. a Unity
 	- Game Loop y Orden de ejecución.
 	- Transform y Movimiento.
-- **Clase 3:** Movimiento y Intro. a físicas.
-	- Inputs y Movimiento.
+- **Clase 3:** Movimiento y Intro. a físicas. - [Video](https://www.youtube.com/watch?v=8xZHyQdBafQ&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=3)
+	- Inputs: GetAxis, GetAxisRaw, Mouse position...
+	- Transform: Movimiento y Rotación en 2D.
+	- FixedUpdate vs Update.
 	- Rigidbody y Colliders.
 - **Clase 4:** Físicas: Proyectiles, Colisiones y Rays.
 - **Clase 5:** Del 2D al 3D.
