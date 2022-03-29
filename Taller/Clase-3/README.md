@@ -27,7 +27,7 @@ Responda las siguientas preguntas y luego haga un Pull Request.
 - Crear una branch a partir del branch `sessions/session-3`.
   - El nombre de la nueva branch debe tener el siguiente formato: `student/[usuario-unal]/session-3`
 ```
- Ejemplo: Si su correo es pedrito@unal.edu.co, la rama para hacer la entrega de la clase 3 debe ser `student/pedrito/session-7`.
+ Ejemplo: Si su correo es pedrito@unal.edu.co, la rama para hacer la entrega de la clase 3 debe ser `student/pedrito/session-3`.
 ```
 - Hacer los commits necesarios para efectuar la solución al taller.
 - Hacer un Pull Request de su branch (`student/[usuario-unal]/session-3`)
