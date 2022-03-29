@@ -12,6 +12,7 @@
 	- Intro. a Unity
 	- Game Loop y Orden de ejecución.
 	- Transform y Movimiento.
+	- [Tarea](./Taller/Clase-3/)
 - **Clase 3:** Movimiento y Intro. a físicas. - [Video](https://www.youtube.com/watch?v=8xZHyQdBafQ&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=3)
 	- Inputs: GetAxis, GetAxisRaw, Mouse position...
 	- Transform: Movimiento y Rotación en 2D.
