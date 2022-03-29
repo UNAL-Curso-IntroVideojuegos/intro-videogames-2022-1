@@ -21,7 +21,7 @@ Responda las siguientas preguntas y luego haga un Pull Request.
 
 
 ### Fecha de entrega
-> Sábado 27 de Noviembre - 11:59 pm (media noche del sábado).
+> Lunes 04 de Abril - 11:59 pm (media noche del lunes).
 
 ### Entrega
 - Crear una branch a partir del branch `sessions/session-3`.
