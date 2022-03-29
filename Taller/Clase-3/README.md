@@ -19,6 +19,9 @@ Responda las siguientas preguntas y luego haga un Pull Request.
 	R:
 
 
+### Guía
+[Guía](https://youtu.be/xh_1Oyn83no) para clonar y entregar los talleres.
+
 
 ### Fecha de entrega
 > Lunes 04 de Abril - 11:59 pm (media noche del lunes).
