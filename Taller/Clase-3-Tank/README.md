@@ -3,6 +3,7 @@
 ## Taller #3
 
 1. Agregue los assets al proyecto y agregue los objetos necesarios para añadir la torreta al juego.
+ - Los assets los puede encontrar en el [drive](https://drive.google.com/drive/u/3/folders/1Pe-CPxChiM1NS_TnDOqJJMu0rX-0HIJy) o en el [repo](./Assets/).
 
 2. Cree un script llamado ***TurretMovement*** y agregue el codigo necesario para que la torreta se mueva en un eje entre dos valores definidos.
  - Hint: Puede usar `Mathf.Clamp` para asegurar que el valor del eje (X o Y) siempre este dentro del límite establecido.
