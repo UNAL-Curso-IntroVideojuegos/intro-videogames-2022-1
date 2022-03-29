@@ -16,7 +16,7 @@ Responda las siguientas preguntas y luego haga un Pull Request.
 	R: Si
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R: Networking
+	R: Desarrollo Mobile
 
 
 
