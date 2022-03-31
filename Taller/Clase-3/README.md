@@ -4,19 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+	R: Pumpkin Jack y Hollow Knight
 
 2. Qué género de videojuego juega comunmente?
-	R:
+	R: No nocozco muy bien las categorías de los juegos, pero prefiero los que son de exploración y luchas.
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+	R: Suelo jugar en mi PC.
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+	R: Sí, hace unos años programé un pacman usando Greenfoot
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+	R: No en realidad, pero sí estoy dispuesto a aprender todo lo posible.
 
 
 ### Guía
