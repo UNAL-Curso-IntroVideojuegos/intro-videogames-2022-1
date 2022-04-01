@@ -4,18 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R: Team Fight Tactics
+	R:
+
 2. Qué género de videojuego juega comunmente?
-	R: Estrategia
+	R:
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R: Pc
+	R:
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R: No
+	R:
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R: RNG en videojuegos
+	R:
 
 
 ### Guía
