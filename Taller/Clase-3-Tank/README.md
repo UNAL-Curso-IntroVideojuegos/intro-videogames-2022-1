@@ -24,7 +24,7 @@
 
 
 ### Fecha de entrega
-> Sábado 08 de Abril - 11:59 pm (media noche del viernes).
+> Viernes 08 de Abril - 11:59 pm (media noche del viernes).
 
 ### Entrega
 - Crear una branch a partir del branch `sessions/session-3-tank`.
