@@ -4,19 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+	R: League of legends Wild Rift (Movil)
 
 2. Qué género de videojuego juega comunmente?
-	R:
+	R: Shooters, MMORPGs, Mobas
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+	R: PC (Windows) y Movil
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+	R: Si, hice unos cursitos de Unreal Engine.
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+	R: Multijugador
 
 
 ### Guía
