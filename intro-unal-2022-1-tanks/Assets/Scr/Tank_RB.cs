@@ -52,4 +52,34 @@ public class Tank_RB : MonoBehaviour
         //Vector2 pos = _rb.position + _velocity * Time.fixedDeltaTime;
         //_rb.MovePosition(pos);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("Collision with " + other.transform.name);
+    }
+    
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        Debug.LogWarning("Stay with " + other.transform.name);
+    }
+    
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        Debug.LogError("End collision with " + other.transform.name);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Trigger with " + other.transform.name);
+    }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        Debug.LogWarning("Trigger stay with " + other.transform.name);
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Debug.LogError("Trigger end with " + other.transform.name);
+    }
 }
