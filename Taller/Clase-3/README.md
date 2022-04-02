@@ -3,20 +3,20 @@
 ## Taller #2
 Responda las siguientas preguntas y luego haga un Pull Request.
 
-1. Cuál fue el último videojuego que jugó?
-	R:
+1. Cuál fue el último videojuego que jugó?\
+	R: Cat Jump en android.
 
-2. Qué género de videojuego juega comunmente?
-	R:
+2. Qué género de videojuego juega comunmente?\
+	R: Mundo Abierto.
 
-3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?\
+	R: PS4, PC y Mobile.
 
-4. Ha tenido experiencia creando videojuegos antes?
-	R:
+4. Ha tenido experiencia creando videojuegos antes?\
+	R: No.
 
-5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+5. Tiene algun tema que le gustaria abordar a profundidad?\
+	R: Animaciones, materiales, partículas. 
 
 
 ### Guía
