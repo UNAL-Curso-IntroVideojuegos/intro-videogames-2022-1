@@ -1,22 +1,22 @@
-# Clase 3
+﻿# Clase 3
 
 ## Taller #2
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+	R: Paratopic
 
 2. Qué género de videojuego juega comunmente?
-	R:
+	R: CRPGs, Immersive sims y Management sims
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+	R: PC
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+	R: No
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+	R: No, sin tener experiencia en creación de videojuegos, me gustaría símplemente desarrollar unas bases fuertes en el tema.
 
 
 ### Guía
