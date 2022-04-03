@@ -4,19 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+	R: Crusader Kings 3 y antes de ese el The Elders Scroll Skyrim
 
 2. Qué género de videojuego juega comunmente?
-	R:
+	R: Normalmente Juego Grand Strategy y Rol
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+	R: Suelo jugar en mi laptop(PC)
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+	R: Un poco pero fue hace demasiado tiempo que no recuerdo nada :'v
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+	R: Me gustaria aprender de diseño de niveles y de interfaces(Como hacer una interfaz de Usuario que sea intuitiva)
 
 
 ### Guía
