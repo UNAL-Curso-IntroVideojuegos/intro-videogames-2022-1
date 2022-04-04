@@ -4,19 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+	R: Counter Strike Go
 
 2. Qué género de videojuego juega comunmente?
-	R:
+	R: Shooter o MMORPG
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+	R: PC
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+	R: Sí
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+	R: Sí. Multiplayer videogames.
 
 
 ### Guía
