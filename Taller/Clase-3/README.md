@@ -4,19 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+   R: Final Fantasy 7.
 
 2. Qué género de videojuego juega comunmente?
-	R:
+   R: RPG.
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+   R: Play, Switch y PC.
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+   R: Ninguna.
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+   R: La inteligencia artificial de los NPC.
 
 
 ### Guía
