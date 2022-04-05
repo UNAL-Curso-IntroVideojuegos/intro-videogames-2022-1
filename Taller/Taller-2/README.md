@@ -4,19 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+	R: Uncharted 3
 
 2. Qué género de videojuego juega comunmente?
-	R:
+	R: Aventura/Mundo abierto
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+	R: PS4
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+	R: Acercamientos muy básicos con la librería Pygame de python.
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+	R: Conocer mejor sobre la generación de mundos abiertos a partir de semillas.
 
 
 ### Guía
