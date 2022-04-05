@@ -4,19 +4,22 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R:
+	R: Super Mario Galaxy (compré un Wii hace poco para revivir clásicos)
 
 2. Qué género de videojuego juega comunmente?
-	R:
+	R: Shooters en primera persona o aventuras de mundo abierto
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R:
+	R: PlayStation 4
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R:
+	R: Un poco, traté una vez de realizar un juego estilo sandbox también en Unity hace muchos años con unos assets,í
+         pero, desistí por tener que ponerle colisiones a un mapa gigante sin tener experiencia 
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R:
+	R: Fluidez, me parece por ejemplo que los juegos de nintendo como ultimamente he jugado en el Wii tienen mucha
+         fluidez y optimizacion para una consola de hace 10 años, son juegos que no presentan o que muy pocas veces se 
+         realentizan o van a tirones, además de estar muy pulidos y poner mucha antención al detalle
 
 
 ### Guía
