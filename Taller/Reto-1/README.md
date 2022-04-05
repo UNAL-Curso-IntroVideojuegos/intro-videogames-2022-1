@@ -11,6 +11,7 @@
 
 3. Los proyectiles que la Torreta dispare deben impactar SOLO con el Player (o el escenario).
     - Hint: Puede crear un nuevo prefab en base al proyectil del Player y cambiar la LayerMask (en caso que este usando Raycast) o jugar con las Layers.
+    - Puede usar el siguiente [sprite](./Assets/).
 
 4. Agregue el código necesario para que la torreta dispare cada X segundos, es decir, que **NO** dispare un proyectile cada frame!
     - Hint: puede crear un *timer* y usar `Time.deltaTime` para restar o sumar tiempo.
