@@ -2,7 +2,7 @@
 
 ## Reto #1
 
-> Este reto no es calificable! Pero da bonificación extra!
+> Este reto no es calificable! Pero da bonificación extra! :gift:
 
 1. Cree un script llamado ***TurretShooter*** y añadalo a la Torreta del [Taller #2](./../Taller-2-3#taller-2/).
 

@@ -50,9 +50,9 @@
 
 ## Talleres semanales
 - Tarea #1 (Clase #1): Crear cuenta en GitHub y acceso al repositorio.
-- [Tarea #2](./Taller/Taller-2-3#taller-2/) (Clase #3): Hacer su primer Pull Request.
-- [Tarea #3](./Taller/Taller-3-Tank#taller-3/) (Clase #3): Torreta - Movimiento y rotación con Transform.
-- [Reto] (Clase #3): Torreta - Disparar al Player.
+- [Tarea #2](./Taller/Taller-2#taller-2/) (Clase #3): Hacer su primer Pull Request.
+- [Tarea #3](./Taller/Taller-3#taller-3/) (Clase #3): Torreta - Movimiento y rotación con Transform.
+- [Reto](./Taller/Reto-1#reto-1/) (Clase #3): Torreta - Disparar al Player.
 
 ## Profesor
 - J. Alejandro Álvarez. juaalvarezme@unal.edu.co
