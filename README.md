@@ -1,7 +1,15 @@
 # Curso de Intro a la creación de Videojuegos.
 > Universidad Nacional de Colombia, sede Medellín. 2022-2
 
-## Contenido
+
+- [Contenido del curso](#contenido-del-curso)
+- [Talleres](#talleres-semanales)
+- [Profesor](#profesor)
+- [Recursos](#rescursos)
+
+---
+
+## Contenido del curso
 - **Clase 1:** Introducción - [Video](https://www.youtube.com/watch?v=5G81ZNHyEjE&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4)
 	- Historia de los videojuegos
 	- Industria local y global
