@@ -5,7 +5,7 @@
 - [Contenido del curso](#contenido-del-curso)
 - [Talleres](#talleres-semanales)
 - [Profesor](#profesor)
-- [Recursos](#rescursos)
+- [Recursos](#recursos)
 
 ---
 
