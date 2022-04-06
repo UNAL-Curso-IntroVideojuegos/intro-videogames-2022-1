@@ -5,32 +5,34 @@ using UnityEngine;
 public class TurretMovement : MonoBehaviour
 {
     [SerializeField]
-    private float min;
-    [SerializeField]
-    private float max ;
-
-    [SerializeField]
     private Transform player;
     [SerializeField]
-    private Transform _turret;
-
+    private Transform[] _turret;
+    [SerializeField]
+    private Transform[] ubicacion;
+    [SerializeField]
+    private float speed=1;
+    private float time=0;
     private void Start()
     {
-        transform.position = new Vector3(transform.position.x,min,0);
     }
 
     private void Update()
     {
+        time += speed * Time.deltaTime;
+        transform.position = Vector3.Lerp(ubicacion[0].position, ubicacion[1].position, Mathf.PingPong(time,1));
        
-       transform.position= new Vector3(transform.position.x,Mathf.PingPong(Time.time,max-min)+min,0);
 
         //mov torreta 
+        for (int i = 0; i <= 1; i++)
+        {
+            Vector3 aimVector = player.position - _turret[i].position;
+            aimVector.Normalize();
+            float angle = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg - 180;
+            Vector3 rot = _turret[i].eulerAngles;
+            rot.z = angle;
+            _turret[i].eulerAngles = rot;
+        }
 
-        Vector3 aimVector = player.position - _turret.position;
-        aimVector.Normalize();
-        float angle = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg -180;
-        Vector3 rot = _turret.eulerAngles;
-        rot.z = angle;
-        _turret.eulerAngles = rot;
     }
 }
