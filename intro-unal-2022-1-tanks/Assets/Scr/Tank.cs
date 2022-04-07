@@ -6,7 +6,7 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 2;
+    private float speed = 3;
     [SerializeField]
     private Camera _cam;
     [SerializeField]
