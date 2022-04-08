@@ -51,7 +51,7 @@ public class Tank : MonoBehaviour
         //Rotation:
         //_turret.LookAt(worldPos); //Funciona en 3D, pero no en 2D
         Vector3 aimVector = mouseWorldPos - transform.position;
-        float angle = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg - 90;
+        float angle = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg - 270;
         
         Vector3 rot = _turret.eulerAngles;
         rot.z = angle;
@@ -65,8 +65,8 @@ public class Tank : MonoBehaviour
         dir.Normalize();
 
         Vector3 pos = transform.position;
-        pos +=  dir.y * speed * Time.deltaTime * transform.up; //X = V * T
-        pos +=  dir.x * speed * Time.deltaTime * transform.right;
+        pos -=  dir.y * speed * Time.deltaTime * transform.up; //X = V * T
+        pos -=  dir.x * speed * Time.deltaTime * transform.right;
         
         //Vector3 movement = speed * Time.deltaTime * dir;
         //movement = transform.rotation * movement;
