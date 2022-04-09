@@ -10,13 +10,13 @@ Responda las siguientas preguntas y luego haga un Pull Request.
 	R: MMO RPG
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R: MOBIL
+	R: mobile
 
 4. Ha tenido experiencia creando videojuegos antes?
 	R: SI
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R: MOBIL
+	R: Mobile
 
 
 ### Guía
