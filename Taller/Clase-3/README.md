@@ -35,7 +35,7 @@ Responda las siguientas preguntas y luego haga un Pull Request.
 - Hacer los commits necesarios para efectuar la solución al taller.
 - Hacer un Pull Request de su branch (`student/[usuario-unal]/session-3`)
   - La branch target del PR debe ser `sessions/session-3`.
-  - El nombre del PR debe seguir el formato `Solución Taller 2 - Clase 3 by [usuario-unal]`. 
+  - El nombre del PR debe seguir el formato `Solución Taller 2 - Clase 3 by [usuario-unal]` . 
 ```
  Ejemplo: Si su correo es pedrito@unal.edu.co, el título del PR debe ser: `Solución Taller 2 - Clase 3 by pedrito`.
 ```
