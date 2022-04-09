@@ -29,7 +29,7 @@ public class TurretMovement : MonoBehaviour
     [SerializeField]
     private Transform target;
     
-    private int moveSelect = 1;
+    private int moveDirection = 1;
     
     void Update()
     {
@@ -40,7 +40,7 @@ public class TurretMovement : MonoBehaviour
         
         Look();
     }
-
+    
     void MovePoint()
     {
         float d = Vector3.Distance(_initPoint.position, _endPoint.position);
@@ -51,12 +51,12 @@ public class TurretMovement : MonoBehaviour
     void MoveY()
     {
         Vector3 currentPos = transform.position;
-        currentPos.y += moveSelect * _speed * Time.deltaTime;
+        currentPos.y += moveDirection * _speed * Time.deltaTime;
 
         if (currentPos.y >= _max)
-            moveSelect = -1;
+            moveDirection = -1; //Cambio direccion
         else if (currentPos.y <= _min) 
-            moveSelect = 1;
+            moveDirection = 1; //Cambio direccion
 
         currentPos.y = Mathf.Clamp(currentPos.y, _min, _max);
         transform.position = currentPos;
