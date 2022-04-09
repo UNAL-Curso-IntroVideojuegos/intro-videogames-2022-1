@@ -30,7 +30,7 @@ public class Tank_RB : MonoBehaviour
         mouseWorldPos.z = 0;
         
         Vector2 _dir  = new Vector2(horizontal, vertical);
-        _velocity.Normalize();
+        _dir.Normalize();
         _velocity = speed * _dir; // _velocity * speed;
         
         //Rotation:
