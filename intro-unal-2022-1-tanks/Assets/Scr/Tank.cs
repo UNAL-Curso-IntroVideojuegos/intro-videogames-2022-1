@@ -10,7 +10,7 @@ public class Tank : MonoBehaviour
     [SerializeField]
     private Camera _cam;
     [SerializeField]
-    private Transform _turret;
+    public Transform _turret;
 
     void Start()
     {
@@ -46,8 +46,8 @@ public class Tank : MonoBehaviour
         Vector2 mousePos = Input.mousePosition;
         Vector3 mouseWorldPos = _cam.ScreenToWorldPoint(mousePos);
         mouseWorldPos.z = 0;
-        
-        
+
+
         //Rotation:
         //_turret.LookAt(worldPos); //Funciona en 3D, pero no en 2D
         Vector3 aimVector = mouseWorldPos - transform.position;
