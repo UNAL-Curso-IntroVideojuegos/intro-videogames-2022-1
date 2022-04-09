@@ -10,7 +10,6 @@ public class Tank_RB : MonoBehaviour
 
     private void Start()
     {
-        _rb.velocity = new Vector2(0, 1);
     }
 
     private void Update()
