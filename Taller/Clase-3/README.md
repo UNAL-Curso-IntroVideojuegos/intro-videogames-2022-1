@@ -4,19 +4,19 @@
 Responda las siguientas preguntas y luego haga un Pull Request.
 
 1. Cuál fue el último videojuego que jugó?
-	R: dofus
+	R: dofus 
 
 2. Qué género de videojuego juega comunmente?
-	R: MMO RPG
+	R: MMO RPG 
 
 3. En qué consola (Play, Xbox, Switch, PC...) juega usualmente?
-	R: mobile
+	R: mobile 
 
 4. Ha tenido experiencia creando videojuegos antes?
-	R: SI
+	R: SI 
 
 5. Tiene algun tema que le gustaria abordar a profundidad?
-	R: Mobile
+	R: Mobile 
 
 
 ### Guía
