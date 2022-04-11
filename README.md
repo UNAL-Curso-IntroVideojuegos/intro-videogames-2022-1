@@ -33,10 +33,12 @@
 		- OnCollision y OnTrigger: Enter, Stay, Exit.
 	- Raycast.
 	- Prefabs e Instantiate.
-- **Clase 5:** Del 2D al 3D.
+- **Clase 5:** Del 2D al 3D. - [Video](https://www.youtube.com/watch?v=57Si6apbVoQ&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=6)
+	- Mallas, Materiales y Shaders.
 	- Movimiento en 3D (Transform y Físicas).
-	- Camera y renderizado.
-- **Clase 6:** Animaciones, Mallas, Materiales y Shaders.
+	- Mouse, Camara y ScreenPointToRay.
+	- Raycast 3D vs Planes
+- **Clase 6:** Animaciones y Projectiles en 3D.
 - **Clase 7:** AI basico para enemigos.
 	- Finite-State Machine y Pathfinding.
 - **Clase 8:** <u>Asesoria Proyectos</u>.
