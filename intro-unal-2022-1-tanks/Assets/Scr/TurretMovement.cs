@@ -32,7 +32,7 @@ public class TurretMovement : MonoBehaviour
         Vector3 pos = transform.position;
 
         // Compute the sin position.
-        float amplitud = Mathf.Abs(min)- Mathf.Abs(max);
+        float amplitud = Mathf.Abs(max-min);
         float xValue = amplitud/2 * Mathf.Sin(timeValue * 2.0f) + xInitialPosition;
         Debug.Log(xValue);
         // Now compute the Clamp value.
