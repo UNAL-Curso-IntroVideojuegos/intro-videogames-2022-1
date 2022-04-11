@@ -33,6 +33,8 @@
 - Agregue un indicador para marcar el área de acción de la torreta (como el círculo rojo en el gif).
     - Hint: Utilice `transform.localScale` para modificar el tamaño de un objeto.
 
+### Fecha de entrega
+> Viernes 15 de Abril - 11:59 pm (media noche del viernes).
 
 ### Entrega
 - Crear una branch a partir del branch `sessions/session-4`.
