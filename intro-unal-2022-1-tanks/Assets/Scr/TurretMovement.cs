@@ -13,21 +13,23 @@ public class TurretMovement : MonoBehaviour
     [SerializeField]
     private float max;
     [SerializeField]
-    private Transform _turret;
+    private Transform[] _turrets;
     [SerializeField]
     private Transform _target;
     private float timeValue = 0.0f;
     private float xInitialPosition;
+    private float yInitialPosition;
 
     void Start(){
         xInitialPosition = transform.position.x;
+        yInitialPosition = transform.position.y;
     }
     
     
     void Update()
     {
-        
-        //Movement
+        /*
+        ///////Movement con puntos fijos
 
         Vector3 pos = transform.position;
 
@@ -52,15 +54,31 @@ public class TurretMovement : MonoBehaviour
             timeValue = 0.0f;
         }
 
+        */
 
-        //Turrent movement
+        
+        //Movimiento con dos puntos
+        float t = Mathf.Abs(Mathf.Sin(timeValue));
+        Vector3 posiblePosition =Vector3.Lerp(_point1.position, _point2.position, t);
+        timeValue = timeValue + Time.deltaTime/5;
 
-        Vector3 aimVector = _target.position - transform.position;
+        transform.position = posiblePosition;
+         if (timeValue * 2.0f > Mathf.PI* 2)
+        {
+            timeValue = 0.0f;
+        }
+        
+        //Turrents movement
+
+
+        for(int i = 0;i<=1; i++){
+            Vector3 aimVector = _target.position - _turrets[i].position;
         float angle = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg + 90;
         
-        Vector3 rot = _turret.eulerAngles;
+        Vector3 rot = _turrets[i].eulerAngles;
         rot.z = angle;
-        _turret.eulerAngles = rot;
+        _turrets[i].eulerAngles = rot;
+        }
         
     }
 
