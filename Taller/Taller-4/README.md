@@ -6,7 +6,7 @@
     - **Dash**: Desplazarse una distancia considerable en un tiempo corto. Ejemplo: *Hollow Knight* o *Celeste*
         ![Celeste](./celesteDash.gif "Celeste")
 
-Hay muchas formas de implementar un dash, resultando en una sensación diferente. A continuación dos sugerencias:
+> Hay muchas formas de implementar un dash, resultando en una sensación diferente. A continuación dos sugerencias:
 - Aplicar una velocidad muy alta en un tiempo muy limitado. Esto da como resultado un dash instantaneo y rápido.
     - Hint: utilice un timer (variable al que resta/suma `Time.deltaTime`).
     ![DashTimer](./DashTimer.gif "DashTimer")
