@@ -62,7 +62,8 @@
 - Tarea #1 (Clase #1): Crear cuenta en GitHub y acceso al repositorio.
 - [Tarea #2](./Taller/Taller-2#taller-2/) (Clase #3): Hacer su primer Pull Request.
 - [Tarea #3](./Taller/Taller-3#taller-3/) (Clase #3): Torreta - Movimiento y rotación con Transform.
-- [Reto](./Taller/Reto-1#reto-1/) (Clase #4): Torreta - Disparar al Player.
+- [Reto #1](./Taller/Reto-1#reto-1/) (Clase #4): Torreta - Disparar al Player.
+- [Tarea #4](./Taller/Taller-4#taller-4/) (Clase #5): Dash, Salto y Disparo 3D.
 
 ## Profesor
 - J. Alejandro Álvarez. juaalvarezme@unal.edu.co
