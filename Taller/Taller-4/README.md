@@ -34,6 +34,8 @@
     - Hint: Recuerde el `GetButton`, `GetButtonDown` y `GetButtonUp` para registrar los inputs.
     - Hint: De nuevo, timers (variable al que resta/suma `Time.deltaTime`) :stuck_out_tongue: 
 
+    ![FireRate](./FireRate.gif "FireRate")
+
 
 ### Fecha de entrega
 > Viernes 22 de Abril - 11:59 pm (media noche del viernes).
