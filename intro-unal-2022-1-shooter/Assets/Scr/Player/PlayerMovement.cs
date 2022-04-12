@@ -19,19 +19,33 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+    [SerializeField]
+    private float _dashSpeed;
+    [SerializeField]
+    private float _dashTime;
+    [SerializeField]
+    private float _cooldownDash;
+    private bool _dashing;
+    private float _dashTimeCounter;
+    private float _cooldownDashCounter;
+    private Vector3 _fowardDash;
+
     void Start()
     {
         _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
 
         _woldPlane = new Plane(Vector3.up, 0);
+
+        _dashing = false;
+        _dashTimeCounter = _dashTime;
+        _cooldownDashCounter = 0;
     }
     
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        
         
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         if (_usePlaneForRotation)
@@ -47,12 +61,41 @@ public class PlayerMovement : MonoBehaviour
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
+
+        if (!_dashing)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift) && _cooldownDashCounter <= 0)
+            {
+                _dashing = true;
+                _fowardDash = transform.forward;
+                _cooldownDashCounter = _cooldownDash + _dashTime;
+            }
+        }
+        else
+        {
+            if(_dashTimeCounter <= 0f)
+            {
+                _dashing = false;
+                _dashTimeCounter = _dashTime;
+            }
+            else
+            {
+                _dashTimeCounter -= Time.deltaTime;
+            }
+        }
+
+        _cooldownDashCounter -= Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
+
+        if (_dashing)
+        {
+            _rb.velocity = _fowardDash * _dashSpeed * Time.fixedDeltaTime;
+        }
     }
     
     //Calculate Mouse world position using Physics world and Physics.Raycast
@@ -86,5 +129,4 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
         }
     }
-    
 }
