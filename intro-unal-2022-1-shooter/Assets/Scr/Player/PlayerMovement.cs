@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask _collisionMask;
     
+    [Header("Mouse and rotation")]
+    [SerializeField]
+    private bool _usePlaneForRotation = false;
+    
     private Camera _cam;
     private Plane _woldPlane;
     
@@ -28,25 +32,31 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         
-        Vector2 mousePos = Input.mousePosition;
+        
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
-
-        float distanceToPlane;
-        bool hitSomething = _woldPlane.Raycast(ray, out distanceToPlane);
-        if (hitSomething)
+        if (_usePlaneForRotation)
         {
-            Vector3 point = ray.GetPoint(distanceToPlane);
-            point.y = transform.position.y;
-            Vector3 dir = (point - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
+            LookAtMousePointWithPlane(ray);
+        }
+        else
+        {
+            LookAtMousePointWithRaycast(ray);
         }
 
+        
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
     }
 
-    private void RaycastPhysics(Ray ray)
+    private void FixedUpdate()
+    {
+        //Apply velocity to RigidBody. An alternative it's to use AddForce
+        _rb.velocity = _velocity;
+    }
+    
+    //Calculate Mouse world position using Physics world and Physics.Raycast
+    private void LookAtMousePointWithRaycast(Ray ray)
     {
         RaycastHit hitInfo;
         // Does the ray intersect any objects excluding the player layer
@@ -63,9 +73,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private void FixedUpdate()
+    //Calculate Mouse world position using internal Plane object and Plane.Raycast
+    private void LookAtMousePointWithPlane(Ray ray)
     {
-        _rb.velocity = _velocity;
+        float distanceToPlane;
+        bool hitSomething = _woldPlane.Raycast(ray, out distanceToPlane);
+        if (hitSomething)
+        {
+            Vector3 point = ray.GetPoint(distanceToPlane);
+            point.y = transform.position.y;
+            Vector3 dir = (point - transform.position).normalized;
+            transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
+        }
     }
     
 }
