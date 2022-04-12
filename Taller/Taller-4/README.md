@@ -3,16 +3,15 @@
 ## Taller #4
 
 1. Agregue el código necesario para que el personaje (*Frijolito*) ejecute un **Dash** cuando oprima la tecla ***Shift***.
-    - **Dash**: Desplazarse una distancia considerable en un tiempo corto. Ejemplo: Hollow Knight o Celeste
-
-    ![Celeste](./celesteDash.gif "Celeste")
+    - **Dash**: Desplazarse una distancia considerable en un tiempo corto. Ejemplo: *Hollow Knight* o *Celeste*
+        ![Celeste](./celesteDash.gif "Celeste")
 
 Hay muchas formas de implementar un dash, resultando en una sensación diferente. A continuación dos sugerencias:
     - Aplicar una velocidad muy alta en un tiempo muy limitado. Esto da como resultado un dash instantaneo y rápido.
         - Hint: utilice un timer (variable al que resta/suma `Time.deltaTime`).
-    ![DashTimer](./DashTimer.gif "DashTimer")
+        ![DashTimer](./DashTimer.gif "DashTimer")
     - Aplicar una velocidad en base a una distancia y una resistencia. Esto da como resultado un dash más progresivo y no tan rápido.
-    ![DashDrag](./DashDrag.gif "DashDrag")
+        ![DashDrag](./DashDrag.gif "DashDrag")
 
 2. Implemente el sistema de disparo que teniamos en 2D (tanks).
     - Cree los script `PlayerShooter` y `Projectile`. Implemente el código respectivo en cada uno.
