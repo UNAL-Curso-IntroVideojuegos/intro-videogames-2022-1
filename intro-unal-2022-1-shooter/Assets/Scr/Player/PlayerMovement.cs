@@ -19,6 +19,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+    [SerializeField]
+    private float velocidash = 2;
+    [SerializeField]
+    private float  timedash= 2;
+    private float time=0;
+
+    private int dash = 0;
+    private Vector3 dirdash;
     void Start()
     {
         _cam = Camera.main;
@@ -43,16 +51,47 @@ public class PlayerMovement : MonoBehaviour
             LookAtMousePointWithRaycast(ray);
         }
 
-        
-        Vector3 _dir  = new Vector3(horizontal, 0, vertical);
+
+
+        Vector3 _dir = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
+        dirdash = _dir;
         _velocity = speed * _dir;
+
+
+        //dash
+        if (dash == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                dash = 1;
+            }
+
+        }
+        else
+        {
+            if (time >= timedash)
+            {
+                dash = 0;
+                time = 0;
+            }
+            else
+            {
+                time += Time.deltaTime;
+            }
+
+        }
     }
 
     private void FixedUpdate()
     {
         //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
+        if (dash == 1)
+        {
+            //_rb.velocity = velocidash*transform.forward*Time.fixedDeltaTime; solo a donde mire el mouse
+            _rb.velocity = velocidash * dirdash * Time.fixedDeltaTime; //dirección mov
+        }
     }
     
     //Calculate Mouse world position using Physics world and Physics.Raycast
