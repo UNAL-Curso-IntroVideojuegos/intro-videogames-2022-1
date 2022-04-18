@@ -8,9 +8,13 @@ public class ProjectileRaycast : MonoBehaviour
     [SerializeField]
     private float _speed = 7;
     [SerializeField]
+    private float maxDistance = 10;
+    [SerializeField]
     private LayerMask _collisionMask;
     
     private Rigidbody2D _rb;
+    private Vector2 initialPosition;
+    private float currentDistance;
 
     private void Start()
     {
@@ -20,6 +24,8 @@ public class ProjectileRaycast : MonoBehaviour
     private void Init()
     {
         _rb = GetComponent<Rigidbody2D>();
+        initialPosition = _rb.position;
+        currentDistance = 0;
     }
 
     private void FixedUpdate()
@@ -38,6 +44,8 @@ public class ProjectileRaycast : MonoBehaviour
     private void CheckCollision(Vector2 movement)
     {
         RaycastHit2D hit = Physics2D.Raycast(_rb.position, transform.up, movement.magnitude, _collisionMask);
+
+        currentDistance = (initialPosition - _rb.position).magnitude;
         
         // If it hits something...
         if (hit.collider != null)
@@ -51,12 +59,15 @@ public class ProjectileRaycast : MonoBehaviour
             
             DestroyProjectile();
         }
+        if (currentDistance >= maxDistance){
+            DestroyProjectile();
+        }
     }
 
 
     private void DestroyProjectile()
     {
-        gameObject.SetActive(false);
-        //Destroy(gameObject);
+        // gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

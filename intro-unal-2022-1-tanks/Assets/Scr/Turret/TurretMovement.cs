@@ -26,6 +26,7 @@ public class TurretMovement : MonoBehaviour
     [Space(20)]
     [SerializeField]
     private Transform[] _turrets;
+    private Transform currentTurret;
     [SerializeField]
     private Transform target;
     
@@ -64,10 +65,20 @@ public class TurretMovement : MonoBehaviour
 
     void Look()
     {
-        foreach (Transform t in _turrets)
+        /* foreach (Transform t in _turrets)
         {
             //t.LookAt(target.position);
             t.up = (target.position - t.position).normalized;
+        }*/
+
+        for (int i = 0; i < _turrets.Length; i++){
+            currentTurret = _turrets[i];
+            Vector3 aimVector = target.position - currentTurret.position;
+            float angle = Mathf.Atan2(aimVector.y, aimVector.x) * Mathf.Rad2Deg - 90;
+
+            Vector3 turretRotation = currentTurret.eulerAngles;
+            turretRotation.z = angle;
+            currentTurret.eulerAngles = turretRotation;
         }
     }
 
