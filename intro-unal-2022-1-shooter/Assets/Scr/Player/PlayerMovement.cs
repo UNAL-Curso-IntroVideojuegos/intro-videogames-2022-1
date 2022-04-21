@@ -12,12 +12,31 @@ public class PlayerMovement : MonoBehaviour
     [Header("Mouse and rotation")]
     [SerializeField]
     private bool _usePlaneForRotation = false;
+
+    [Header("Dash")]
+    [SerializeField]
+    private bool _useDashByTime = true;
+    [SerializeField]
+    private float _dashDistance = 3;
+    [Header("Dash by Time")] 
+    [SerializeField]
+    private float _dashDuration = 0.1f;
+    [Header("Dash by Drag")] 
+    [SerializeField]
+    private float _dashDragforce = 8f;
+    
     
     private Camera _cam;
     private Plane _woldPlane;
     
     private Rigidbody _rb;
     private Vector3 _velocity;
+    
+    //Dash
+    private Vector3 _dashVelocity;
+    //Dash by Time
+    private float _dashTimer = 0;
+    
 
     void Start()
     {
@@ -31,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        
+        bool wantToDash = Input.GetKeyDown(KeyCode.LeftShift);
         
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         if (_usePlaneForRotation)
@@ -46,7 +65,19 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+        Vector3 movementVelocity = speed * _dir;
+
+        //Dash!
+        if (_useDashByTime)
+        {
+            SetDashVelocityByTimer(wantToDash, _dir);
+        }
+        else
+        {
+            SetDashVelocityByDrag(wantToDash, _dir);
+        }
+
+        _velocity = movementVelocity + _dashVelocity;
     }
 
     private void FixedUpdate()
@@ -87,4 +118,38 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    
+    private void SetDashVelocityByTimer(bool wantToDash, Vector3 dashDirection)
+    {
+        if (wantToDash && _dashTimer <= 0)
+        {
+            float dashSpeed = _dashDistance / _dashDuration; //V = X/T
+            _dashVelocity = dashSpeed * dashDirection;
+            _dashTimer = _dashDuration;
+        }
+
+        if (_dashTimer > 0)
+        {
+            _dashTimer -= Time.deltaTime;
+        }
+        else
+        {
+            _dashTimer = 0;
+            _dashVelocity = Vector3.zero;
+        }
+    }
+    
+    private void SetDashVelocityByDrag(bool wantToDash, Vector3 dashDirection)
+    {
+        //We don't apply the dash if the speed is higher that the movement speed
+        //  This mean, we don't dash if we are already dashing
+        if (wantToDash && _dashVelocity.magnitude <= speed)
+        {
+            float dashSpeed = _dashDistance / _dashDuration; //V = X/T
+            //float dashSpeed = _dashDistance * _dashDragforce; //Kinda a hack to compensate the drag (multiplier)
+            _dashVelocity = dashSpeed * dashDirection;
+        }
+        float multiplier = 1 - _dashDragforce * Time.deltaTime; 
+        _dashVelocity *= multiplier ;
+    }
 }
