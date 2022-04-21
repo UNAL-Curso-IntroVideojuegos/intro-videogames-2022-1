@@ -25,6 +25,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _dashDragforce = 8f;
     
+    [Header("Jump")]
+    [SerializeField]
+    private float _jumpHeight = 2;
+    [SerializeField]
+    private float _customGravity = -20;
+    [SerializeField]
+    private float _groundCheckRadius = 0.1f;
+    [SerializeField] 
+    private LayerMask _groundLayer;
+    
     
     private Camera _cam;
     private Plane _woldPlane;
@@ -36,6 +46,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _dashVelocity;
     //Dash by Time
     private float _dashTimer = 0;
+    
+    //Jump
+    private bool _isGrounded;
+    private bool _wantToJump;
+    //Use it for more optimize OverlapSphereNonAlloc
+    // Collider[] groundColliders = new Collider[1];
     
 
     void Start()
@@ -51,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         bool wantToDash = Input.GetKeyDown(KeyCode.LeftShift);
+        _wantToJump = Input.GetKey(KeyCode.Space);
         
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         if (_usePlaneForRotation)
@@ -77,11 +94,30 @@ public class PlayerMovement : MonoBehaviour
             SetDashVelocityByDrag(wantToDash, _dir);
         }
 
+        float yVel = _velocity.y;
         _velocity = movementVelocity + _dashVelocity;
+        _velocity.y = yVel;
     }
 
     private void FixedUpdate()
     {
+        _isGrounded = Physics.OverlapSphere(transform.position, _groundCheckRadius, _groundLayer).Length > 0;
+        //More optimize way
+        //_isGrounded = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, groundColliders, _groundLayer) > 0;
+        
+        //Apply gravity manual
+        _velocity.y = _rb.velocity.y;
+        //_velocity.y += Physics.gravity.y * Time.fixedDeltaTime;
+        _velocity.y += _customGravity * Time.fixedDeltaTime;
+        
+        if (_isGrounded && _wantToJump)
+        {
+            //V = -2 * g * H -> Kinematic equations
+            // Check https://youtu.be/v1V3T5BPd7E for more info!
+            //_velocity.y = Mathf.Sqrt(_jumpHeight * -2f * Physics.gravity.y); 
+            _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _customGravity);
+        }
+        
         //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
     }
