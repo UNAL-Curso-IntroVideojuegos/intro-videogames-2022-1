@@ -2,35 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Inicializando variables
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 2;
-    [SerializeField]
-    private LayerMask _collisionMask;
+    [SerializeField] private float speed = 2;
+    [SerializeField] private LayerMask _collisionMask;
     
     [Header("Mouse and rotation")]
-    [SerializeField]
-    private bool _usePlaneForRotation = false;
+    [SerializeField] private bool _usePlaneForRotation = false;
     
     private Camera _cam;
     private Plane _woldPlane;
     
     private Rigidbody _rb;
     private Vector3 _velocity;
-
+    
+    float distDash = 7;
+    float stop = 0.1f;
+    float timeDash = 1.0f;
+    Vector3 direction;
+    
+    float jumpAmount = 50;
+    float gravityScale = 10;
+    bool jump;
+    
+    //Ajustando posición del mouse en el mundo
     void Start()
     {
         _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
-
         _woldPlane = new Plane(Vector3.up, 0);
+        jump = false;
     }
     
+    //Movimiento
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 _dir  = new Vector3(horizontal, 0, vertical);
+        _dir.Normalize();
+        _velocity = speed * _dir;
+
+        //Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            timeDash = 0;                
+        }
+        if (timeDash < 1.0f) {
+            direction = transform.forward * distDash;
+            timeDash = timeDash + stop;
+        } else {
+            direction = Vector3.zero;
+        }
+
+         //Jump
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            jump = true;
+        }
         
         
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
@@ -42,17 +70,19 @@ public class PlayerMovement : MonoBehaviour
         {
             LookAtMousePointWithRaycast(ray);
         }
-
-        
-        Vector3 _dir  = new Vector3(horizontal, 0, vertical);
-        _dir.Normalize();
-        _velocity = speed * _dir;
     }
 
     private void FixedUpdate()
     {
         //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
+        _rb.AddForce(direction * distDash, ForceMode.Impulse);
+        _rb.AddForce(Physics.gravity * (gravityScale - 1) * _rb.mass);
+        
+        if (jump) {
+            _rb.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
+            jump = false;
+        }
     }
     
     //Calculate Mouse world position using Physics world and Physics.Raycast
