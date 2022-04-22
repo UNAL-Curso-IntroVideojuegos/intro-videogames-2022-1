@@ -12,7 +12,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Mouse and rotation")]
     [SerializeField]
     private bool _usePlaneForRotation = false;
-    
+
+    [SerializeField]
+    private float _dashSpeed = 20;
+    [SerializeField]
+    private float _dashTime = 0.1f;
+
+    private float _dashTimer = 0;
+    private Vector3 _dashDirection;
+
     private Camera _cam;
     private Plane _woldPlane;
     
@@ -43,15 +51,26 @@ public class PlayerMovement : MonoBehaviour
             LookAtMousePointWithRaycast(ray);
         }
 
-        
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Dash();
+        }
+
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
+
+        if (_dashTimer > 0)
+        {
+            _velocity = _dashSpeed* speed * _dashDirection;
+            _dashTimer -= Time.deltaTime;
+        }
+
     }
 
     private void FixedUpdate()
     {
-        //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
     }
     
@@ -87,4 +106,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    private void Dash()
+    {
+        _dashTimer = _dashTime;
+        _dashDirection = transform.forward;
+    }
+
 }
