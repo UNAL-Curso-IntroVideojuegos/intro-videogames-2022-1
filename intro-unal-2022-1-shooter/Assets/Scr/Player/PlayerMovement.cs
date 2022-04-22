@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+    private float timer = 2f;
+    private float timerj = 2f;
     void Start()
     {
         _cam = Camera.main;
@@ -32,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         
-        
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         if (_usePlaneForRotation)
         {
@@ -42,11 +43,34 @@ public class PlayerMovement : MonoBehaviour
         {
             LookAtMousePointWithRaycast(ray);
         }
-
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+
+        // Control del dash en el tiempo
+        timer += Time.deltaTime;
+        if (timer >= 0.5)
+            _velocity = speed * _dir;
+        else {
+            _velocity = speed * _dir * 6;
+        }
+
+        // Control del salto en el tiempo
+        timerj += Time.deltaTime;
+        if(timerj <= 1){
+            _velocity += new Vector3(0, 2, 0);
+        }
+        
+        if(timer>2 && Input.GetKeyDown(KeyCode.LeftShift)){ // Evitar que use el dash constantemente
+            // Vector3 aux  = transform.position;
+            // aux = aux + transform.forward * speed * 2;
+            // transform.position = aux;
+            timer = 0f;
+        }
+
+        if(transform.position.y <= 0 && Input.GetButton("Jump")){ // Evitar que use el salto en el aire
+            timerj = 0f;
+        }
     }
 
     private void FixedUpdate()
