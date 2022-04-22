@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
         private Vector3 Jump()
     {
-        float finalSpeed = (currentJumpSpeed - 9.8f * Time.deltaTime);
+        float finalSpeed = (currentJumpSpeed + Physics.gravity.y * Time.deltaTime);
         finalSpeed = Mathf.Clamp(finalSpeed, - jumpSpeed, jumpSpeed);
         if (finalSpeed == - jumpSpeed)
         {
