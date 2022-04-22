@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody _rb;
     private Vector3 _velocity;
+    private float timerDash;
+    private bool isDashing ;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         _woldPlane = new Plane(Vector3.up, 0);
+        isDashing = false;
     }
     
     void Update()
@@ -46,7 +49,29 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+
+        if (Input.GetKeyDown("left shift") && isDashing == false)
+        {   
+            isDashing = true;
+            timerDash = 0;
+        }
+
+        if (isDashing){
+            timerDash += Time.deltaTime;
+            if (timerDash > 0.5){
+                _velocity = new Vector3(0,0,0);
+                isDashing = false;
+                timerDash = 0;
+            }
+            else {
+                _velocity = speed * _dir * 9;
+            }
+
+        }
+        else{
+            _velocity = speed * _dir;
+        }
+
     }
 
     private void FixedUpdate()
