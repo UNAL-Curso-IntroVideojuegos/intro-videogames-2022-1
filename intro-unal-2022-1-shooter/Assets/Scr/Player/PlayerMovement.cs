@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 2;
     [SerializeField]
     private LayerMask _collisionMask;
+    [SerializeField] 
+    GameObject playerBody;
     
     [Header("Mouse and rotation")]
     [SerializeField]
@@ -19,12 +21,23 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+    // Dash variables
+    public float dashMovement = 10;
+    public float maxDashTimer = 0.2f;
+    public float dashTimer = 0;
+    private Vector3 dashDirection;
+
+    // Player Object variables
+    Renderer playerRenderer;
+
     void Start()
     {
         _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
 
         _woldPlane = new Plane(Vector3.up, 0);
+
+        playerRenderer = playerBody.GetComponent<Renderer>();
     }
     
     void Update()
@@ -42,11 +55,30 @@ public class PlayerMovement : MonoBehaviour
         {
             LookAtMousePointWithRaycast(ray);
         }
-
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
+
+        // Dash Logic
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Debug.Log("Shift is pressed");
+            dashDirection = transform.forward;
+            dashTimer = 0;
+            playerRenderer.material.SetColor("_Color", Color.red);
+        }
+
+        if (dashTimer < maxDashTimer)
+        {
+            _velocity = dashDirection * speed * dashMovement;
+            dashTimer += Time.deltaTime;
+        } 
+        else
+        {
+            playerRenderer.material.SetColor("_Color", Color.green);
+        }
+
     }
 
     private void FixedUpdate()
