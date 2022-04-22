@@ -19,12 +19,30 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+
+   
+    [SerializeField] float speedDash = 15;
+    [SerializeField] float timeDash = 0.25f;
+    [SerializeField] float jumpImpulse = 8;
+   
+
+    
+    private bool isDash = false;
+    private float timeOfDash;
+    private bool isFloor = false;
+    
+    
+
+  
+
     void Start()
     {
         _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
 
         _woldPlane = new Plane(Vector3.up, 0);
+        Physics.gravity *= speed;
+
     }
     
     void Update()
@@ -47,13 +65,58 @@ public class PlayerMovement : MonoBehaviour
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
+
+        Vector3 floor = transform.TransformDirection(Vector3.down);
+    
+        if (Physics.Raycast(transform.position, floor,0.1f)){
+            isFloor = true;
+            Debug.Log("En tierra");   
+        }
+        else{
+            isFloor = false;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift)){
+            isDash = true;
+            timeOfDash = 0;
+        }
+        //Reto salto
+        if (Input.GetKeyDown(KeyCode.Space) && isFloor){
+            Debug.Log("salta");
+        
+            _rb.AddForce(Vector3.up*jumpImpulse,ForceMode.Impulse); 
+        }
+        
+      
+        
+
+        if (!isDash){
+            _velocity = speed*_dir;
+        }
+        else{
+            _velocity = speedDash*_dir;
+            timeOfDash += Time.deltaTime;
+            if (timeOfDash > timeDash){
+                isDash = false;
+            }
+        
+        }
+    
+              
+            
     }
 
     private void FixedUpdate()
     {
         //Apply velocity to RigidBody. An alternative it's to use AddForce
+        _velocity.y = _rb.velocity.y;
         _rb.velocity = _velocity;
+
+        
     }
+
+
+
+
     
     //Calculate Mouse world position using Physics world and Physics.Raycast
     private void LookAtMousePointWithRaycast(Ray ray)
