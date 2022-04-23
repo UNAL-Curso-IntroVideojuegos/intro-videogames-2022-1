@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 2;
+    private float speed = 5;
     [SerializeField]
     private LayerMask _collisionMask;
     
@@ -18,6 +18,13 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody _rb;
     private Vector3 _velocity;
+
+    //Inicializar variables Dash
+    [SerializeField] private float dashSpeed = 2000;
+    [SerializeField] private float dashTime = 0.2f;
+    private float totalTime = 0;
+    private bool dash = false;
+    private Vector3 dashDirection;
 
     void Start()
     {
@@ -46,13 +53,27 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
+        dashDirection = _dir;
         _velocity = speed * _dir;
+
+        //Dash on/off
+        if (dash == false)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift)) { dash = true; }
+        }
+        else
+        {
+            if (totalTime >= dashTime) { dash = false; totalTime = 0; }
+            else { totalTime += Time.deltaTime; }
+        }
     }
 
     private void FixedUpdate()
     {
         //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
+
+        if (dash == true) { _rb.velocity = dashSpeed * dashDirection * Time.fixedDeltaTime; }
     }
     
     //Calculate Mouse world position using Physics world and Physics.Raycast
