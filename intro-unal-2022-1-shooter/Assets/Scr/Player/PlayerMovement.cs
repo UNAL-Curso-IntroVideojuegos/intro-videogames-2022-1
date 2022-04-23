@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+    private float speedIncrease;
+    private float dashTime= 0.5f;
+
     void Start()
     {
         _cam = Camera.main;
@@ -47,6 +50,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Dash();
+        }
+
+        ]//if(Input.GetKeyDown(KeyCode.Space))
+       // {
+         //   Jump();
+       // }
     }
 
     private void FixedUpdate()
@@ -84,6 +97,19 @@ public class PlayerMovement : MonoBehaviour
             point.y = transform.position.y;
             Vector3 dir = (point - transform.position).normalized;
             transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
+        }
+    }
+
+    private void Dash()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        float start = Time.time;
+        speedIncrease = 0.8f;
+        while(Time.time < start+dashTime)
+        {
+            Vector3 _dir  = new Vector3(horizontal, 0, vertical);
+            _rb.MovePosition(_dir*speed*(1+speedIncrease)*Time.deltaTime);
         }
     }
     
