@@ -18,6 +18,23 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody _rb;
     private Vector3 _velocity;
+    
+    // Declaring a Class Variable for the Dash Time and the Limit of the Dash Action
+    private float timer = 0;
+    
+    [SerializeField]
+    private float dashTime = 0.25f;
+    
+    // Declaring a Class Variable for the Dash Action
+    private bool isDashing = false;
+    
+    // Declaring a Class Variable for the Dash Power
+    [SerializeField] 
+    private float dash = 20;
+    
+    // Declaring a Class Variable for the Trail Renderer Component
+    [SerializeField] 
+    private TrailRenderer tr;
 
     void Start()
     {
@@ -43,10 +60,46 @@ public class PlayerMovement : MonoBehaviour
             LookAtMousePointWithRaycast(ray);
         }
 
-        
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
+        
+        // Identifies if the User is pressing the Left Shift key
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            timer = 0;
+        }
+        
+        // Updating the Timer after the Left Shift Key was pressed
+        timer += Time.deltaTime;
+        
+        // Maintaining the Dash Action for a certain amount of time
+        if (timer > dashTime)
+        {
+            isDashing = false;
+        }
+        else
+        {
+            isDashing = true;
+        }
+        
+        // Activating the Dash Action
+        if (isDashing)
+        {   
+            // Updating the normal player velocity to the Dash velocity
+            _velocity = dash * _dir;
+            
+            // Calling the Trail renderer routine
+            StartCoroutine(Trail());
+        }
+    }
+
+    // Defining the Trail renderer routine
+    private IEnumerator Trail()
+    {
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashTime);
+        tr.emitting = false;
     }
 
     private void FixedUpdate()
