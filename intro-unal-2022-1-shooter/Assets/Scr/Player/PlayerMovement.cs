@@ -18,6 +18,17 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody _rb;
     private Vector3 _velocity;
+    
+    //Se definen las variables para el control del Dash
+    [SerializeField]
+    public float Velocidaddash = 20;
+    [SerializeField]
+    public float Duraciondash = 0.1f;
+
+    private float _dashTimer = 0;
+    private Vector3 _dashDirection;
+
+    
 
     void Start()
     {
@@ -25,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         _woldPlane = new Plane(Vector3.up, 0);
+
     }
     
     void Update()
@@ -47,6 +59,26 @@ public class PlayerMovement : MonoBehaviour
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
+        
+        // Movimiento de dash
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _dashTimer = Duraciondash;
+            _dashDirection = transform.forward;
+        }
+
+        Vector3 direc  = new Vector3(horizontal, 0, vertical);
+        direc.Normalize();
+        _velocity = speed * direc;
+
+        if (_dashTimer > 0)
+        {
+            _velocity = Velocidaddash* speed * _dashDirection;
+            _dashTimer -= Time.deltaTime;
+        }
+
+        
+        
     }
 
     private void FixedUpdate()
