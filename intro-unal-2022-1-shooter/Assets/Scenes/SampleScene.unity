@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4477331, g: 0.49771166, b: 0.5754047, a: 1}
+  m_IndirectSpecularColor: {r: 0.4477328, g: 0.49771094, b: 0.5754038, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -792,6 +792,7 @@ GameObject:
   - component: {fileID: 1576781492}
   - component: {fileID: 1576781491}
   - component: {fileID: 1576781490}
+  - component: {fileID: 1576781493}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -861,7 +862,21 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  _usePhysicsWorld: 0
+  _usePlaneForRotation: 0
+--- !u!114 &1576781493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576781488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd40c09781cce143a808989fab9af75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8077844267973458672}
+  shootPoint: {fileID: 963194228}
 --- !u!1 &1763485123
 GameObject:
   m_ObjectHideFlags: 0
