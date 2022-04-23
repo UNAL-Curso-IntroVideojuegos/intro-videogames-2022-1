@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 2;
+    private float speed = 10;
     [SerializeField]
     private LayerMask _collisionMask;
     
@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody _rb;
     private Vector3 _velocity;
+    private bool isDashing = false;
+    [SerializeField]
+    private float speedDash = 20;
+    private float timer;
 
     void Start()
     {
@@ -32,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         
-        
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         if (_usePlaneForRotation)
         {
@@ -42,11 +45,30 @@ public class PlayerMovement : MonoBehaviour
         {
             LookAtMousePointWithRaycast(ray);
         }
-
         
+        // Lectura de "Shift"
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isDashing = true;
+        }
+
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+        
+        if (isDashing)
+        {
+            _velocity = speedDash * _dir;
+            timer += Time.deltaTime;
+            if (timer > 0.2f)
+            {
+                isDashing = false;
+                timer = 0.0f;
+            }
+        }
+        else
+        {
+            _velocity = speed * _dir;   
+        }
     }
 
     private void FixedUpdate()
