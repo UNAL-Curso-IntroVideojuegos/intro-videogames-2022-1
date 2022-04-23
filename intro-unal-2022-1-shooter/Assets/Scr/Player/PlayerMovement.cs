@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+    [SerializeField] private int powerOfDash = 5;
+
+    [SerializeField] private float timeOfDash = 0.5f;
+    
+    private float _dashTimeRemaining = 0;
+    private bool _isDashing = false;
+    
     void Start()
     {
         _cam = Camera.main;
@@ -46,12 +54,36 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+
+        if (_isDashing == false)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                _isDashing = true;
+                _velocity = speed * _dir *powerOfDash;
+            }
+            else
+            {
+                _velocity = speed * _dir;
+                
+            }
+        }
+        else
+        {
+            _dashTimeRemaining = Math.Min(timeOfDash, _dashTimeRemaining + Time.deltaTime);
+            if (Math.Abs(_dashTimeRemaining - timeOfDash) < 0.01)
+            {
+                _isDashing = false;
+                _dashTimeRemaining = 0;
+            }
+        }
+        
     }
 
     private void FixedUpdate()
     {
         //Apply velocity to RigidBody. An alternative it's to use AddForce
+        
         _rb.velocity = _velocity;
     }
     
@@ -86,5 +118,4 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
         }
     }
-    
 }
