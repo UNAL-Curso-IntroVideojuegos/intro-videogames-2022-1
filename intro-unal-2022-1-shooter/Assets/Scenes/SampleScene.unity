@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4477331, g: 0.49771166, b: 0.5754047, a: 1}
+  m_IndirectSpecularColor: {r: 0.4477328, g: 0.49771094, b: 0.5754038, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349473172}
+  - component: {fileID: 349473173}
   m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
@@ -154,6 +155,20 @@ Transform:
   m_Father: {fileID: 1576781489}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349473173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349473171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148f423f86c39dc4f987655eae9255a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 8077844267973458672}
+  _shootPoint: {fileID: 936729183}
 --- !u!1 &451984769
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,11 +872,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb7bbbbd5e9bf140850b148e163c664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 10
+  speedDash: 80
   _collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  _usePhysicsWorld: 0
+  _usePlaneForRotation: 0
 --- !u!1 &1763485123
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1003,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8077844267973458673}
+  - component: {fileID: 8077844267973458674}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -1009,6 +1026,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8077844267973458674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077844267973458672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7ba2081d068194ab233a60fe957cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 7
 --- !u!23 &8077844268490815300
 MeshRenderer:
   m_ObjectHideFlags: 0

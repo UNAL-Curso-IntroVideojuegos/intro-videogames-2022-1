@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float speed = 2;
     [SerializeField]
+    private float speedDash = 4;
+    [SerializeField]
     private LayerMask _collisionMask;
     
     [Header("Mouse and rotation")]
@@ -18,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody _rb;
     private Vector3 _velocity;
+
+    private float _timer;
+    
+    private bool isDashing = false;
 
     void Start()
     {
@@ -46,7 +52,23 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isDashing = true;
+        }
+
+        if (isDashing)
+        {
+            _velocity = speedDash * _dir;
+            _timer += Time.deltaTime;
+            if(_timer > 0.5f){
+                isDashing = false;
+                _timer = 0.0f;
+            }
+        } else {
+            _velocity = speed * _dir;
+        }
     }
 
     private void FixedUpdate()
