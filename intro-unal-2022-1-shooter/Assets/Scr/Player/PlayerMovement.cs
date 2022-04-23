@@ -8,16 +8,26 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 2;
     [SerializeField]
     private LayerMask _collisionMask;
-    
+
     [Header("Mouse and rotation")]
     [SerializeField]
     private bool _usePlaneForRotation = false;
-    
+
     private Camera _cam;
     private Plane _woldPlane;
-    
+
     private Rigidbody _rb;
     private Vector3 _velocity;
+
+    //Jump Vars
+    float jumpAmount = 50;
+    float gravityScale = 10;
+    bool jump;
+    //Dash Vars
+    float distDash = 7;
+    float stop = 0.1f;
+    float timeDash = 1.0f;
+    Vector3 direction;
 
     void Start()
     {
@@ -31,8 +41,32 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        
-        
+
+        Vector3 _dir = new Vector3(horizontal, 0, vertical);
+        _dir.Normalize();
+        _velocity = speed * _dir;
+
+        // Dash implementation
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            timeDash = 0;
+        }
+        if (timeDash < 1.0f)
+        {
+            direction = transform.forward * distDash;
+            timeDash = timeDash + stop;
+        }
+        else
+        {
+            direction = Vector3.zero;
+        }
+
+        // Jump key identification
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+        }
+
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         if (_usePlaneForRotation)
         {
@@ -42,17 +76,22 @@ public class PlayerMovement : MonoBehaviour
         {
             LookAtMousePointWithRaycast(ray);
         }
-
-        
-        Vector3 _dir  = new Vector3(horizontal, 0, vertical);
-        _dir.Normalize();
-        _velocity = speed * _dir;
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
+        // Dash force
+        _rb.AddForce(direction * distDash, ForceMode.Impulse);
+        // Gravity to jump
+        _rb.AddForce(Physics.gravity * (gravityScale - 1) * _rb.mass);
+
+        //Jump force
+        if (jump)
+        {
+            _rb.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
+            jump = false;
+        }
     }
     
     //Calculate Mouse world position using Physics world and Physics.Raycast

@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349473172}
+  - component: {fileID: 349473173}
   m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
@@ -154,6 +155,19 @@ Transform:
   m_Father: {fileID: 1576781489}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349473173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349473171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d780f2d644285841acbd115b1e238df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &451984769
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +806,7 @@ GameObject:
   - component: {fileID: 1576781492}
   - component: {fileID: 1576781491}
   - component: {fileID: 1576781490}
+  - component: {fileID: 1576781493}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -861,7 +876,19 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  _usePhysicsWorld: 0
+  _usePlaneForRotation: 0
+--- !u!114 &1576781493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576781488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd40c09781cce143a808989fab9af75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1763485123
 GameObject:
   m_ObjectHideFlags: 0
