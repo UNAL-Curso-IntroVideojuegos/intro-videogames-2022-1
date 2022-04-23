@@ -18,7 +18,12 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody _rb;
     private Vector3 _velocity;
-
+    
+    //variables defined for the dash
+    private bool dashing = false;
+    private float currTime = 0f;
+    private float dashTime = 0.5f;
+    
     void Start()
     {
         _cam = Camera.main;
@@ -26,12 +31,11 @@ public class PlayerMovement : MonoBehaviour
 
         _woldPlane = new Plane(Vector3.up, 0);
     }
-    
+
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        
         
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         if (_usePlaneForRotation)
@@ -43,7 +47,25 @@ public class PlayerMovement : MonoBehaviour
             LookAtMousePointWithRaycast(ray);
         }
 
+        if (Input.GetKeyDown("left shift") && (!dashing))
+        { 
+            currTime = 0;
+            speed *= 20;
+            dashing = true;
+        }
         
+        currTime += dashing ? Time.deltaTime : 0;
+        
+
+        if (Mathf.Abs(currTime - dashTime) <= 1e-2 && dashing)
+        {
+            speed /= 20;
+            currTime = 0;
+            dashing = false;
+        }
+        
+        Debug.Log(currTime);
+
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
         _velocity = speed * _dir;
@@ -86,5 +108,4 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
         }
     }
-    
 }
