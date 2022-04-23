@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,14 @@ public class PlayerShooter : MonoBehaviour
     [Space(20)]
     [SerializeField]
     private float _rateFire = 1; //Bullet per second
-    
+
+    private PlayerAnimation _playerAnimation;
     private float _fireTimer = 0;
+
+    private void Start()
+    {
+        _playerAnimation = GetComponent<PlayerAnimation>();
+    }
 
     void Update()
     {
@@ -29,6 +36,8 @@ public class PlayerShooter : MonoBehaviour
             _fireTimer = 1 / _rateFire; 
             Shoot();
         }
+        
+        _playerAnimation.SetIsShooting(_fireTimer > 0);
     }
     
     private void Shoot()
@@ -36,7 +45,9 @@ public class PlayerShooter : MonoBehaviour
         //Shoot
         GameObject projectile = Instantiate(_projectilePrefab);
         projectile.transform.position = _shootPoint.position;
-        projectile.transform.rotation = _shootPoint.rotation;
-        //projectile.transform.up = _shootPoint.up;
+        //projectile.transform.rotation = _shootPoint.rotation;
+        Vector3 rot = _shootPoint.eulerAngles;
+        rot.x = 0;
+        projectile.transform.eulerAngles = rot;
     }
 }

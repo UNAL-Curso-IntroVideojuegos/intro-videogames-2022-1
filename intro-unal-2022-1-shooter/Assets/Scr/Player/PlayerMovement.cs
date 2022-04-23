@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
+    private Transform _body;
+    [SerializeField]
     private float speed = 2;
     [SerializeField]
     private LayerMask _collisionMask;
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private Plane _woldPlane;
     
     private Rigidbody _rb;
+    private PlayerAnimation _playerAnimation;
     private Vector3 _velocity;
     
     //Dash
@@ -42,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
+        _playerAnimation = GetComponent<PlayerAnimation>();
 
         _woldPlane = new Plane(Vector3.up, 0);
     }
@@ -78,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _velocity = movementVelocity + _dashVelocity;
+        _playerAnimation.SetMovementDirection(_dir);
     }
 
     private void FixedUpdate()
@@ -100,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 dir = (point - transform.position).normalized;
             //transform.forward = dir;
             //transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
-            transform.LookAt(point);
+            _body.LookAt(point);
         }
     }
     
@@ -114,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 point = ray.GetPoint(distanceToPlane);
             point.y = transform.position.y;
             Vector3 dir = (point - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
+            _body.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
         }
     }
     
