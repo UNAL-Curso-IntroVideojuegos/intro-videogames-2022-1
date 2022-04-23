@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 2;
-    [SerializeField]
-    private LayerMask _collisionMask;
+    
+    [SerializeField]    private float speed = 2;
+    [SerializeField]    private float _timer;
+    [SerializeField]    private float timeDash;
+    [SerializeField]    private bool doDash = false;
+    
+    [SerializeField]    private float speedDash;
+    
+                        private LayerMask _collisionMask;
     
     [Header("Mouse and rotation")]
-    [SerializeField]
-    private bool _usePlaneForRotation = false;
+    
+    [SerializeField]    private bool _usePlaneForRotation = false;
     
     private Camera _cam;
     private Plane _woldPlane;
@@ -25,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         _woldPlane = new Plane(Vector3.up, 0);
+
+        _timer = 0;
+
+        timeDash = 0.1f;
+
+        speedDash = 100;
     }
     
     void Update()
@@ -46,7 +57,27 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+
+        //Leemos si se presiona la tecla shift y cambiamos la variable doDash
+        if (Input.GetKeyDown(KeyCode.LeftShift)){
+            doDash = true;
+            }
+
+        //Si se activa el Dash ejecutamos esta parte
+        if (doDash)
+        {   
+            //Definimos la nueva velocidad
+            _velocity = speedDash * _dir;
+            //Contamos cuanto tiempo va pasando
+            _timer += Time.deltaTime;
+            //si supera el umbral, detenemos el dash y reiniciamos el contador
+            if(_timer > timeDash){
+                _timer = 0.0f;
+                doDash = false;
+            }
+        } else {
+            _velocity = speed * _dir;
+        }
     }
 
     private void FixedUpdate()
