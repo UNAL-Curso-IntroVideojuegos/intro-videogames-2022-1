@@ -38,7 +38,12 @@
 	- Movimiento en 3D (Transform y Físicas).
 	- Mouse, Camara y ScreenPointToRay.
 	- Raycast 3D vs Planes
-- **Clase 6:** Animaciones y Projectiles en 3D.
+- **Clase 6:** Animaciones
+	- Rigging y Animaciones.
+	- Humanoid vs Generic.
+	- Animator y Animation.
+	- Animator: Parameter y Layers.
+	- Blend Tree y Locomotion.
 - **Clase 7:** AI basico para enemigos.
 	- Finite-State Machine y Pathfinding.
 - **Clase 8:** <u>Asesoria Proyectos</u>.
