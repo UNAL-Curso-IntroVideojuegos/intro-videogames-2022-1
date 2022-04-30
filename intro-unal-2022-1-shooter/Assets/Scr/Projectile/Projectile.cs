@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
         transform.Translate(translation);
     }
 
-    private void CheckCollision(Vector2 translation)
+    private void CheckCollision(Vector3 translation)
     {
         RaycastHit hit; 
         if (Physics.Raycast(transform.position, transform.forward, out hit, translation.magnitude, _collisionMask))
