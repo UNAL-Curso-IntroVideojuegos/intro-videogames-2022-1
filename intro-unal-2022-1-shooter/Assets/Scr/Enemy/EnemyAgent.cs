@@ -6,18 +6,28 @@ public class EnemyAgent : MonoBehaviour
 {
     [SerializeField]
     private Animator _animator;
-    
+
+    private PathFindingController _pathFindingController;
+    private StateMachineController _stateMachineController;
     private Transform _target;
     
     public Transform Target => _target;
+    public PathFindingController PathFindingController => _pathFindingController;
+    public StateMachineController StateMachineController => _stateMachineController;
     
     void Start()
     {
+        _pathFindingController = GetComponent<PathFindingController>();
+        _stateMachineController = new StateMachineController();
+        _stateMachineController.Init(this);
+        
         _target = GameObject.FindWithTag("Player").transform;
     }
     
     void Update()
     {
+        _stateMachineController.OnUpdate();
+        
         //_animator.SetBool("IsMoving", false);
         //_animator.SetTrigger("Attack");
     }

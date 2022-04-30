@@ -48,7 +48,7 @@ public class Projectile : MonoBehaviour
         RaycastHit hit; 
         if (Physics.Raycast(transform.position, transform.forward, out hit, translation.magnitude, _collisionMask))
         {
-            Debug.Log("Hit with " + hit.collider.name);
+            //Debug.Log("Hit with " + hit.collider.name);
             // if (hit.transform.TryGetComponent<IDamageable>(out IDamageable target))
             // {
             //     target.TakeHit(Random.Range(2,5), hit.point, hit.normal);
