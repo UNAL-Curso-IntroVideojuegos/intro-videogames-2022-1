@@ -1,6 +1,7 @@
 # Curso de Intro a la creación de Videojuegos.
 > Universidad Nacional de Colombia, sede Medellín. 2022-2
 
+Solucionando la tarea 4 - Prueba
 
 - [Contenido del curso](#contenido-del-curso)
 - [Talleres](#talleres-semanales)
