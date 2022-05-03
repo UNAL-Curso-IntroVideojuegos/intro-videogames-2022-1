@@ -38,14 +38,18 @@
 	- Movimiento en 3D (Transform y Físicas).
 	- Mouse, Camara y ScreenPointToRay.
 	- Raycast 3D vs Planes
-- **Clase 6:** Animaciones
+- **Clase 6:** Animaciones - [Video](https://www.youtube.com/watch?v=Ckiht5S214Y&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=7)
 	- Rigging y Animaciones.
 	- Humanoid vs Generic.
 	- Animator y Animation.
 	- Animator: Parameter y Layers.
 	- Blend Tree y Locomotion.
-- **Clase 7:** AI basico para enemigos.
-	- Finite-State Machine y Pathfinding.
+- **Clase 7:** IA basico para NPC - [Video](https://www.youtube.com/watch?v=9rUl9Y-LJuw&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=8)
+	- IA para NPC y enemigos.
+	- Finite-State Machine y Blend Tree.
+	- Path Finding. Algoritmo A* (A star).
+	- Unity y NavMesh.
+	- Finite-State Machine en Unity.
 - **Clase 8:** <u>Asesoria Proyectos</u>.
 - **Clase 9:** Sistema de daño y UI (User Interface).
 - **Clase 10:** Polish & Game feeling.
@@ -61,7 +65,7 @@
 	- Behaviour Tree.
 - **Clase 14:** <u>Asesoria Proyectos</u>.
 - **Clase 15:** Presentación proyectos finales!
-- **Clase 16:** Comodin.
+- ~~**Clase 16:** Comodin.~~
 
 ## Talleres semanales
 - Tarea #1 (Clase #1): Crear cuenta en GitHub y acceso al repositorio.
