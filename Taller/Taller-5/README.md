@@ -2,10 +2,13 @@
 
 ## Leer antes de realizar el taller!
 
-> Se ha agregado al script enemigo una serie de atributos llamados *Agent Config*. 
-> Se espera que use estos valores en los diferentes puntos del taller. Por ejemplo, notará que la función `IsLookingTarget` ahora usa el valor `AgentConfig.DetectionRange` en vez del valor `5f`.
-
+> Se ha agregado al script enemigo una serie de atributos llamados *Agent Config*.
+>
+> Se espera que use estos valores en los diferentes puntos del taller. Estos valores vienen del script `EnemyAgentConfig`, puede editar ese script si desea, pero el taller esta diseñado para que no sea necesario editar este archivo.
+>
+> Por ejemplo, notará que la función `IsLookingTarget` ahora usa el valor `AgentConfig.DetectionRange` en vez del valor `5f`.
 ```c#
+    //Ejemplo
     public bool IsLookingTarget()
     {
         return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;     
@@ -16,19 +19,19 @@
 ## Taller #5
 
 1. Actualice la función `IsLookingTarget` (en el script `EnemyAgent`) para detecte al Player solo cuando este en frente del enemigo.
-    - Hint: Puede usar el Producto punto (Vector3.Dot) entre la dirección al Player y el Forward del Enemigo.
+    - **Hint**: Puede usar el Producto punto (Vector3.Dot) entre la dirección al Player y el Forward del Enemigo.
         ![Detection Front](./DetectionFront.gif "Detection Front")
 
 2. Cree y agregue el estado *Ataque* al Enemigo
     - Cree el script `EnemyAttackState` utilizando lo visto en clase.
     - Después de X segundos, debe volver al estado *Idle*.
-        - Use el valor `AttackDuration` de la configuración del enemigo (*Agent Config*).
+        - Use el valor `AttackDuration` de la configuración del enemigo (ver nota al inicio sobre *Agent Config*).
     - Active la animación de Ataque.
-        - Hint: Active la animación usando el siguiente código. **Nota:** Todo lo relacionado a las animaciones y al Animator ya debe estar en su lugar, así que no debería que tener la necesidad de editar algo relacionado a esto. Solo es activar la trasnsición
+        - **Hint**: Tal vez sea un buen caso para usar el *OnEnter*? :wink:
+        - **Hint 2**: Active la animación usando el siguiente código. **Nota:** Todo lo relacionado a las animaciones y al Animator ya esta en su lugar, así que no debería tener necesidad de editar algo relacionado a esto. Solo es debe activar la transición
         ```c#
         agent.Animator.SetTrigger("Attack");
         ```
-        - Hint 2: Tal vez sea un buen caso para usar el *OnEnter*? :wink:
     - No olvide agregar el estado al Finite-State Machine (script `StateMachineController`).
     ![Attack](./Attack.gif "Attack")
 
@@ -38,9 +41,9 @@
 4. Cree y agregue el estado *Patrol* al Enemigo
     - Cree el script `EnemyPatrolState` utilizando lo visto en clase.
     - El enemigo debe de ir al siguiente punto de patrullaje. Esperar X segundos. Y luego ir al siguiente punto de patrullaje.
-        - Hint: Puede controlar ese tiempo de espera desde el mismo estado de *Patrol* o pueden hacer que vuelva a Idle (?)
-    - Utilice la lista de puntos `PathPoints` de la configuración del Enemigo (*Agent Config*) para obtener siguiente punto de patrullaje al cual debe ir.
-        - Hint: Código sugerido para obtener el siguiente punto de patrullaje.
+        - **Hint**: Puede controlar ese tiempo de espera desde el mismo estado de *Patrol* o pueden hacer que vuelva a Idle (?)
+    - Utilice la lista de puntos `PathPoints` de la configuración del Enemigo (*Agent Config*) para obtener el siguiente punto de patrullaje al cual debe ir.
+        - **Hint**: Código sugerido para obtener el siguiente punto de patrullaje.
     ```c#
     private int _currentPointIndex = 0;
 
@@ -62,7 +65,7 @@
     - No olvide agregar el estado al Finite-State Machine (script `StateMachineController`).
     ![Patrol](./Patrol.gif "Patrol")
 
-Aclaración:
+**ACLARACIÓN**
 
 > Los puntos del patrullaje (la variable `PathPoints` de la configuración del enemigo) son solo objetos vacios en la escena. Puede agregar o cambiarlos de posición si así lo desea.
 ![Enemy Path](./EnemyPathPoints.png "Enemy Path")
@@ -70,13 +73,13 @@ Aclaración:
 ### Reto
 
 1. Actualice la función `IsLookingTarget` (en el script `EnemyAgent`) para detecte al Player solo cuando este dentro del cono de vision del Enemigo.
-    - Hint: Aunque es viable usar el Producto punto (Vector3.Dot), la idea es obtener el ángulo entre el Player y el Enemigo y comparlo con el valor `ViewAngle` de la configuración del enemigo (ver nota al inicio sobre *Agent Config*).
+    - **Hint**: Aunque es viable usar el Producto punto (Vector3.Dot), la idea es obtener el ángulo entre el Player y el Enemigo y comparlo con el valor `ViewAngle` de la configuración del enemigo (ver nota al inicio sobre *Agent Config*).
         ![Detection Cone](./DetectionCone.gif "Detection Cone")
 
 2. Actualice el estado *Ataque* (Punto #2) para que el Enemigo siempre este mirando al Player.
 
 3. Actualice el estado *Patrol* (Punto #4) para que cambie al estado *Chase* si el Player esta en su rango de visión.
-    - Hint: Utilice la función `IsLookingTarget`.
+    - **Hint**: Utilice la función `IsLookingTarget`.
         ![Patrol Attack](./PatrolAttack.gif "Patrol Attack")
 
 
@@ -87,7 +90,7 @@ Aclaración:
 - Crear una branch a partir del branch `sessions/homework-5`.
   - El nombre de la nueva branch debe tener el siguiente formato: `student/[usuario-unal]/homework-5`
 ```
- Ejemplo: Si su correo es pedrito@unal.edu.co, la rama para hacer la entrega de la tarea #5 debe ser `student/pedrito/homework-5`.
+ Ejemplo: Si su correo es pedrito@unal.edu.co, la rama para hacer la entrega debe ser `student/pedrito/homework-5`.
 ```
 - Hacer los commits necesarios para efectuar la solución al taller.
 - Hacer un Pull Request de su branch (`student/[usuario-unal]/homework-5`)
