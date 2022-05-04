@@ -73,6 +73,7 @@
 - [Tarea #3](./Taller/Taller-3#taller-3/) (Clase #3): Torreta - Movimiento y rotación con Transform.
 - [Reto #1](./Taller/Reto-1#reto-1/) (Clase #4): Torreta - Disparar al Player.
 - [Tarea #4](./Taller/Taller-4#taller-4/) (Clase #5): Dash, Salto y Disparo 3D.
+- [Tarea #5](./Taller/Taller-5#taller-5/) (Clase #7): IA en enemigos (atacar y patrullar) - Finite State Machine.
 
 ## Profesor
 - J. Alejandro Álvarez. juaalvarezme@unal.edu.co
