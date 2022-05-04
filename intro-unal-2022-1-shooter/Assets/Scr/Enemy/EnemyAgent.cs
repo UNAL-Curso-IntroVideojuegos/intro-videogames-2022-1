@@ -6,12 +6,16 @@ public class EnemyAgent : MonoBehaviour
 {
     [SerializeField]
     private Animator _animator;
-
+    [SerializeField]
+    private EnemyAgentConfig _agentConfig;
+    
     private PathFindingController _pathFindingController;
     private StateMachineController _stateMachineController;
     private Transform _target;
     
+    public EnemyAgentConfig AgentConfig => _agentConfig;
     public Transform Target => _target;
+    public Animator Animator => _animator;
     public PathFindingController PathFindingController => _pathFindingController;
     public StateMachineController StateMachineController => _stateMachineController;
     
@@ -28,13 +32,13 @@ public class EnemyAgent : MonoBehaviour
     {
         _stateMachineController.OnUpdate();
         
-        //_animator.SetBool("IsMoving", false);
+        _animator.SetBool("IsMoving", !_pathFindingController.IsStopped);
         //_animator.SetTrigger("Attack");
     }
     
     public bool IsLookingTarget()
     {
         //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < 5;
+        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
     }
 }

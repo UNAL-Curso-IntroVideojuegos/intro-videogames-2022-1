@@ -24,16 +24,16 @@ public class EnemyChaseState : IEnemyState
         //Persiga al player
         if (_navMeshRefreshTimer <= 0)
         {
-            if (distanceToTarget > 1.5f)
+            if (distanceToTarget > agent.AgentConfig.AttackRange)
             {
                 Transform target = agent.Target;
                 agent.PathFindingController.GoTo(target.position, null);
             }
 
-            _navMeshRefreshTimer = 0.1f;
+            _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
         }
 
-        if (distanceToTarget < 1.5f)
+        if (distanceToTarget < agent.AgentConfig.AttackRange)
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Attack);
         }
