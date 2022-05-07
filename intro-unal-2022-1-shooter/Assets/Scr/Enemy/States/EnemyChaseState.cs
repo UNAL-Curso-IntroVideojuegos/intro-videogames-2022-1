@@ -33,6 +33,7 @@ public class EnemyChaseState : IEnemyState
             _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
         }
 
+        // Si está en rango -> Atacar
         if (distanceToTarget < agent.AgentConfig.AttackRange)
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Attack);

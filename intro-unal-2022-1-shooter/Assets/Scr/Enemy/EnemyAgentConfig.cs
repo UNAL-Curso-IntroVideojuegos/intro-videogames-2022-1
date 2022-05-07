@@ -10,7 +10,7 @@ public class EnemyAgentConfig
     [Header("Detection")]
     public float DetectionRange = 5;
     public float ViewAngle = 60;
-    
+
     [Header("Moving")] 
     public float IdleTime = 2;
     public float PathfindingRefreshTime = 1;
@@ -19,4 +19,7 @@ public class EnemyAgentConfig
     [Header("Attack")]
     public float AttackRange = 1;
     public float AttackDuration = 1;
+
+    [Header("Idle")]
+    public float TimeToPatrol = 5;
 }
