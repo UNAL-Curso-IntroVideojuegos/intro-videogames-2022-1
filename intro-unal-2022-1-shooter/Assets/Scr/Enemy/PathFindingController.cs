@@ -36,7 +36,7 @@ public class PathFindingController : MonoBehaviour
         if (_agent.remainingDistance <= _agent.stoppingDistance && _agent.velocity.sqrMagnitude == 0)
         { 
             IsStopped = true;
-            Debug.LogError("On Arrive");
+            Debug.LogWarning("On Arrive");
             if (_onArrive != null)
             { 
                 _onArrive();
