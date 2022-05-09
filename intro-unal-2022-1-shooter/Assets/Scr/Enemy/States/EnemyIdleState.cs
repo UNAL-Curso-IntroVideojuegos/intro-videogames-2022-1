@@ -8,7 +8,7 @@ public class EnemyIdleState : IEnemyState
     {
         Debug.Log("Idle: OnEnter");
     }
-
+    private float timeIdle = 0;
     public void OnUpdate(EnemyAgent agent)
     {
         Debug.Log("Idle: OnUpdate");
@@ -18,10 +18,16 @@ public class EnemyIdleState : IEnemyState
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
         }
+        timeIdle += Time.deltaTime;
+        if (agent.AgentConfig.IdleTime <= timeIdle)
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Patrol);
+        }
     }
 
     public void OnExit(EnemyAgent agent)
     {
         Debug.Log("Idle: OnExit");
+        timeIdle = 0;
     }
 }

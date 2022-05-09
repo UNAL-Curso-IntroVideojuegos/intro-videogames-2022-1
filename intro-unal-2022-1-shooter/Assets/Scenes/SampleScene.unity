@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4477331, g: 0.49771166, b: 0.5754047, a: 1}
+  m_IndirectSpecularColor: {r: 0.44773299, g: 0.4977113, b: 0.5754044, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7227,7 +7227,7 @@ MonoBehaviour:
   _agentConfig:
     initialState: 0
     DetectionRange: 4.5
-    ViewAngle: 60
+    ViewAngle: 180
     IdleTime: 2
     PathfindingRefreshTime: 1
     PathPoints:
