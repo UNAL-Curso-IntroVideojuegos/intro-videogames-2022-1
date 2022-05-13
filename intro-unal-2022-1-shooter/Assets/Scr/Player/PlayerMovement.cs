@@ -19,6 +19,12 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _velocity;
 
+    private bool isDashing = false;
+    [SerializeField]
+    private float speedDash = 40;
+    private float timer;
+    private float distance;
+
     void Start()
     {
         _cam = Camera.main;
@@ -31,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        bool wantToDash = Input.GetKeyDown(KeyCode.LeftShift);
         
         
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
@@ -46,7 +53,34 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 _dir  = new Vector3(horizontal, 0, vertical);
         _dir.Normalize();
-        _velocity = speed * _dir;
+
+
+        
+        //DASH INSTANTANEAMENTE
+        if (wantToDash)
+        {
+            isDashing = true;
+        }
+
+        if (isDashing)
+         {
+            _velocity = speedDash * _dir;
+            timer += Time.deltaTime;
+            if (timer > 0.2f)
+            {
+                isDashing = false;
+                timer = 0.0f;
+            }
+        }
+        else
+        {
+            _velocity = speed * _dir;   
+        }
+        
+
+        
+
+
     }
 
     private void FixedUpdate()
