@@ -12,7 +12,7 @@ public class EnemyAgentConfig
     public float ViewAngle = 60;
     
     [Header("Moving")] 
-    public float IdleTime = 2;
+    public float IdleTime = 3;
     public float PathfindingRefreshTime = 1;
     public List<Transform> PathPoints;
     

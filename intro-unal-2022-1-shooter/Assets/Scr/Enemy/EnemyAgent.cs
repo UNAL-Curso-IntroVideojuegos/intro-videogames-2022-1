@@ -33,12 +33,14 @@ public class EnemyAgent : MonoBehaviour
         _stateMachineController.OnUpdate();
         
         _animator.SetBool("IsMoving", !_pathFindingController.IsStopped);
-        //_animator.SetTrigger("Attack");
+        
     }
     
     public bool IsLookingTarget()
     {
         //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 myTarget = _target.position - transform.position;
+        return Vector3.Dot(myTarget, forward) > 0 && myTarget.magnitude < AgentConfig.DetectionRange;
     }
 }
