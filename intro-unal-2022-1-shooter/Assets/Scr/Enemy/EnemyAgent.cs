@@ -31,7 +31,7 @@ public class EnemyAgent : MonoBehaviour
     void Update()
     {
         _stateMachineController.OnUpdate();
-        
+
         _animator.SetBool("IsMoving", !_pathFindingController.IsStopped);
         //_animator.SetTrigger("Attack");
     }
@@ -39,6 +39,24 @@ public class EnemyAgent : MonoBehaviour
     public bool IsLookingTarget()
     {
         //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        Vector3 targetRealtivePosition = _target.position - transform.position;
+
+        bool isInRange = targetRealtivePosition.magnitude < AgentConfig.DetectionRange;
+
+        bool isInVision = Vector3.Angle(transform.forward, targetRealtivePosition) < AgentConfig.ViewAngle;
+
+        return isInRange && isInVision;
+    }
+
+    private void OnDrawGizmos()
+    {
+        float halfFOV = AgentConfig.ViewAngle / 2.0f;
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
+        Vector3 leftRayDirection = leftRayRotation * transform.forward;
+        Vector3 rightRayDirection = rightRayRotation * transform.forward;
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, leftRayDirection * AgentConfig.DetectionRange);
+        Gizmos.DrawRay(transform.position, rightRayDirection * AgentConfig.DetectionRange);
     }
 }
