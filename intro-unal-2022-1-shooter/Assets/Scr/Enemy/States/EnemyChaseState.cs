@@ -20,7 +20,7 @@ public class EnemyChaseState : IEnemyState
         _navMeshRefreshTimer -= Time.deltaTime;
 
         float distanceToTarget = (agent.Target.position - agent.transform.position).magnitude;
-        
+
         //Persiga al player
         if (_navMeshRefreshTimer <= 0)
         {
@@ -45,4 +45,5 @@ public class EnemyChaseState : IEnemyState
         Debug.Log("Chase: OnExit");
         agent.PathFindingController.Stop();
     }
+    
 }

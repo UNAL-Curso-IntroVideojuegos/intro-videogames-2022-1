@@ -7228,13 +7228,13 @@ MonoBehaviour:
     initialState: 0
     DetectionRange: 4.5
     ViewAngle: 60
-    IdleTime: 2
+    IdleTime: 1
     PathfindingRefreshTime: 1
     PathPoints:
     - {fileID: 1683356556}
     - {fileID: 1444324194}
     AttackRange: 1.5
-    AttackDuration: 1.8
+    AttackDuration: 1
 --- !u!195 &1357013729
 NavMeshAgent:
   m_ObjectHideFlags: 0
