@@ -18,6 +18,10 @@ public class EnemyAgent : MonoBehaviour
     public Animator Animator => _animator;
     public PathFindingController PathFindingController => _pathFindingController;
     public StateMachineController StateMachineController => _stateMachineController;
+
+    private bool _isClose;
+    private bool _inFront;
+    private float _timer;
     
     void Start()
     {
@@ -26,6 +30,7 @@ public class EnemyAgent : MonoBehaviour
         _stateMachineController.Init(this);
         
         _target = GameObject.FindWithTag("Player").transform;
+        _timer = 0;
     }
     
     void Update()
@@ -33,12 +38,24 @@ public class EnemyAgent : MonoBehaviour
         _stateMachineController.OnUpdate();
         
         _animator.SetBool("IsMoving", !_pathFindingController.IsStopped);
-        //_animator.SetTrigger("Attack");
+
+
+        //_animator.SetTrigger("Attack", false);
+        
     }
     
     public bool IsLookingTarget()
     {
-        //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        //PRIMER PUNTO
+        _isClose =(_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        _inFront = Vector3.Dot(_target.position,transform.forward) >= 0;
+        return _isClose && _inFront;
+    }
+
+    public bool AttackTarget()
+    {
+        _isClose =(_target.position - transform.position).magnitude < AgentConfig.AttackRange;
+        _inFront = Vector3.Dot(_target.position,transform.forward) >= 0;
+        return _isClose && _inFront;
     }
 }
