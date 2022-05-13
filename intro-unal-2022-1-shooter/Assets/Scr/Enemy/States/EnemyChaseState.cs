@@ -7,6 +7,7 @@ public class EnemyChaseState : IEnemyState
 
     private float _navMeshRefreshTimer = 0;
     
+    private float timeForIdle = 0;
     public void OnEnter(EnemyAgent agent)
     {
         Debug.Log("Chase: OnEnter");
@@ -37,7 +38,13 @@ public class EnemyChaseState : IEnemyState
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Attack);
         }
-        
+        //Para que despues de un tiempo vuelva al Idle
+        if(timeForIdle >= agent.AgentConfig.ChaseTime){
+            timeForIdle = 0; //Reiniciamos el contador
+            agent.StateMachineController.ChangeToState(EnemyStateType.Idle);
+            
+        }
+        timeForIdle += Time.deltaTime;
     }
 
     public void OnExit(EnemyAgent agent)

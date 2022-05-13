@@ -38,7 +38,10 @@ public class EnemyAgent : MonoBehaviour
     
     public bool IsLookingTarget()
     {
-        //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        //Revisamos que se encuentre dentro del alcance del enemigo
+        bool distanceCondition  = (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        //Revisamos que se encuentre frente al enemigo
+        bool forwardCondition   = (Vector3.Dot(transform.forward, _target.position - transform.position) > 0);
+        return (distanceCondition && forwardCondition);
     }
 }

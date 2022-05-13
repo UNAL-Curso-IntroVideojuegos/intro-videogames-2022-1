@@ -15,8 +15,12 @@ public class EnemyAgentConfig
     public float IdleTime = 2;
     public float PathfindingRefreshTime = 1;
     public List<Transform> PathPoints;
+
+    public float ChaseTime = 7;
     
     [Header("Attack")]
     public float AttackRange = 1;
     public float AttackDuration = 1;
+
+
 }
