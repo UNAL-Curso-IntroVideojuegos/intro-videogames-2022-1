@@ -6,6 +6,9 @@ public class EnemyPatrolState : IEnemyState
 {
     private int _currentPointIndex = 0;
     private float _navMeshRefreshTimer = 0;
+    private float _waitingTime = 0;
+    private bool _isWaiting = false;
+
     public void OnEnter(EnemyAgent agent)
     {
         Debug.Log("Patrol: OnEnter");
@@ -13,32 +16,47 @@ public class EnemyPatrolState : IEnemyState
 
     public void OnUpdate(EnemyAgent agent)
     {
-        Debug.Log("Patrol: OnUpdate");_navMeshRefreshTimer -= Time.deltaTime;
+        Debug.Log("Patrol: OnUpdate");
+        _navMeshRefreshTimer -= Time.deltaTime;
 
-        float distanceToTarget = (agent.AgentConfig.PathPoints[_currentPointIndex].position - agent.transform.position).magnitude;
-        
-        //Persiga al player
-        if (_navMeshRefreshTimer <= 0)
+        float distanceToTarget = (agent.AgentConfig.PathPoints[_currentPointIndex].position - agent.transform.position)
+            .magnitude;
+        if (distanceToTarget <= 0.1)
         {
-                Transform target = agent.AgentConfig.PathPoints[_currentPointIndex];
-                agent.PathFindingController.GoTo(target.position, null);
+            _isWaiting = true;
+        }
 
-                _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
+        //Persiga al player
+        if (_navMeshRefreshTimer <= 0 && !_isWaiting)
+        {
+            Transform target = agent.AgentConfig.PathPoints[_currentPointIndex];
+            agent.PathFindingController.GoTo(target.position, null);
+
+            _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
         }
 
         if (agent.IsLookingTarget())
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
         }
-        if (distanceToTarget <= 0.1)
+
+        if (_isWaiting)
         {
-            GetAgentNextPoint(agent);
+            _waitingTime += Time.deltaTime;
+            if (agent.AgentConfig.waitingTime - _waitingTime < 0)
+            {
+                _waitingTime = 0;
+                _isWaiting = false;
+                GetAgentNextPoint(agent);
+            }
         }
     }
 
     public void OnExit(EnemyAgent agent)
     {
         Debug.Log("Patrol: OnExit");
+        _waitingTime = 0;
+        _isWaiting = false;
     }
 
     private Vector3 GetAgentNextPoint(EnemyAgent agent)
@@ -48,7 +66,7 @@ public class EnemyPatrolState : IEnemyState
         {
             return Vector3.zero;
         }
-    
+
         //Move through the path. When reach the end -> start from 0 again
         _currentPointIndex = (_currentPointIndex + 1) % agent.AgentConfig.PathPoints.Count;
         return agent.AgentConfig.PathPoints[_currentPointIndex].position;

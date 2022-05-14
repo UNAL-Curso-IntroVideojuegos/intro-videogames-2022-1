@@ -7230,6 +7230,7 @@ MonoBehaviour:
     ViewAngle: 60
     IdleTime: 2
     PathfindingRefreshTime: 1
+    waitingTime: 3
     PathPoints:
     - {fileID: 1683356556}
     - {fileID: 1444324194}
@@ -8681,7 +8682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683356555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.78, y: 0, z: 0}
+  m_LocalPosition: {x: -2.39, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 473732087}

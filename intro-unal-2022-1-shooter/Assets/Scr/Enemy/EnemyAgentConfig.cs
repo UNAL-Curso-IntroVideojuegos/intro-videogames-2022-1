@@ -14,6 +14,7 @@ public class EnemyAgentConfig
     [Header("Moving")] 
     public float IdleTime = 2;
     public float PathfindingRefreshTime = 1;
+    public float waitingTime = 3;
     public List<Transform> PathPoints;
     
     [Header("Attack")]
