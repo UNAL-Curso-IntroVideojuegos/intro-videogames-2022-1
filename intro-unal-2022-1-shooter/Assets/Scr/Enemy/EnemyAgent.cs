@@ -8,6 +8,8 @@ public class EnemyAgent : MonoBehaviour
     private Animator _animator;
     [SerializeField]
     private EnemyAgentConfig _agentConfig;
+    [SerializeField] 
+    private int _points = 10;
     
     private PathFindingController _pathFindingController;
     private StateMachineController _stateMachineController;
@@ -40,5 +42,15 @@ public class EnemyAgent : MonoBehaviour
     {
         //If Target is less than 5 mt
         return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+    }
+
+    [ContextMenu("Death")]
+    public void Death()
+    {
+        //GameEvents.OnEnemyDeath?.Invoke();
+        if (GameEvents.OnEnemyDeathEvent != null)
+        {
+            GameEvents.OnEnemyDeathEvent.Invoke(_points);
+        }
     }
 }
