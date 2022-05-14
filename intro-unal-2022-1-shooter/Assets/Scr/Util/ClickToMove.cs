@@ -33,7 +33,6 @@ public class ClickToMove : MonoBehaviour
         //Si efectivamente complete el recorrido
         if (!_agent.pathPending && isStopped)
         {
-            Debug.LogError("Llegue!");
         }
     }
 }

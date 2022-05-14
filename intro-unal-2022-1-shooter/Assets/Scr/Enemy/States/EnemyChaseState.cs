@@ -9,14 +9,11 @@ public class EnemyChaseState : IEnemyState
     
     public void OnEnter(EnemyAgent agent)
     {
-        Debug.Log("Chase: OnEnter");
         _navMeshRefreshTimer = 0;
     }
 
     public void OnUpdate(EnemyAgent agent)
     {
-        Debug.Log("Chase: OnUpdate");
-
         _navMeshRefreshTimer -= Time.deltaTime;
 
         float distanceToTarget = (agent.Target.position - agent.transform.position).magnitude;
@@ -42,7 +39,6 @@ public class EnemyChaseState : IEnemyState
 
     public void OnExit(EnemyAgent agent)
     {
-        Debug.Log("Chase: OnExit");
         agent.PathFindingController.Stop();
     }
 }

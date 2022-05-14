@@ -18,6 +18,8 @@ public class EnemyAgent : MonoBehaviour
     public Animator Animator => _animator;
     public PathFindingController PathFindingController => _pathFindingController;
     public StateMachineController StateMachineController => _stateMachineController;
+
+    public float dot = 0.0f;
     
     void Start()
     {
@@ -38,7 +40,16 @@ public class EnemyAgent : MonoBehaviour
     
     public bool IsLookingTarget()
     {
-        //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        dot = Vector3.Dot(GameObject.FindWithTag("Player").transform.position.normalized, transform.forward.normalized);
+        if (dot > 0.01 )
+        {
+            //If Target is less than 5 mt
+            return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        }
+        else
+        {
+            return 100 < AgentConfig.DetectionRange;
+        }
+        
     }
 }
