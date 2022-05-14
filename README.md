@@ -87,6 +87,12 @@ Todos los recursos (diapositivas, assets, trabajos, etc.) los puede encontrar en
 
 - [Guía](https://youtu.be/xh_1Oyn83no) para clonar y entregar los talleres
 
+## Assets
+- Several Assets from [Kenney!](https://www.kenney.nl/assets).
+- Battle Royale Duo and Party Monster Duo by [Dungeon Mason](https://assetstore.unity.com/publishers/23554).
+- Polygon Starter Pack by [Synty Studios](https://assetstore.unity.com/packages/3d/props/polygon-starter-pack-low-poly-3d-art-by-synty-156819).
+- Simple Pixel art styled UI by [Jakub Varga](https://assetstore.unity.com/packages/2d/gui/icons/simple-free-pixel-art-styled-ui-pack-165012).
+
 ## Disclaimer
 Este repositorio se contruye con fines académicos y de enseñanza. 
 Todos los recursos usados son de creación propia o de uso gratis
