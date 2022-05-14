@@ -84,7 +84,9 @@
 
 
 ### Fecha de entrega
-> Viernes 13 de Mayo - 11:59 pm (media noche del viernes).
+> Sábado 14 de Mayo - 11:59 pm (medianoche del sábado).
+>
+> Aquellas personas que hagan la entregan antes de Viernes 13 de Mayo - 11:59 pm (medianoche del viernes), recibiran un bono extra.
 
 ### Entrega
 - Crear una branch a partir del branch `sessions/homework-5`.
