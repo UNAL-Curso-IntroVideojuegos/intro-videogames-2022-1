@@ -38,7 +38,20 @@ public class EnemyAgent : MonoBehaviour
     
     public bool IsLookingTarget()
     {
-        //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 toOther = _target.position - transform.position;
+        return Vector3.Dot(toOther, forward) > 0 &&
+               toOther.magnitude < AgentConfig.DetectionRange;
+    }
+
+    public void Rot()
+    {
+        Vector3 aimVector = transform.position - _target.position;
+        float angle = Mathf.Atan2(aimVector.x, aimVector.z) * Mathf.Rad2Deg - 90;
+        Debug.Log("Angle: " + angle);
+
+        Vector3 rot = transform.eulerAngles;
+        // rot.y = angle;
+        // transform.eulerAngles = rot;
     }
 }
