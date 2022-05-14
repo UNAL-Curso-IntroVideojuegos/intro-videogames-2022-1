@@ -32,6 +32,7 @@ public class PathFindingController : MonoBehaviour
             return;
         }
 
+        
         //Si efectivamente completamos el recorrido
         if (_agent.remainingDistance <= _agent.stoppingDistance && _agent.velocity.sqrMagnitude == 0)
         { 

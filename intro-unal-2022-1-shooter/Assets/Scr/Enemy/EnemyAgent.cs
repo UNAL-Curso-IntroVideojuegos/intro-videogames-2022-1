@@ -37,8 +37,13 @@ public class EnemyAgent : MonoBehaviour
     }
     
     public bool IsLookingTarget()
-    {
-        //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
-    }
+        {
+            Vector3 player = _target.position;
+            Vector3 enemy = transform.position;
+            bool isItClose = (player - enemy).magnitude < AgentConfig.DetectionRange;
+            float angle = Vector3.Dot(player, transform.forward) / Mathf.Sqrt(player.magnitude) / Mathf.Sqrt(enemy.magnitude);
+            bool isInFront = angle*Mathf.Rad2Deg > 0;
+            Debug.Log(angle*Mathf.Rad2Deg);
+            return isItClose && isInFront;
+        }
 }
