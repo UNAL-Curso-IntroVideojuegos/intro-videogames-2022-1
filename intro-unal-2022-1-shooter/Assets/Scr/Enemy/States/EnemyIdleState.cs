@@ -18,16 +18,17 @@ public class EnemyIdleState : IEnemyState
         
         _navMeshRefreshTimer += Time.deltaTime;
 
-        if (_navMeshRefreshTimer >= agent.AgentConfig.IdleTime)
-        {
-            agent.StateMachineController.ChangeToState(EnemyStateType.Patrol);
-        }
-
         //Vi al Player -> Pasar al estado Chase! 
         if (agent.IsLookingTarget())
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
+        } 
+        else if (_navMeshRefreshTimer > agent.AgentConfig.IdleTime)
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Patrol);
         }
+
+        
     }
 
     public void OnExit(EnemyAgent agent)

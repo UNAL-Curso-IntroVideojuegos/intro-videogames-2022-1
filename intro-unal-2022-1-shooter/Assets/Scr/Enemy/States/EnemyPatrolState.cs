@@ -6,17 +6,25 @@ public class EnemyPatrolState : IEnemyState
 {
     private int _currentPointIndex = 0;
 
+    private Vector3 nextPoint;
+
+    private float distanceToStop;
+
     public void OnEnter(EnemyAgent agent)
     {
         Debug.Log("Patrol: OnEnter");
-        agent.Animator.SetTrigger("Patrol");
+        nextPoint = GetAgentNextPoint(agent);
+        agent.PathFindingController.GoTo(nextPoint, null);
     }
 
     public void OnUpdate(EnemyAgent agent)
     {
         Debug.Log("Patrol: OnUpdate");
-        agent.PathFindingController.GoTo(GetAgentNextPoint(agent), null);
-        agent.StateMachineController.ChangeToState(EnemyStateType.Idle);
+        distanceToStop = (nextPoint - agent.transform.position).magnitude;
+        if (distanceToStop <= 0.2f)
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Idle);
+        }
     }
 
     public void OnExit(EnemyAgent agent)
