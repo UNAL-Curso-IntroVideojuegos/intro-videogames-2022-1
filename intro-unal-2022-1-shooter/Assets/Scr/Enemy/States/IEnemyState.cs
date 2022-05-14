@@ -12,4 +12,5 @@ public interface IEnemyState
     public void OnEnter(EnemyAgent agent);
     public void OnUpdate(EnemyAgent agent);
     public void OnExit(EnemyAgent agent);
+    
 }

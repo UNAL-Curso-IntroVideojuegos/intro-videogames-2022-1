@@ -59,4 +59,6 @@ public class PathFindingController : MonoBehaviour
         _agent.isStopped = true;
         _agent.velocity = Vector3.zero;
     }
+
+ 
 }
