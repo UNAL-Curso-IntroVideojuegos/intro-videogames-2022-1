@@ -50,8 +50,12 @@
 	- Path Finding. Algoritmo A* (A star).
 	- Unity y NavMesh.
 	- Finite-State Machine en Unity.
-- **Clase 8:** <u>Asesoria Proyectos</u>.
-- **Clase 9:** Sistema de daño y UI (User Interface).
+- **Clase 8:** <u>Asesoria Proyectos</u>. [Video](https://www.youtube.com/watch?v=fiugdNVAhRs&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=9)
+	- Sobre Game Manager.
+	- Sober Build (generar ejecutables) y Player Settings.
+	- Sobre UI y PlayerPrefs.
+	- Sobre Pacman, su movimiento y restricciones.
+- **Clase 9:** UI (User Interface)
 - **Clase 10:** Polish & Game feeling.
 	- VFX: Particulas, Trails y Shaders.
 	- Coroutinas y Tweens.
