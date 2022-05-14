@@ -38,7 +38,13 @@ public class EnemyAgent : MonoBehaviour
     
     public bool IsLookingTarget()
     {
-        //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        //Direction to the Player with respect to the Enemy's position
+        Vector3 playerDirection = (_target.position - transform.position);
+        
+        //Getting the forward direction of the Enemy
+        Vector3 enemyForward = transform.TransformDirection(Vector3.forward);
+        
+        //Is the Player positioned within the detection range of the Enemy and in front of him?
+        return playerDirection.magnitude < AgentConfig.DetectionRange && Vector3.Dot(enemyForward, playerDirection) > 0;
     }
 }

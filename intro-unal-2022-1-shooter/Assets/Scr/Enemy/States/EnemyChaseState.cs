@@ -27,7 +27,7 @@ public class EnemyChaseState : IEnemyState
             if (distanceToTarget > agent.AgentConfig.AttackRange)
             {
                 Transform target = agent.Target;
-                agent.PathFindingController.GoTo(target.position, null);
+                        agent.PathFindingController.GoTo(target.position, null);
             }
 
             _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
