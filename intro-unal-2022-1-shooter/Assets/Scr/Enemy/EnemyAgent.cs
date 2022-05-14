@@ -23,22 +23,18 @@ public class EnemyAgent : MonoBehaviour
     {
         _pathFindingController = GetComponent<PathFindingController>();
         _stateMachineController = new StateMachineController();
-        _stateMachineController.Init(this);
-        
+        _stateMachineController.Init(this);  
         _target = GameObject.FindWithTag("Player").transform;
     }
     
     void Update()
     {
-        _stateMachineController.OnUpdate();
-        
+        _stateMachineController.OnUpdate();    
         _animator.SetBool("IsMoving", !_pathFindingController.IsStopped);
-        //_animator.SetTrigger("Attack");
     }
     
     public bool IsLookingTarget()
     {
-        //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        return ((_target.position - transform.position).magnitude < AgentConfig.DetectionRange) && (Vector3.Dot(transform.forward, _target.position - transform.position) > 0);
     }
 }

@@ -19,4 +19,8 @@ public class EnemyAgentConfig
     [Header("Attack")]
     public float AttackRange = 1;
     public float AttackDuration = 1;
+
+    [Header("Patrol")]
+    public int CurrentPoint = 0;
+    public bool Patrolling = false;
 }
