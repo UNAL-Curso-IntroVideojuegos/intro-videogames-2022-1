@@ -22,16 +22,18 @@ public class EnemyChaseState : IEnemyState
         float distanceToTarget = (agent.Target.position - agent.transform.position).magnitude;
         
         //Persiga al player
-        if (_navMeshRefreshTimer <= 0)
-        {
-            if (distanceToTarget > agent.AgentConfig.AttackRange)
-            {
-                Transform target = agent.Target;
-                agent.PathFindingController.GoTo(target.position, null);
-            }
+        //if (_navMeshRefreshTimer <= 0)
+        //{
 
-            _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
+        //Le desactive el timer para que sea mas fluido, y para que no me cuase problema ya que utilice esa variable para el timepo de esperar en la patrulla :v
+        if (distanceToTarget > agent.AgentConfig.AttackRange)
+        {
+            Transform target = agent.Target;
+            agent.PathFindingController.GoTo(target.position, null);
         }
+            
+            //_navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
+        //}
 
         if (distanceToTarget < agent.AgentConfig.AttackRange)
         {
@@ -43,6 +45,8 @@ public class EnemyChaseState : IEnemyState
     public void OnExit(EnemyAgent agent)
     {
         Debug.Log("Chase: OnExit");
-        agent.PathFindingController.Stop();
+        //agent.PathFindingController.Stop();
+       
+      
     }
 }
