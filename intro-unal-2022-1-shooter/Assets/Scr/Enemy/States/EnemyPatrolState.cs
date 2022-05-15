@@ -5,15 +5,16 @@ using UnityEngine;
 public class EnemyPatrolState : IEnemyState
 {
     private float waiting = 0f;
+    private int _currentPointIndex;
     private float _navMeshRefreshTimer = 0;
+    private Vector3 newPoint;
     public void OnEnter(EnemyAgent agent)
     {
         Debug.Log("Patrol: OnEnter");
         _navMeshRefreshTimer = 0;
+        newPoint = GetAgentNextPoint(agent);
         waiting = 0;
     }
-
-    private int _currentPointIndex = 0;
 
     private Vector3 GetAgentNextPoint(EnemyAgent agent)
     {
@@ -28,11 +29,15 @@ public class EnemyPatrolState : IEnemyState
         return agent.AgentConfig.PathPoints[_currentPointIndex].position;
     }
 
+    private void wait(EnemyAgent agent){
+        while (waiting <= agent.AgentConfig.WaitDuration){
+            waiting += Time.deltaTime;
+        }
+    }
     public void OnUpdate(EnemyAgent agent)
     {
+        
         Debug.Log("Patrol: OnUpdate");
-        Vector3 newPoint = GetAgentNextPoint(agent);
-
         _navMeshRefreshTimer -= Time.deltaTime;
         
         if (_navMeshRefreshTimer <= 0)
@@ -45,6 +50,9 @@ public class EnemyPatrolState : IEnemyState
             _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
         } 
         
+        if(agent.PathFindingController.IsStopped){
+            agent.StateMachineController.ChangeToState(EnemyStateType.Idle);
+        }
 
         if (agent.IsLookingTarget())
         {
@@ -55,6 +63,7 @@ public class EnemyPatrolState : IEnemyState
 
     public void OnExit(EnemyAgent agent)
     {
+        agent.PathFindingController.Stop();
         Debug.Log("Patrol: OnExit");
     }
 }
