@@ -38,7 +38,12 @@ public class EnemyAgent : MonoBehaviour
     
     public bool IsLookingTarget()
     {
+        //Punto1
+        //Adelante entre 0 y 1. Atras entre 0 y -1
+        Vector3 dirPlayer = (_target.position - transform.position).normalized;
+        float testValue = Vector3.Dot(transform.forward, dirPlayer);
+
         //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange && (testValue >= 0 && testValue <= 1);
     }
 }
