@@ -19,4 +19,7 @@ public class EnemyAgentConfig
     [Header("Attack")]
     public float AttackRange = 1;
     public float AttackDuration = 1;
+
+    [Header("Patrol")]
+    public float StayOnPatrolPointTime = 1.5f;
 }

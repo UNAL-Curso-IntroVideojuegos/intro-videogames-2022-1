@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,18 @@ public class EnemyAgent : MonoBehaviour
     public bool IsLookingTarget()
     {
         //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        Vector3 targetDir = _target.position - transform.position;
+        if (targetDir.magnitude <= AgentConfig.DetectionRange)
+        {
+            float angle = Vector3.Angle(targetDir, transform.forward);
+            return angle <= AgentConfig.ViewAngle/2f;
+        }
+
+        return false;
+    }
+
+    public bool IsAtPatrolPoint(Vector3 point)
+    {
+        return (point - transform.position).magnitude <= 0.1f;
     }
 }

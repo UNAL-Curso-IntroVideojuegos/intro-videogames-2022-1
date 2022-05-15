@@ -7,6 +7,7 @@ public class EnemyChaseState : IEnemyState
 
     private float _navMeshRefreshTimer = 0;
     
+    
     public void OnEnter(EnemyAgent agent)
     {
         Debug.Log("Chase: OnEnter");
