@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyIdleState : IEnemyState
 {
+    private float staying = 0f;
     public void OnEnter(EnemyAgent agent)
     {
         Debug.Log("Idle: OnEnter");
+        staying = 0;
+        Debug.Log(staying);
     }
 
     public void OnUpdate(EnemyAgent agent)
@@ -18,6 +21,12 @@ public class EnemyIdleState : IEnemyState
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
         }
+
+        if (staying>=agent.AgentConfig.IdleTime)
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Patrol);
+        }
+        staying = staying + Time.deltaTime;
     }
 
     public void OnExit(EnemyAgent agent)
