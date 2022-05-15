@@ -31,14 +31,16 @@ public class EnemyAgent : MonoBehaviour
     void Update()
     {
         _stateMachineController.OnUpdate();
-        
+
         _animator.SetBool("IsMoving", !_pathFindingController.IsStopped);
-        //_animator.SetTrigger("Attack");
     }
     
     public bool IsLookingTarget()
     {
         //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        bool close = (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        Vector3 direction = _target.position - transform.position;
+        bool inFront = Vector3.Dot(transform.forward, direction) > 0;
+        return close && inFront;
     }
 }
