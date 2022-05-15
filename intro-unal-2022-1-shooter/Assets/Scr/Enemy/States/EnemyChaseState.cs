@@ -23,11 +23,18 @@ public class EnemyChaseState : IEnemyState
         
         //Persiga al player
         if (_navMeshRefreshTimer <= 0)
-        {
-            if (distanceToTarget > agent.AgentConfig.AttackRange)
+        {   
+            //Mejora para que no lo persiga casi todo el rato
+            //Lo persigue si la distancia entre los dos está AgentConfig.AttackRange y 5
+            if (distanceToTarget > agent.AgentConfig.AttackRange && distanceToTarget <= 5)
             {
                 Transform target = agent.Target;
                 agent.PathFindingController.GoTo(target.position, null);
+            }
+            //Si la distancia entre los dos es mayor a 5, vuelva a Idle
+            else if (distanceToTarget > 5)
+            {
+                agent.StateMachineController.ChangeToState(EnemyStateType.Idle);
             }
 
             _navMeshRefreshTimer = agent.AgentConfig.PathfindingRefreshTime;
