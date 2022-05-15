@@ -7226,7 +7226,7 @@ MonoBehaviour:
   _animator: {fileID: 2110692082}
   _agentConfig:
     initialState: 0
-    DetectionRange: 4.5
+    DetectionRange: 6
     ViewAngle: 60
     IdleTime: 2
     PathfindingRefreshTime: 1

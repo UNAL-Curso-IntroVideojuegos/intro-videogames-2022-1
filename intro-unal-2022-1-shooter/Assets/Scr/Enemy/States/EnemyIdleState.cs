@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyIdleState : IEnemyState
 {
+    private float timeidle = 0;
     public void OnEnter(EnemyAgent agent)
     {
         Debug.Log("Idle: OnEnter");
@@ -11,12 +12,17 @@ public class EnemyIdleState : IEnemyState
 
     public void OnUpdate(EnemyAgent agent)
     {
-        Debug.Log("Idle: OnUpdate");
-        
+        timeidle += Time.deltaTime;
         //Vi al Player -> Pasar al estado Chase! 
         if (agent.IsLookingTarget())
         {
+            timeidle = 0;
             agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
+        }
+        if (timeidle > agent.AgentConfig.IdleTime)
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Patrol);
+            timeidle = 0;
         }
     }
 

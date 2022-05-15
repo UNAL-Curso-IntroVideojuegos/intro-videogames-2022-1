@@ -37,7 +37,13 @@ public class EnemyChaseState : IEnemyState
         {
             agent.StateMachineController.ChangeToState(EnemyStateType.Attack);
         }
-        
+        if (agent.IsLookingTarget())
+        {
+        }
+        else
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Idle);
+        }
     }
 
     public void OnExit(EnemyAgent agent)
