@@ -40,6 +40,12 @@ public class EnemyPatrolState : IEnemyState
             
         }
 
+        //Reto: Punto3
+        if (agent.IsLookingTarget())
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
+        }
+
     }
 
     public void OnExit(EnemyAgent agent)
