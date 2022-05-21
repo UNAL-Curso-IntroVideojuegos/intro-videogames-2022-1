@@ -55,12 +55,23 @@
 	- Sober Build (generar ejecutables) y Player Settings.
 	- Sobre UI y PlayerPrefs.
 	- Sobre Pacman, su movimiento y restricciones.
-- **Clase 9:** UI (User Interface)
-- **Clase 10:** Polish & Game feeling.
+- **Clase 9:** UI (User Interface) [Video](https://www.youtube.com/watch?v=xN5JydVVbMg&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=10)
+	- UI y UX.
+	- UI en Unity: Canvas
+	- Rect Transform y Anchors.
+	- Imagenes, Texto, Botones y más.
+	- UI vs 2D (Barra de vida como ejemplo).
+	- UI desde código.
+	- Eventos para comunicar sistemas.
+**Clase 10:** GameManager y Flujo de juego.
+	- GameManager y comunicación de sistemas.
+	- Herencia en un Sistema de vida.
+	- Guardado de datos.
+	- Patrones de diseño.
+- **Clase 11:** Polish & Game feeling.
 	- VFX: Particulas, Trails y Shaders.
 	- Coroutinas y Tweens.
 	- Audio.
-- **Clase 11:** Patrones de diseño en vidoejuegos.
 - **Clase 12:** Invitado: **Cristian Mazo**.
 	- Profilling y Optimización con DOTS.
 - **Clase 13:** Tema Extra.
