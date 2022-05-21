@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAgent : MonoBehaviour
+public class EnemyAgent : LivingEntity
 {
+    [Space(20)]
     [SerializeField]
     private Animator _animator;
     [SerializeField]
@@ -14,6 +15,7 @@ public class EnemyAgent : MonoBehaviour
     private PathFindingController _pathFindingController;
     private StateMachineController _stateMachineController;
     private Transform _target;
+    private EnemyHalthBar _halthBar;
     
     public EnemyAgentConfig AgentConfig => _agentConfig;
     public Transform Target => _target;
@@ -21,13 +23,20 @@ public class EnemyAgent : MonoBehaviour
     public PathFindingController PathFindingController => _pathFindingController;
     public StateMachineController StateMachineController => _stateMachineController;
     
-    void Start()
+    public override void Start()
     {
+        base.Start();
+        
         _pathFindingController = GetComponent<PathFindingController>();
+        _halthBar = GetComponent<EnemyHalthBar>();
         _stateMachineController = new StateMachineController();
         _stateMachineController.Init(this);
         
         _target = GameObject.FindWithTag("Player").transform;
+
+        base.OnTakeDamage = OnTakeDamageCallback;
+        
+        Debug.Log("Enemy Start");
     }
     
     void Update()
@@ -44,13 +53,22 @@ public class EnemyAgent : MonoBehaviour
         return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
     }
 
-    [ContextMenu("Death")]
-    public void Death()
+    void OnTakeDamageCallback(int damage)
     {
+        _halthBar.UpdateHealthBar(_health, _totalHealth);
+    }
+    
+    [ContextMenu("Death")]
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        
         //GameEvents.OnEnemyDeath?.Invoke();
         if (GameEvents.OnEnemyDeathEvent != null)
         {
             GameEvents.OnEnemyDeathEvent.Invoke(_points);
         }
+        
+        gameObject.SetActive(false);
     }
 }

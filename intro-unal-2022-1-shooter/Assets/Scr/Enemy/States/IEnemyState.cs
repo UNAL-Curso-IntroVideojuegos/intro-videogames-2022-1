@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public enum EnemyStateType
 {
     Idle,

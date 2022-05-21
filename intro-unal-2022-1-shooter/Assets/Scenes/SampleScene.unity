@@ -7341,7 +7341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 63.267273}
+  m_AnchoredPosition: {x: 0, y: 63.267334}
   m_SizeDelta: {x: -817.65814, y: -981.1002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204156461
@@ -9608,6 +9608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb7bbbbd5e9bf140850b148e163c664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _totalHealth: 100
+  _health: 100
   _body: {fileID: 678097369}
   speed: 5
   _collisionMask:
@@ -10133,7 +10135,7 @@ GameObject:
   - component: {fileID: 1724722139}
   - component: {fileID: 1724722138}
   m_Layer: 5
-  m_Name: Background'
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13590,10 +13592,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9004809279719807902, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: _health
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
       propertyPath: _PlayerScore
       value: 
       objectReference: {fileID: 54397138}
+    - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: _totalHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: _agentConfig.AttackDamage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
       propertyPath: _agentConfig.PathPoints.Array.data[0]
       value: 

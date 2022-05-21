@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : LivingEntity
 {
     [SerializeField]
     private Transform _body;
@@ -41,8 +41,10 @@ public class PlayerMovement : MonoBehaviour
     private float _dashTimer = 0;
     
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
+        
         _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
         _playerAnimation = GetComponent<PlayerAnimation>();
@@ -156,5 +158,11 @@ public class PlayerMovement : MonoBehaviour
         }
         float multiplier = 1 - _dashDragforce * Time.deltaTime; 
         _dashVelocity *= multiplier ;
+    }
+
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        gameObject.SetActive(false);
     }
 }

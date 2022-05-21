@@ -49,10 +49,17 @@ public class Projectile : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, translation.magnitude, _collisionMask))
         {
             //Debug.Log("Hit with " + hit.collider.name);
-            // if (hit.transform.TryGetComponent<IDamageable>(out IDamageable target))
+            // if (hit.transform.GetComponent<LivingEntity>() != null)
             // {
-            //     target.TakeHit(Random.Range(2,5), hit.point, hit.normal);
+            //     //Haga daño
+            //     LivingEntity entity = hit.transform.GetComponent<LivingEntity>();
+            //     entity.TakeDamage(10);
             // }
+            // Esto es lo mismo que usar lo anterior:
+            if (hit.transform.TryGetComponent(out LivingEntity entity))
+            {
+                entity.TakeDamage(10);
+            }
             
             DestroyProjectile();
         }
