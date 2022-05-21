@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerScore : MonoBehaviour
+public class HUDPlayerScore : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _scoreText;

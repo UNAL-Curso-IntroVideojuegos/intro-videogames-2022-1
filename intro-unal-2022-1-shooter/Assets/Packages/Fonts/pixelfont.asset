@@ -84,8 +84,8 @@ Material:
     - _TextureHeight: 512
     - _TextureWidth: 512
     - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0.716
-    - _UnderlayOffsetY: -0.422
+    - _UnderlayOffsetX: 1
+    - _UnderlayOffsetY: -0.96
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
@@ -2370,7 +2370,7 @@ MonoBehaviour:
     atlasHeight: 1024
     characterSetSelectionMode: 6
     characterSequence: 20-5B,5D-7E
-    referencedFontAssetGUID: 
+    referencedFontAssetGUID: 5bdaebc9060fb8640a8ea31a7e2d7e61
     referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0
