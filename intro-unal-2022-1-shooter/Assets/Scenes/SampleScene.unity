@@ -9608,8 +9608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb7bbbbd5e9bf140850b148e163c664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totalHealth: 100
-  _health: 100
+  _totalHealth: 5
+  _health: 5
   _body: {fileID: 678097369}
   speed: 5
   _collisionMask:
@@ -13610,7 +13610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
       propertyPath: _agentConfig.AttackDamage
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
       propertyPath: _agentConfig.PathPoints.Array.data[0]

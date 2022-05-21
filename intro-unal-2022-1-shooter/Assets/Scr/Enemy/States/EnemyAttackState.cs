@@ -10,6 +10,11 @@ public class EnemyAttackState : IEnemyState
     {
         _timer = agent.AgentConfig.AttackDuration;
         agent.Animator.SetTrigger("Attack");
+        
+        if (agent.Target.TryGetComponent(out LivingEntity entity))
+        {
+            entity.TakeDamage(agent.AgentConfig.AttackDamage);
+        }
     }
 
     public void OnUpdate(EnemyAgent agent)

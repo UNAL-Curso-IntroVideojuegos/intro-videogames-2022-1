@@ -32,7 +32,7 @@ public class HUDPlayerHealth : MonoBehaviour
     {
         for (int i = 0; i < _hearts.Count; i++)
         {
-            if (i <= health)
+            if (i < health)
             {
                 _hearts[i].color = Color.white;
             }

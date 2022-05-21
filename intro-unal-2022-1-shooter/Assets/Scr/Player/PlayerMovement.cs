@@ -50,6 +50,8 @@ public class PlayerMovement : LivingEntity
         _playerAnimation = GetComponent<PlayerAnimation>();
 
         _woldPlane = new Plane(Vector3.up, 0);
+
+        base.OnTakeDamage = OnTakeDamageCallback;
     }
     
     void Update()
@@ -160,6 +162,14 @@ public class PlayerMovement : LivingEntity
         _dashVelocity *= multiplier ;
     }
 
+
+    private void OnTakeDamageCallback(int damage)
+    {
+        //int hearths = Mathf.RoundToInt((_health / _totalHealth) * _totalHealth);
+        GameEvents.OnPlayerHealthChangeEvent?.Invoke((int) _health);
+    }
+    
+    
     protected override void OnDeath()
     {
         base.OnDeath();
