@@ -19,6 +19,7 @@ public class StateMachineController
         _states.Add(EnemyStateType.Chase, new EnemyChaseState());
         _states.Add(EnemyStateType.Patrol, new EnemyPatrolState());
         _states.Add(EnemyStateType.Attack, new EnemyAttackState());
+        _states.Add(EnemyStateType.Death, new EnemyDeathState());
         
         ChangeToState(_agent.AgentConfig.initialState);
     }

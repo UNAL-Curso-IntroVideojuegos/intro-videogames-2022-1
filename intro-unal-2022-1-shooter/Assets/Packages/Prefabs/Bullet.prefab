@@ -49,6 +49,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1408
   _lifetime: 3
+  _initRadiusDetection: 0.15
 --- !u!1 &3464047943577284391
 GameObject:
   m_ObjectHideFlags: 0

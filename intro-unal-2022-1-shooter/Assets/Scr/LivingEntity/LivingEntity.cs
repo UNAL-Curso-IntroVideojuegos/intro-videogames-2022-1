@@ -12,12 +12,30 @@ public class LivingEntity : MonoBehaviour
     protected float _health = 100;
 
     protected Action<int> OnTakeDamage;
+    private bool _hasInitiliaze = false; 
+    
+    public bool IsDeath => _health <= 0;
     
     public virtual void Start()
     {
         _health = _totalHealth;
-        
+        Init();
         Debug.Log("LE Start");
+    }
+
+    public void Init()
+    {
+        if (_hasInitiliaze)
+        {
+            return;
+        }
+
+        _hasInitiliaze = true;
+        OnInit();
+    }
+    
+    protected virtual void OnInit()
+    {
     }
 
     public void TakeDamage(int damage)
@@ -39,5 +57,10 @@ public class LivingEntity : MonoBehaviour
     
     protected virtual void OnDeath()
     {
+    }
+
+    public virtual void Reset()
+    {
+        _health = _totalHealth;
     }
 }

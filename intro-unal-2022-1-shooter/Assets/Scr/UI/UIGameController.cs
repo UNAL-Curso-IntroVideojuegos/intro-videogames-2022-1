@@ -44,4 +44,16 @@ public class UIGameController : MonoBehaviour
         _gameScreen.SetActive(false);
         _endScreen.SetActive(true);
     }
+    
+    //Called from a Unity button
+    public void ButtonStartGame()
+    {
+        GameManager.Instance.StartGame();
+    }
+    
+    //Called from a Unity button
+    public void ButtonBack()
+    {
+        GameManager.Instance.ReturnToMenu();
+    }
 }

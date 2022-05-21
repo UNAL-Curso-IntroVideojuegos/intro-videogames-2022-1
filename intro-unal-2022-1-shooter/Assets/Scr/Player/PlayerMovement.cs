@@ -39,6 +39,8 @@ public class PlayerMovement : LivingEntity
     private Vector3 _dashVelocity;
     //Dash by Time
     private float _dashTimer = 0;
+
+    private Vector3 _initPosition;
     
 
     public override void Start()
@@ -52,6 +54,8 @@ public class PlayerMovement : LivingEntity
         _woldPlane = new Plane(Vector3.up, 0);
 
         base.OnTakeDamage = OnTakeDamageCallback;
+
+        _initPosition = transform.position;
     }
     
     void Update()
@@ -173,6 +177,13 @@ public class PlayerMovement : LivingEntity
     protected override void OnDeath()
     {
         base.OnDeath();
-        gameObject.SetActive(false);
+        GameManager.Instance.GameOver();
+    }
+    
+    public override void Reset()
+    {
+        base.Reset();
+        transform.position = _initPosition;
+        gameObject.SetActive(true);
     }
 }

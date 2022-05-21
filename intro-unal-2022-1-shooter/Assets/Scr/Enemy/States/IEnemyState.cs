@@ -6,7 +6,8 @@ public enum EnemyStateType
     Idle,
     Chase,
     Patrol,
-    Attack
+    Attack,
+    Death
 }
 
 public interface IEnemyState

@@ -160,7 +160,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -176,6 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833020e39017faa428bdf773602a04b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _totalHealth: 100
+  _health: 100
   _animator: {fileID: 4387765740302220961}
   _agentConfig:
     initialState: 0
@@ -188,8 +190,8 @@ MonoBehaviour:
     - {fileID: 0}
     AttackRange: 1.5
     AttackDuration: 1.8
+    AttackDamage: 10
   _points: 10
-  _PlayerScore: {fileID: 0}
 --- !u!114 &9004809279719807904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,8 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae7d0c4b0f82bd45990a09ec466ed4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totalHealth: 100
-  _health: 100
   _healthMask: {fileID: 7898317575712554579}
 --- !u!1 &9004809280571119219
 GameObject:

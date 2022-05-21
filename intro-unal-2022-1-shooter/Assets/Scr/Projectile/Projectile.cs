@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
     private LayerMask _collisionMask;
     [SerializeField]
     private float _lifetime = 3;
+    [SerializeField]
+    private float _initRadiusDetection = 0.1f;
     
     private float _timeToDisable = 3;
 
@@ -25,6 +27,8 @@ public class Projectile : MonoBehaviour
         //Alternatives:
         // Destroy(gameObject, _timeToDisable);
         // Invoke("DestroyProjectile", _timeToDisable);
+        
+        CheckInitialCollision();
     }
     
     private void Update()
@@ -43,6 +47,23 @@ public class Projectile : MonoBehaviour
         transform.Translate(translation);
     }
 
+    private void CheckInitialCollision()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _initRadiusDetection);
+        if (hitColliders.Length > 0)
+        {
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.transform.TryGetComponent(out LivingEntity entity))
+                {
+                    entity.TakeDamage(10);
+                }
+            }
+            
+            DestroyProjectile();
+        }
+    }
+    
     private void CheckCollision(Vector3 translation)
     {
         RaycastHit hit; 
@@ -70,5 +91,11 @@ public class Projectile : MonoBehaviour
     {
         //gameObject.SetActive(false);
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _initRadiusDetection);
     }
 }

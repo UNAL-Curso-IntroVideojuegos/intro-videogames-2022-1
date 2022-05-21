@@ -11,28 +11,36 @@ public class EnemyAgent : LivingEntity
     private EnemyAgentConfig _agentConfig;
     [SerializeField] 
     private int _points = 10;
-    
+
+    private Collider _collider;
     private PathFindingController _pathFindingController;
     private StateMachineController _stateMachineController;
     private Transform _target;
     private EnemyHalthBar _halthBar;
+
+    private Vector3 _initPosition;
     
     public EnemyAgentConfig AgentConfig => _agentConfig;
     public Transform Target => _target;
     public Animator Animator => _animator;
+    public Collider Collider => _collider;
     public PathFindingController PathFindingController => _pathFindingController;
     public StateMachineController StateMachineController => _stateMachineController;
     
-    public override void Start()
+    protected override void OnInit()
     {
-        base.Start();
-        
+        base.OnInit();
+
+        _collider = GetComponent<Collider>();
         _pathFindingController = GetComponent<PathFindingController>();
         _halthBar = GetComponent<EnemyHalthBar>();
         _stateMachineController = new StateMachineController();
         _stateMachineController.Init(this);
         
-        _target = GameObject.FindWithTag("Player").transform;
+        //_target = GameObject.FindWithTag("Player").transform;
+        _target = GameManager.Instance.Player;
+
+        _initPosition = transform.position;
 
         base.OnTakeDamage = OnTakeDamageCallback;
         
@@ -82,12 +90,27 @@ public class EnemyAgent : LivingEntity
     {
         base.OnDeath();
         
+        _stateMachineController.ChangeToState(EnemyStateType.Death);
+        
         //GameEvents.OnEnemyDeath?.Invoke();
         if (GameEvents.OnEnemyDeathEvent != null)
         {
             GameEvents.OnEnemyDeathEvent.Invoke(_points);
         }
         
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+        
+        Init();
+        
+        _stateMachineController.ChangeToState(EnemyStateType.Idle);
+        _halthBar.UpdateHealthBar(_health, _totalHealth);
+        transform.position = _initPosition;
+        _collider.enabled = true;
+        gameObject.SetActive(true);
     }
 }
