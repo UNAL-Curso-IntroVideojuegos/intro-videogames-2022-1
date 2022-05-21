@@ -50,7 +50,26 @@ public class EnemyAgent : LivingEntity
     public bool IsLookingTarget()
     {
         //If Target is less than 5 mt
-        return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        //return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
+        
+        Vector3 direction = Target.position - transform.position;
+        
+        //Solo adelante
+        // float dotProduct = Vector3.Dot(direction.normalized, transform.forward);
+        // if (dotProduct > 0f && direction.magnitude <= AgentConfig.DetectionRange)
+        // {
+        //     return true;
+        // }
+        
+        float distance = direction.magnitude;
+        if (distance <= AgentConfig.DetectionRange)
+        {
+            float angleToPlayer = Vector3.Angle(direction, transform.forward);
+            if (angleToPlayer < AgentConfig.ViewAngle / 2)
+                return true;
+        }
+
+        return false;
     }
 
     void OnTakeDamageCallback(int damage)
