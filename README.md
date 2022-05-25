@@ -63,10 +63,9 @@
 	- UI vs 2D (Barra de vida como ejemplo).
 	- UI desde código.
 	- Eventos para comunicar sistemas.
-- **Clase 10:** GameManager y Flujo de juego.
+- **Clase 10:** GameManager y Flujo de juego. [Video](https://www.youtube.com/watch?v=ISLIpxPX7t8&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=11)
 	- GameManager y comunicación de sistemas.
 	- Herencia en un Sistema de vida.
-	- Guardado de datos.
 	- Patrones de diseño.
 - **Clase 11:** Polish & Game feeling.
 	- VFX: Particulas, Trails y Shaders.
