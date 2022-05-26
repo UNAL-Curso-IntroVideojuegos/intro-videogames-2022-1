@@ -27,19 +27,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _player.gameObject.SetActive(false);
+        AudioManager.Instance.Init();
+        ReturnToMenu();
     }
 
     public void ReturnToMenu()
     {
         GameEvents.OnStartScreenEvent?.Invoke();
         _player.gameObject.SetActive(false);
+        
+        AudioManager.Instance.PlayMusic(AudioMusicType.Menu);
     }
     
     public void StartGame()
     {
         GameEvents.OnStartGameEvent?.Invoke();
         _player.GetComponent<LivingEntity>().Reset();
+        
+        AudioManager.Instance.PlayMusic(AudioMusicType.Gameplay);
     }
 
     [ContextMenu("GameOver")]
@@ -47,5 +52,7 @@ public class GameManager : MonoBehaviour
     {
         _player.gameObject.SetActive(false);
         GameEvents.OnGameOverEvent?.Invoke();
+        
+        AudioManager.Instance.PlayMusic(AudioMusicType.End);
     }
 }

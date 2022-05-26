@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,12 @@ public class PlayerMovement : LivingEntity
     private float _dashTimer = 0;
 
     private Vector3 _initPosition;
-    
+
+
+    private void Awake()
+    {
+        _initPosition = transform.position;
+    }
 
     public override void Start()
     {
@@ -54,8 +60,6 @@ public class PlayerMovement : LivingEntity
         _woldPlane = new Plane(Vector3.up, 0);
 
         base.OnTakeDamage = OnTakeDamageCallback;
-
-        _initPosition = transform.position;
     }
     
     void Update()

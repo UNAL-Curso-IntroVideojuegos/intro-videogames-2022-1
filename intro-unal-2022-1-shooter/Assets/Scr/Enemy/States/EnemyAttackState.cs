@@ -10,6 +10,7 @@ public class EnemyAttackState : IEnemyState
     {
         _timer = agent.AgentConfig.AttackDuration;
         agent.Animator.SetTrigger("Attack");
+        AudioManager.Instance.PlaySound("EnemyAttack", agent.transform.position);
         
         if (agent.Target.TryGetComponent(out LivingEntity entity))
         {

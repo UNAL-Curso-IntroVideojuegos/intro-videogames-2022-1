@@ -60,6 +60,7 @@ public class Projectile : MonoBehaviour
                 }
             }
             
+            AudioManager.Instance.PlaySound("Impact", hitColliders[0].transform.position);
             DestroyProjectile();
         }
     }
@@ -82,6 +83,7 @@ public class Projectile : MonoBehaviour
                 entity.TakeDamage(10);
             }
             
+            AudioManager.Instance.PlaySound("Impact", hit.point);
             DestroyProjectile();
         }
     }

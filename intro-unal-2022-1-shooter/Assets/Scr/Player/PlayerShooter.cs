@@ -9,10 +9,24 @@ public class PlayerShooter : MonoBehaviour
     private GameObject _projectilePrefab;
     [SerializeField]
     private Transform _shootPoint;
+    [Space(20)]
+    [SerializeField]
+    private GameObject _shellPrefab;
+    [SerializeField]
+    private Transform _shellPoint;
+    
+    [Space(20)]
+    [SerializeField]
+    private GameObject _muzzleFlash;
+    
     
     [Space(20)]
     [SerializeField]
     private float _rateFire = 1; //Bullet per second
+    
+    [Space(20)]
+    [SerializeField]
+    private AudioSource _audioSource;
 
     private PlayerAnimation _playerAnimation;
     private float _fireTimer = 0;
@@ -49,5 +63,15 @@ public class PlayerShooter : MonoBehaviour
         Vector3 rot = _shootPoint.eulerAngles;
         rot.x = 0;
         projectile.transform.eulerAngles = rot;
+        
+        //AudioManager.Instance.PlaySound("GunShoot", projectile.transform.position);
+        if (_audioSource != null)
+        {
+            _audioSource.Play();
+        }
+
+        _muzzleFlash.SetActive(true);
+        
+        Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
     }
 }

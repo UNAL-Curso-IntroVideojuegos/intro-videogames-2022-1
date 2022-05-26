@@ -11,14 +11,23 @@ public class EnemyDeathState : IEnemyState
         agent.Animator.SetTrigger("IsDeath");
         agent.Collider.enabled = false;
         _hideTimer = 3f;
-    }
+        }
 
     public void OnUpdate(EnemyAgent agent)
     {
         _hideTimer -= Time.deltaTime;
         if (_hideTimer <= 0)
         {
+            AudioManager.Instance.PlaySound2D("EnemyDeath");
+
+            if (agent.AgentConfig.DeathVFX != null)
+            {
+                GameObject vfx = GameObject.Instantiate(agent.AgentConfig.DeathVFX, agent.AgentConfig.DeathVFXPoint.position, Quaternion.identity);
+                GameObject.Destroy(vfx, 4);
+            }
+
             agent.gameObject.SetActive(false);
+            agent.StateMachineController.ChangeToState(EnemyStateType.Idle);
         }
     }
 

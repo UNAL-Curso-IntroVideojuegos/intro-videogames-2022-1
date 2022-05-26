@@ -20,4 +20,8 @@ public class EnemyAgentConfig
     public float AttackRange = 1;
     public float AttackDuration = 1;
     public int AttackDamage = 10;
+
+    [Header("Death")] 
+    public Transform DeathVFXPoint;
+    public GameObject DeathVFX;
 }
