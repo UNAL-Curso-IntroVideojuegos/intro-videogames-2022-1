@@ -184,5 +184,16 @@ public class AudioManager : MonoBehaviour
 
         Debug.Log(soundName + " - Null");
         return null;
-    }   
+    }
+
+
+    IEnumerator Anim()
+    {
+        float  count = 0;
+        while (count < 1)
+        {
+            count += Time.deltaTime;
+            yield return null;
+        }
+    }
 }
