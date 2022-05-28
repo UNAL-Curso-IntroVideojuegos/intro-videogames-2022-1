@@ -68,9 +68,10 @@
 	- Herencia en un Sistema de vida.
 	- Patrones de diseño.
 - **Clase 11:** Polish & Game feeling.
+	- Audio.
+	- Scriptable Objects.
 	- VFX: Particulas, Trails y Shaders.
 	- Coroutinas y Tweens.
-	- Audio.
 - **Clase 12:** Invitado: **Cristian Mazo**.
 	- Profilling y Optimización con DOTS.
 - **Clase 13:** Tema Extra.
