@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     private Dictionary<AudioMusicType, AudioClip> _musicGroup = new Dictionary<AudioMusicType, AudioClip>();
     private Dictionary<string, AudioClip[]> _soundsGroup = new Dictionary<string, AudioClip[]>();
 
+    Transform _audioListener;
     AudioSource sfx2DSource;
     AudioSource[] musicSources;
     int activeMusicSourceIndex;
@@ -51,11 +52,18 @@ public class AudioManager : MonoBehaviour
     {
         Load();
 
+        //Get/Create AudioListener
+        GameObject audioListener = new GameObject("AudioListener");
+        audioListener.transform.parent = transform;
+        audioListener.AddComponent<AudioListener>();
+        _audioListener = audioListener.transform;
+        
         musicSources = new AudioSource[2];
         for (int i = 0; i < 2; i++)
         {
             GameObject newMusicSource = new GameObject("Music source " + (i + 1));
             musicSources[i] = newMusicSource.AddComponent<AudioSource>();
+            musicSources[i].loop = true;
             newMusicSource.transform.parent = transform;
         }
 
@@ -67,6 +75,11 @@ public class AudioManager : MonoBehaviour
         sfxVolumePercent = PlayerPrefs.GetFloat("sfx vol", 0.8f);
       
         musicVolumePercent = PlayerPrefs.GetFloat("music vol", 0.2f);
+    }
+
+    private void Update()
+    {
+        _audioListener.position = GameManager.Instance.Player.position;
     }
 
     public void SetVolume(float volumePercent, AudioChannel channel)
@@ -171,5 +184,5 @@ public class AudioManager : MonoBehaviour
 
         Debug.Log(soundName + " - Null");
         return null;
-    }
+    }   
 }

@@ -21,6 +21,8 @@ public class PlayerMovement : LivingEntity
     private bool _useDashByTime = true;
     [SerializeField]
     private float _dashDistance = 3;
+    [SerializeField] 
+    private GameObject _dshVFX;
     [Header("Dash by Time")] 
     [SerializeField]
     private float _dashDuration = 0.1f;
@@ -60,6 +62,8 @@ public class PlayerMovement : LivingEntity
         _woldPlane = new Plane(Vector3.up, 0);
 
         base.OnTakeDamage = OnTakeDamageCallback;
+        
+        _dshVFX.SetActive(false);
     }
     
     void Update()
@@ -154,13 +158,16 @@ public class PlayerMovement : LivingEntity
             _dashTimer = 0;
             _dashVelocity = Vector3.zero;
         }
+        
+        _dshVFX.SetActive(_dashTimer > 0);
     }
     
     private void SetDashVelocityByDrag(bool wantToDash, Vector3 dashDirection)
     {
         //We don't apply the dash if the speed is higher that the movement speed
         //  This mean, we don't dash if we are already dashing
-        if (wantToDash && _dashVelocity.magnitude <= speed)
+        float dashMagnitude = _dashVelocity.magnitude;
+        if (wantToDash && dashMagnitude <= speed)
         {
             float dashSpeed = _dashDistance / _dashDuration; //V = X/T
             //float dashSpeed = _dashDistance * _dashDragforce; //Kinda a hack to compensate the drag (multiplier)
@@ -168,6 +175,8 @@ public class PlayerMovement : LivingEntity
         }
         float multiplier = 1 - _dashDragforce * Time.deltaTime; 
         _dashVelocity *= multiplier ;
+        
+        _dshVFX.SetActive(dashMagnitude > speed);
     }
 
 
