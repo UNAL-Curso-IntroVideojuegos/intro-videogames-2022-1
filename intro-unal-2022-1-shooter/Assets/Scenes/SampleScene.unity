@@ -7805,6 +7805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1576781489}
+  _camera: {fileID: 963194226}
 --- !u!4 &391011038
 Transform:
   m_ObjectHideFlags: 0
@@ -10879,6 +10880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
+  - component: {fileID: 963194226}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10886,6 +10888,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &963194226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f13bd60544d42439969d3cd8763bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1576781489}
+  _followTarget: 1
+  _allowYShake: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -40315,6 +40332,10 @@ PrefabInstance:
       propertyPath: _totalHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: _agentConfig.DeathVFX
+      value: 
+      objectReference: {fileID: 2314935142293839282, guid: 31789857b8439b54692fd9de54c5dbe5, type: 3}
     - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
       propertyPath: _agentConfig.AttackDamage
       value: 1
