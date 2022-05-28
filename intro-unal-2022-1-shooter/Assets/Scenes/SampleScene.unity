@@ -7561,6 +7561,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358134415}
   m_CullTransparentMesh: 1
+--- !u!114 &358502612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 442584203653107801, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+  m_PrefabInstance: {fileID: 7898317575555654109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2728099a8dc1f4aac10b99551216f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &358924606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40224,6 +40235,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 946723756385921982, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5589584138213136250, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -40289,6 +40304,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 358502612}
+    - target: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
       propertyPath: _PlayerScore
       value: 
       objectReference: {fileID: 54397138}
@@ -40308,5 +40327,9 @@ PrefabInstance:
       propertyPath: _agentConfig.PathPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1444324194}
+    - target: {fileID: 9004809280571119219, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}

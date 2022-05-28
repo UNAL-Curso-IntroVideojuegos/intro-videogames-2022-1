@@ -5,12 +5,12 @@ public class EnemyHalthBar : MonoBehaviour
 {
     [Header("2D")]
     public Transform _healthMask;
-    
+
     //[Header("UI - Test")]
     //public RectTransform _healthBar;
     // Image _healthImage;
     
-    public void UpdateHealthBar(float health, float totalHealth)
+    public virtual void UpdateHealthBar(float health, float totalHealth, int damage)
     {
         //_healthBar.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up*2);
         //_healthImage.fillAmount = _health / _totalHealth;

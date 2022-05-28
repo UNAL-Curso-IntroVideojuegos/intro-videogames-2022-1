@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Transform _player;
+    [SerializeField]
+    private StaticCamera _camera;
 
     public Transform Player => _player;
-
+    public StaticCamera Camera => _camera;
+    
     private void Awake() 
     { 
         // If there is an instance, and it's not me, delete myself.

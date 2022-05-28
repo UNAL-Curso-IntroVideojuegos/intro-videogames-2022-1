@@ -73,5 +73,7 @@ public class PlayerShooter : MonoBehaviour
         _muzzleFlash.SetActive(true);
         
         Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
+        
+        GameManager.Instance.Camera.StartScreenShake(0.15f, 0.2f);
     }
 }

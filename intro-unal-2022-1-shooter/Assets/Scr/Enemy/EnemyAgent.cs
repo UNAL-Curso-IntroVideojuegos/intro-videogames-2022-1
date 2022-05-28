@@ -8,6 +8,8 @@ public class EnemyAgent : LivingEntity
     [SerializeField]
     private Animator _animator;
     [SerializeField]
+    private EnemyHalthBar _healthBar;
+    [SerializeField]
     private EnemyAgentConfig _agentConfig;
     [SerializeField] 
     private int _points = 10;
@@ -16,7 +18,6 @@ public class EnemyAgent : LivingEntity
     private PathFindingController _pathFindingController;
     private StateMachineController _stateMachineController;
     private Transform _target;
-    private EnemyHalthBar _halthBar;
 
     private Vector3 _initPosition;
     
@@ -33,7 +34,7 @@ public class EnemyAgent : LivingEntity
 
         _collider = GetComponent<Collider>();
         _pathFindingController = GetComponent<PathFindingController>();
-        _halthBar = GetComponent<EnemyHalthBar>();
+        //_healthBar = GetComponent<EnemyHalthBar>();
         _stateMachineController = new StateMachineController();
         _stateMachineController.Init(this);
         
@@ -82,7 +83,7 @@ public class EnemyAgent : LivingEntity
 
     void OnTakeDamageCallback(int damage)
     {
-        _halthBar.UpdateHealthBar(_health, _totalHealth);
+        _healthBar.UpdateHealthBar(_health, _totalHealth, damage);
     }
     
     [ContextMenu("Death")]
@@ -108,7 +109,7 @@ public class EnemyAgent : LivingEntity
         Init();
         
         _stateMachineController.ChangeToState(EnemyStateType.Idle);
-        _halthBar.UpdateHealthBar(_health, _totalHealth);
+        _healthBar.UpdateHealthBar(_health, _totalHealth, 0);
         transform.position = _initPosition;
         _collider.enabled = true;
         gameObject.SetActive(true);
