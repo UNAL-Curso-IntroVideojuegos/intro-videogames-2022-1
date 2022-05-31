@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Custom/AudioLibrary")]
+[CreateAssetMenu(menuName = "Audio/AudioLibrary")]
 public class AudioLibrary : ScriptableObject
 {
     public AudioMusicClip[] music;

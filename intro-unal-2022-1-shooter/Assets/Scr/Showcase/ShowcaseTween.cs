@@ -35,6 +35,7 @@ public class ShowcaseTweenMoveItem
             _tween.Kill();
         }
         _tween = _transform.DOMoveX(to, time).From(from).SetEase(_ease).SetDelay(delay);
+        _transform.DORotate(_transform.eulerAngles + Vector3.up * 180, time);
         if (yoyo)
         {
             _tween.OnComplete(() => Run(to, from, time, 0.25f, false));

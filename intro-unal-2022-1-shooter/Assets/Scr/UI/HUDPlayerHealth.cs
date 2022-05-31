@@ -9,6 +9,8 @@ public class HUDPlayerHealth : MonoBehaviour
     private Transform _heartsContiner;
     private List<Image> _hearts;
     
+    [Space(20)]
+    public PlayerHealth _playerHP;
     
     void Start()
     {
@@ -30,6 +32,8 @@ public class HUDPlayerHealth : MonoBehaviour
 
     private void OnPlayerHealthChange(int health)
     {
+        Debug.Log("Player HP: " + _playerHP.Health);
+        
         for (int i = 0; i < _hearts.Count; i++)
         {
             if (i < health)

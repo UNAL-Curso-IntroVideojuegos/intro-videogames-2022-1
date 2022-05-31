@@ -900,6 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heartsContiner: {fileID: 889571182}
+  _playerHP: {fileID: 11400000, guid: a54e34d4439c09444a32542086fd1cef, type: 2}
 --- !u!1001 &75897730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7189,7 +7190,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -12006,7 +12007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1027823336
 Transform:
   m_ObjectHideFlags: 0
@@ -14276,7 +14277,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -20808,6 +20809,7 @@ MonoBehaviour:
   _dshVFX: {fileID: 1027823335}
   _dashDuration: 0.1
   _dashDragforce: 8
+  _playerHP: {fileID: 11400000, guid: a54e34d4439c09444a32542086fd1cef, type: 2}
 --- !u!114 &1576781493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32066,7 +32068,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1

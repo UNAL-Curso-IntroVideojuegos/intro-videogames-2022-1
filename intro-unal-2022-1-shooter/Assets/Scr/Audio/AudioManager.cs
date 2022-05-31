@@ -187,6 +187,17 @@ public class AudioManager : MonoBehaviour
     }
 
 
+    private Coroutine _testCoroutine;
+
+    void Test()
+    {
+        if (_testCoroutine != null)
+        {
+            StopCoroutine(_testCoroutine);
+        }
+        _testCoroutine = StartCoroutine(Anim());
+    }
+    
     IEnumerator Anim()
     {
         float  count = 0;

@@ -45,6 +45,8 @@ public class PlayerMovement : LivingEntity
 
     private Vector3 _initPosition;
 
+    [Space(20)]
+    public PlayerHealth _playerHP;
 
     private void Awake()
     {
@@ -184,6 +186,8 @@ public class PlayerMovement : LivingEntity
     {
         //int hearths = Mathf.RoundToInt((_health / _totalHealth) * _totalHealth);
         GameEvents.OnPlayerHealthChangeEvent?.Invoke((int) _health);
+
+        _playerHP.Health -= damage;
     }
     
     
