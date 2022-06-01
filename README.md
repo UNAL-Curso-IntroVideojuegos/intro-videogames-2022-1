@@ -67,11 +67,11 @@
 	- GameManager y comunicación de sistemas.
 	- Herencia en un Sistema de vida.
 	- Patrones de diseño.
-- **Clase 11:** Polish & Game feeling.
+- **Clase 11:** Audio, Polish & VFX. [Video](https://www.youtube.com/watch?v=f_Gg0ver0fw&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=12)
 	- Audio.
 	- Scriptable Objects.
-	- VFX: Particulas, Trails y Shaders.
 	- Coroutinas y Tweens.
+	- VFX: Particulas, Trails y Shaders.
 - **Clase 12:** Invitado: **Cristian Mazo**.
 	- Profilling y Optimización con DOTS.
 - **Clase 13:** Tema Extra.
