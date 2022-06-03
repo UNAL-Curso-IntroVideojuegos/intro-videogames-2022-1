@@ -58,6 +58,11 @@ public class EnemyAgent : LivingEntity
     
     public bool IsLookingTarget()
     {
+        if (_agentConfig.GlobalDetection)
+        {
+            return true;
+        }
+        
         //If Target is less than 5 mt
         //return (_target.position - transform.position).magnitude < AgentConfig.DetectionRange;
         
@@ -93,11 +98,11 @@ public class EnemyAgent : LivingEntity
         
         _stateMachineController.ChangeToState(EnemyStateType.Death);
         
-        //GameEvents.OnEnemyDeath?.Invoke();
-        if (GameEvents.OnEnemyDeathEvent != null)
-        {
-            GameEvents.OnEnemyDeathEvent.Invoke(_points);
-        }
+        GameEvents.OnEnemyDeathEvent?.Invoke(this, _points);
+        // if (GameEvents.OnEnemyDeathEvent != null)
+        // {
+        //     GameEvents.OnEnemyDeathEvent.Invoke(this, _points);
+        // }
         
         //gameObject.SetActive(false);
     }

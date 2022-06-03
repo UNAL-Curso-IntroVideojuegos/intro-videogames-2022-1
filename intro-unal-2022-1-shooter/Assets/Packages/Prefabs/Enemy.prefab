@@ -323,6 +323,7 @@ MonoBehaviour:
   _healthBar: {fileID: 1656959710270909002}
   _agentConfig:
     initialState: 0
+    GlobalDetection: 1
     DetectionRange: 4.5
     ViewAngle: 60
     IdleTime: 2
@@ -332,7 +333,7 @@ MonoBehaviour:
     - {fileID: 0}
     AttackRange: 1.5
     AttackDuration: 1.8
-    AttackDamage: 10
+    AttackDamage: 1
     DeathVFXPoint: {fileID: 6609051461942512702}
     DeathVFX: {fileID: 4363618136153406058, guid: dbc7c9664cf56ec4094915626f3db057, type: 3}
   _points: 10
@@ -361,7 +362,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 180
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

@@ -8,13 +8,16 @@ public class EnemyIdleState : IEnemyState
     
     public void OnEnter(EnemyAgent agent)
     {
-        Debug.Log("Idle: OnEnter");
         _moveToPatrolAt = Time.time + agent.AgentConfig.IdleTime;
     }
 
     public void OnUpdate(EnemyAgent agent)
     {
-        Debug.Log("Idle: OnUpdate");
+        //PLayer in range 
+        if (agent.IsLookingTarget())
+        {
+            agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
+        }
         
         //After X sec -> To patrol
         if (Time.time > _moveToPatrolAt)
@@ -22,16 +25,9 @@ public class EnemyIdleState : IEnemyState
             agent.StateMachineController.ChangeToState(EnemyStateType.Patrol);
             return;
         }
-        
-        //Vi al Player -> Pasar al estado Chase! 
-        if (agent.IsLookingTarget())
-        {
-            agent.StateMachineController.ChangeToState(EnemyStateType.Chase);
-        }
     }
 
     public void OnExit(EnemyAgent agent)
     {
-        Debug.Log("Idle: OnExit");
     }
 }

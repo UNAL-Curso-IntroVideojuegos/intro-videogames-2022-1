@@ -20,7 +20,6 @@ public class LivingEntity : MonoBehaviour
     {
         _health = _totalHealth;
         Init();
-        Debug.Log("LE Start");
     }
 
     public void Init()

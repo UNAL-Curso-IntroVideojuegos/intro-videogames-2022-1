@@ -15,18 +15,24 @@ public class HUDPlayerScore : MonoBehaviour
     {
         SetScore(0);
         GameEvents.OnEnemyDeathEvent += OnEnemyDeath;
-        GameEvents.OnBonusCollectedEvent += OnEnemyDeath;
+        GameEvents.OnBonusCollectedEvent += OnBonusCollected;
     }
 
     private void OnDestroy()
     {
         GameEvents.OnEnemyDeathEvent -= OnEnemyDeath;
-        GameEvents.OnBonusCollectedEvent -= OnEnemyDeath;
+        GameEvents.OnBonusCollectedEvent -= OnBonusCollected;
     }
 
-    void OnEnemyDeath(int enemyPoints)
+    void OnEnemyDeath(EnemyAgent _, int enemyPoints)
     {
         score += enemyPoints;
+        SetScore(score);
+    }
+
+    void OnBonusCollected(int points)
+    {
+        score += points;
         SetScore(score);
     }
 

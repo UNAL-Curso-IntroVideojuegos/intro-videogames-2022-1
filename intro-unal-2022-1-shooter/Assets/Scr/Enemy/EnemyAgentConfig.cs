@@ -6,8 +6,9 @@ using UnityEngine;
 public class EnemyAgentConfig 
 {
     public EnemyStateType initialState = EnemyStateType.Idle;
-    
-    [Header("Detection")]
+
+    [Header("Detection")] 
+    public bool GlobalDetection = false;
     public float DetectionRange = 5;
     public float ViewAngle = 60;
     

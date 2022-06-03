@@ -16,5 +16,6 @@ public class EnemyHalthBar : MonoBehaviour
         //_healthImage.fillAmount = _health / _totalHealth;
 
         _healthMask.localScale = new Vector3(health / totalHealth, 1, 1);
+        gameObject.SetActive(health > 0);
     }
 }

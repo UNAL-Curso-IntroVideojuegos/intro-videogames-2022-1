@@ -6,7 +6,7 @@ public static class GameEvents
     public static Action OnStartGameEvent;
     public static Action OnGameOverEvent; //total score
     
-    public static Action<int> OnEnemyDeathEvent;
+    public static Action<EnemyAgent, int> OnEnemyDeathEvent;
     public static Action<int> OnPlayerHealthChangeEvent;
     
     
