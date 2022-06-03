@@ -19913,6 +19913,8 @@ MonoBehaviour:
   _shellPoint: {fileID: 882639840}
   _muzzleFlash: {fileID: 2048065033}
   _rateFire: 10
+  _totalAmmo: 30
+  _reloadTime: 2
   _audioSource: {fileID: 698045332}
 --- !u!114 &1576781494
 MonoBehaviour:

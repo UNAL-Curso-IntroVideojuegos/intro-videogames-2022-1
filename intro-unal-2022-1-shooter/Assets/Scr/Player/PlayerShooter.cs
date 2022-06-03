@@ -23,6 +23,10 @@ public class PlayerShooter : MonoBehaviour
     [Space(20)]
     [SerializeField]
     private float _rateFire = 1; //Bullet per second
+    [SerializeField]
+    private int _totalAmmo = 10; 
+    [SerializeField]
+    private int _reloadTime = 2; //Bullet per second
     
     [Space(20)]
     [SerializeField]
@@ -31,9 +35,14 @@ public class PlayerShooter : MonoBehaviour
     private PlayerAnimation _playerAnimation;
     private float _fireTimer = 0;
 
+    private bool _isReloading = false;
+    private int _remainingAmmo;
+    private float _reloadingTimer = 0; 
+
     private void Start()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
+        _remainingAmmo = _totalAmmo;
     }
 
     void Update()
@@ -42,13 +51,40 @@ public class PlayerShooter : MonoBehaviour
         {
             _fireTimer -= Time.deltaTime;
         }
-        
-        
-        if (_fireTimer <= 0 && Input.GetButton("Fire1"))
+
+        if (_reloadingTimer > 0)
         {
-            //To get the time between each bullet we do  1 / rate
-            _fireTimer = 1 / _rateFire; 
-            Shoot();
+            _reloadingTimer -= Time.deltaTime;
+        }
+
+        if (_isReloading)
+        {
+            if (_reloadingTimer <= 0)
+            {
+                _reloadingTimer = 0;
+                _isReloading = false;
+                _remainingAmmo = _totalAmmo;
+            }
+            return;
+        }
+        
+        if (_remainingAmmo > 0)
+        {
+            if (_fireTimer <= 0 && Input.GetButton("Fire1"))
+            {
+                //To get the time between each bullet we do  1 / rate
+                _fireTimer = 1 / _rateFire;
+                Shoot();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                _isReloading = true;
+                _reloadingTimer = _reloadTime;
+                //TODO: SFX and Animation
+            }
         }
         
         _playerAnimation.SetIsShooting(_fireTimer > 0);
@@ -56,6 +92,8 @@ public class PlayerShooter : MonoBehaviour
     
     private void Shoot()
     {
+        _remainingAmmo--;
+        
         //Shoot
         GameObject projectile = Instantiate(_projectilePrefab);
         projectile.transform.position = _shootPoint.position;
