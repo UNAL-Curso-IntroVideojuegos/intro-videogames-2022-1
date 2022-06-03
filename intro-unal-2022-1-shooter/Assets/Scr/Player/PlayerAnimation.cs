@@ -10,11 +10,17 @@ public class PlayerAnimation : MonoBehaviour
     private Animator _animator;
 
     private bool _isShooting = false;
+    private bool _isReloading = false;
     private Vector3 _movementDirection;
 
     public void SetIsShooting(bool isShooting)
     {
         _isShooting = isShooting;
+    }
+    
+    public void SetIsReloading(bool isReloading)
+    {
+        _isReloading = isReloading;
     }
 
     public void SetMovementDirection(Vector3 movementDirection)
@@ -28,6 +34,7 @@ public class PlayerAnimation : MonoBehaviour
         Vector3 localRotation = Quaternion.Inverse(_body.rotation) * _movementDirection;
         
         _animator.SetBool("IsShooting", _isShooting);
+        _animator.SetBool("IsReloading", _isReloading);
         _animator.SetFloat("MovementX", localRotation.x);
         _animator.SetFloat("MovementY", localRotation.z);
     }

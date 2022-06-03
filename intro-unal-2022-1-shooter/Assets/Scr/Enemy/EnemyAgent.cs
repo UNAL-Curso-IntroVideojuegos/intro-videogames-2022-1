@@ -11,8 +11,6 @@ public class EnemyAgent : LivingEntity
     private EnemyHalthBar _healthBar;
     [SerializeField]
     private EnemyAgentConfig _agentConfig;
-    [SerializeField] 
-    private int _points = 10;
 
     private Collider _collider;
     private PathFindingController _pathFindingController;
@@ -98,7 +96,7 @@ public class EnemyAgent : LivingEntity
         
         _stateMachineController.ChangeToState(EnemyStateType.Death);
         
-        GameEvents.OnEnemyDeathEvent?.Invoke(this, _points);
+        GameEvents.OnEnemyDeathEvent?.Invoke(this, AgentConfig.Points);
         // if (GameEvents.OnEnemyDeathEvent != null)
         // {
         //     GameEvents.OnEnemyDeathEvent.Invoke(this, _points);

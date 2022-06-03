@@ -322,6 +322,7 @@ MonoBehaviour:
   _animator: {fileID: 4387765740302220961}
   _healthBar: {fileID: 1656959710270909002}
   _agentConfig:
+    Points: 10
     initialState: 0
     GlobalDetection: 1
     DetectionRange: 4.5
@@ -336,7 +337,10 @@ MonoBehaviour:
     AttackDamage: 1
     DeathVFXPoint: {fileID: 6609051461942512702}
     DeathVFX: {fileID: 4363618136153406058, guid: dbc7c9664cf56ec4094915626f3db057, type: 3}
-  _points: 10
+    NumberOfDrops: 2
+    DropItems:
+    - ItemPrefab: {fileID: 6898097268064649784, guid: 5746afa494da20d4aab494a81ff70751, type: 3}
+      Probability: 1
 --- !u!114 &9004809279719807904
 MonoBehaviour:
   m_ObjectHideFlags: 0

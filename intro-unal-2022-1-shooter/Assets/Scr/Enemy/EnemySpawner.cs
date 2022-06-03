@@ -103,7 +103,7 @@ public class EnemySpawner : MonoBehaviour
         _shouldSpawn = false;
         for (int i = 0; i < _spawnedAliveEnemies.Count; i++)
         {
-            Destroy(_spawnedAliveEnemies[i]);
+            Destroy(_spawnedAliveEnemies[i].gameObject);
         }
         _spawnedAliveEnemies.Clear();
     }

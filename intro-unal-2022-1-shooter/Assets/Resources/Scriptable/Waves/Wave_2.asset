@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e4a192d1ffd9d4097c0fbb61f61aa1, type: 3}
   m_Name: Wave_2
   m_EditorClassIdentifier: 
-  IsInfinite: 0
+  IsInfinite: 1
   EnemiesItems:
   - EnemyPrefab: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
     Probability: 1

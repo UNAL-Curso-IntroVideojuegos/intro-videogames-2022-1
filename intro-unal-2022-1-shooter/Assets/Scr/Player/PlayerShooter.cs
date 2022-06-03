@@ -26,7 +26,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     private int _totalAmmo = 10; 
     [SerializeField]
-    private int _reloadTime = 2; //Bullet per second
+    private float _reloadTime = 2; //Bullet per second
     
     [Space(20)]
     [SerializeField]
@@ -42,7 +42,7 @@ public class PlayerShooter : MonoBehaviour
     private void Start()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
-        _remainingAmmo = _totalAmmo;
+        Reload();
     }
 
     void Update()
@@ -61,9 +61,7 @@ public class PlayerShooter : MonoBehaviour
         {
             if (_reloadingTimer <= 0)
             {
-                _reloadingTimer = 0;
-                _isReloading = false;
-                _remainingAmmo = _totalAmmo;
+                Reload();
             }
             return;
         }
@@ -77,17 +75,24 @@ public class PlayerShooter : MonoBehaviour
                 Shoot();
             }
         }
-        else
+        
+        if (!_isReloading && _remainingAmmo < _totalAmmo && Input.GetKeyDown(KeyCode.R))
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                _isReloading = true;
-                _reloadingTimer = _reloadTime;
-                //TODO: SFX and Animation
-            }
+            _isReloading = true;
+            _reloadingTimer = _reloadTime;
+            //TODO: SFX
         }
         
         _playerAnimation.SetIsShooting(_fireTimer > 0);
+        _playerAnimation.SetIsReloading(_isReloading);
+    }
+    
+    public void Reload()
+    {
+        _reloadingTimer = 0;
+        _isReloading = false;
+        _remainingAmmo = _totalAmmo;
+        GameEvents.OnPlayerAmmoUpdatedEvent?.Invoke(_remainingAmmo);
     }
     
     private void Shoot()
@@ -113,5 +118,7 @@ public class PlayerShooter : MonoBehaviour
         Instantiate(_shellPrefab, _shellPoint.position, _shellPoint.rotation);
         
         GameManager.Instance.Camera.StartScreenShake(0.15f, 0.2f);
+        GameEvents.OnPlayerAmmoUpdatedEvent(_remainingAmmo);
     }
+    
 }

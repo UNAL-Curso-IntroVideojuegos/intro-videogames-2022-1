@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class EnemyAgentConfig 
 {
+    public int Points = 10;
     public EnemyStateType initialState = EnemyStateType.Idle;
 
     [Header("Detection")] 
@@ -25,4 +26,17 @@ public class EnemyAgentConfig
     [Header("Death")] 
     public Transform DeathVFXPoint;
     public GameObject DeathVFX;
+    
+    [Header("Drops")]
+    [Min(0)]
+    public int NumberOfDrops;
+    public EnemyDropItem[] DropItems;
+}
+
+[Serializable]
+public class EnemyDropItem
+{
+    public DropItem ItemPrefab;
+    [Range(0,1)]
+    public float Probability;
 }

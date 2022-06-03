@@ -8,6 +8,7 @@ public static class GameEvents
     
     public static Action<EnemyAgent, int> OnEnemyDeathEvent;
     public static Action<int> OnPlayerHealthChangeEvent;
+    public static Action<int> OnPlayerAmmoUpdatedEvent;
     
     
     

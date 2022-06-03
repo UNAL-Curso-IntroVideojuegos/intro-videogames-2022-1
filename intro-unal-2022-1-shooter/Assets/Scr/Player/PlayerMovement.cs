@@ -36,6 +36,7 @@ public class PlayerMovement : LivingEntity
     
     private Rigidbody _rb;
     private PlayerAnimation _playerAnimation;
+    private PlayerShooter _playerShooter;
     private Vector3 _velocity;
     
     //Dash
@@ -50,13 +51,14 @@ public class PlayerMovement : LivingEntity
         _initPosition = transform.position;
     }
 
-    public override void Start()
+    protected override void OnInit()
     {
-        base.Start();
+        base.OnInit();
         
         _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
         _playerAnimation = GetComponent<PlayerAnimation>();
+        _playerShooter = GetComponent<PlayerShooter>();
 
         _woldPlane = new Plane(Vector3.up, 0);
 
@@ -195,7 +197,9 @@ public class PlayerMovement : LivingEntity
     public override void Reset()
     {
         base.Reset();
+        Init();
         transform.position = _initPosition;
+        _playerShooter.Reload();
         gameObject.SetActive(true);
     }
 }
