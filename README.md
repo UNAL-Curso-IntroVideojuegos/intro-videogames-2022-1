@@ -89,6 +89,7 @@
 - [Reto #1](./Taller/Reto-1#reto-1/) (Clase #4): Torreta - Disparar al Player.
 - [Tarea #4](./Taller/Taller-4#taller-4/) (Clase #5): Dash, Salto y Disparo 3D.
 - [Tarea #5](./Taller/Taller-5#leer-antes-de-realizar-el-taller/) (Clase #7): IA en enemigos (atacar y patrullar) - Finite State Machine.
+- [Reto #2](./Taller/Reto-2#reto-2/) (Clase #13): Sistema de enemigos, Recarga y Drops.
 
 ## Profesor
 - J. Alejandro Álvarez. juaalvarezme@unal.edu.co
