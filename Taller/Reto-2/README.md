@@ -25,24 +25,24 @@
 
 
 2. Acutalice el script ***PlayerShooter*** con la mecánica de recargar.
-    2.1. Agregue una cantidad de munición (balas). Cada vez que dispara se gasta una munición. Si no tiene munición, no puede disparar.
-    2.2. Cuando oprima la tecla **R**, debe recargar (restablecer la munición) después de X segundos (1 o 2 seg).
-    2.3. Agregar la UI (HUD) necesaria para que muestre la cantidad de munición del Player.
+    1. Agregue una cantidad de munición (balas). Cada vez que dispara se gasta una munición. Si no tiene munición, no puede disparar.
+    2. Cuando oprima la tecla **R**, debe recargar (restablecer la munición) después de X segundos (1 o 2 seg).
+    3. Agregar la UI (HUD) necesaria para que muestre la cantidad de munición del Player.
         - Al menos un icono y un texto.
-    2.4. **(Opcional)** Agregue la animación de recarga (*reload*) al ***Animator*** del Player. Se debe activar cuando el Player esta recargando.
+    4. **(Opcional)** Agregue la animación de recarga (*reload*) al ***Animator*** del Player. Se debe activar cuando el Player esta recargando.
 
 3. Agregue *drops* cuando un enemigo muera. Es decir, que el enemigo suelte items/loot luego de morir.
-    3.1. Cuando el enemigo muera debe "soltar" al menos un drop. Es decir, instanciar un objeto "drop" en su posición.
-    3.2. Cree los script necesarios para manejar la lógica de los drops. 
+    1. Cuando el enemigo muera debe "soltar" al menos un drop. Es decir, instanciar un objeto "drop" en su posición.
+    2. Cree los script necesarios para manejar la lógica de los drops. 
         - Cuando usuario toque el drop, debe de desaparecer y ejecutar su correspondiente acción.
         - **Hint:** Utilice `OnTriggerEnter` para detectar cuando el Player y el Drop se tocan.
-    3.3. Cree dos tipos de drop:
+    3. Cree dos tipos de drop:
         - Puntaje: al tocarlo, da puntos extras.
         - Vida: al tocarlo, restablece un punto de vida al Player (restablece un corazón).
         - **(Opcional)** Cree más drop con otro tipo de acciones: Aumentar la munición, Mayor daño de ataque, bomba que explote despues de 3 seg., etc.
 
 4. Actualice la pantalla del final (Game Over) para que muestre: puntaje total, nivel ("oleada" de enemigos) en la que murio, tiempo total de juego.
-    4.1. Esto implica agregar un sistema que cuente el tiempo de juego.
+    1. Esto implica agregar un sistema que cuente el tiempo de juego.
 
 
 ### Otras ideas - Mas retos :trollface:
