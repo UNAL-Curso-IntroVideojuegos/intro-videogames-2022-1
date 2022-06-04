@@ -15,42 +15,42 @@
         - Cuando el Player mate a todos los enemigos de una "*oleada*"/nivel, se debe seguir con la siguiente (si es la última, esta no tiene fin y continúa indefinidamente hasta que el Player muera).
         - Nota: deberá definir un sistema (función/método) para determinar la posición del nuevo enemigo a crear (instanciar).
             - Por ejemplo: Un punto aleatorio en el mapa, una lista de puntos predefinidos, etc...
-            - Para obtener un punto aleatorio y asegurarse que este dentro del NavMesh (es decir, que sea válido), puede usar [NavMesh.SamplePosition](https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html).
+            - Para obtener un punto aleatorio y asegurarse que esté dentro del NavMesh (es decir, que sea válido), puede usar [NavMesh.SamplePosition](https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html).
     
-    3. Actualice el StateMachine del Enemigo, para que inmediatamente aparezca esté persiga al Player sin importar donde este.
+    3. Actualice el StateMachine del Enemigo, para cuando el enemigo aparezca (sea instanciado), automáticament persiga al Player sin importar donde esté.
         - Por facilidad, no queremos usar el estado de ***Patrol*** ya que implica trabajo extra al crear enemigos dinámicamente. Por ahora solo queremos que ataquen directamente al player.
     
-    4. **(Opcional)** Agregue un nuevo tipo de enemigo, que corra mucho más rapido y al estar cerca del Player, explote y haga daño en area.
-        - Utilice el otro modelo 3D de enemigo tipo que se encuentra en el proyecto, asi como sus animaciones.
+    4. **(Opcional)** Agregue un nuevo tipo de enemigo, que corra mucho más rapido y al estar cerca del Player, explote y haga daño en área.
+        - Utilice el otro modelo 3D de enemigo tipo que se encuentra en el proyecto, así como sus animaciones.
 
 
 2. Acutalice el script ***PlayerShooter*** con la mecánica de recargar.
-    1. Agregue una cantidad de munición (balas). Cada vez que dispara se gasta una munición. Si no tiene munición, no puede disparar.
+    1. Agregue una cantidad de munición (balas). Cada vez que dispare, se gasta una munición (una bala). Si no tiene munición, no puede disparar.
     2. Cuando oprima la tecla **R**, debe recargar (restablecer la munición) después de X segundos (1 o 2 seg).
     3. Agregar la UI (HUD) necesaria para que muestre la cantidad de munición del Player.
-        - Al menos un icono y un texto.
+        - Al menos un ícono y un texto.
     4. **(Opcional)** Agregue la animación de recarga (*reload*) al ***Animator*** del Player. Se debe activar cuando el Player esta recargando.
 
-3. Agregue *drops* cuando un enemigo muera. Es decir, que el enemigo suelte items/loot luego de morir.
-    1. Cuando el enemigo muera debe "soltar" al menos un drop. Es decir, instanciar un objeto "drop" en su posición.
+3. Agregue *drops* cuando un enemigo muera. Es decir, que el enemigo "*suelte*" ítems/loot luego de morir.
+    1. Cuando el enemigo muera debe "*soltar*" al menos un drop. Es decir, instanciar un objeto "drop" en su posición.
     2. Cree los script necesarios para manejar la lógica de los drops. 
-        - Cuando usuario toque el drop, debe de desaparecer y ejecutar su correspondiente acción.
+        - Cuando el Player toque el drop, debe desaparecer y ejecutar su correspondiente acción.
         - **Hint:** Utilice `OnTriggerEnter` para detectar cuando el Player y el Drop se tocan.
     3. Cree dos tipos de drop:
         - Puntaje: al tocarlo, da puntos extras.
         - Vida: al tocarlo, restablece un punto de vida al Player (restablece un corazón).
-        - **(Opcional)** Cree más drop con otro tipo de acciones: Aumentar la munición, Mayor daño de ataque, bomba que explote despues de 3 seg., etc.
+        - **(Opcional)** Cree más drop con otro tipo de acciones: Aumentar la munición, Mayor daño de ataque, bomba que explote después de 3 seg., etc.
 
-4. Actualice la pantalla del final (Game Over) para que muestre: puntaje total, nivel ("oleada" de enemigos) en la que murio, tiempo total de juego.
+4. Actualice la pantalla del final (Game Over) para que muestre: puntaje total, nivel ("*oleada*" de enemigos) en el que murió y tiempo total de juego.
     1. Esto implica agregar un sistema que cuente el tiempo de juego.
 
 
-### Otras ideas - Mas retos :trollface:
+### Otras ideas - Más retos :trollface:
 
-- Agregue un sistema de armas: diferentes tipos de disparo (burst, auto, single), diferentes rate-fire, mas disparos al tiempo (tipo escopeta por ejemplo), diferentes tiempos de recarga, etc...
-- Los enemigos, al morir, "spawnen" un enemigo minion (un nuevo enemigo).
+- Agregue un sistema de armas: diferentes tipos de disparo (burst, auto, single), diferentes *rate-fire*, más disparos al tiempo (tipo escopeta por ejemplo), diferentes tiempos de recarga, etc...
+- Los enemigos, al morir, "*spawnen*" un enemigo minion (un nuevo enemigo).
 - Agregue un Boss.
-- Agregue mas personajes jugables, con diferentes habilidades. Por ejemplo: ***Character Male*** con dash y ***Character Female*** con habilidad curación.
+- Agregue más personajes jugables, con diferentes habilidades. Por ejemplo: ***Character Male*** con dash y ***Character Female*** con habilidad curación.
 - Generación de mapa dinámica/procedural.
 
 ### Fecha de entrega
