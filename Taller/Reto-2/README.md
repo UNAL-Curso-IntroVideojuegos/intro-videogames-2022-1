@@ -5,12 +5,10 @@
 > Este reto da bonificación extra! (Compensa/Sube otra nota) :gift:
 
 1. Agregue un sistema de "*oleadas*" de enemigos (o niveles, si asi lo desea llamar).
-    
   1.1. Cree un ScriptablesObjects (o los que considere necesarios) que contenga la información de la "*oleada*"/nivel.
     - Recomendación, llamar al script ***EnemyWave***.
     - Por ejemplo, cantidad de enemigos, cada cuanto se crea un enemigo, etc...
     - La ultima "*oleada*" (el ultimo nivel) debe ser tipo *suvival*, es decir, se crean enemigos continuamente hasta que el Player muera.
-    
   1.2. Actualice el script ***EnemySpawner*** para que utilice esta información de "*oleadas*" y se encargue de crear (instanciar) enemigos en base a la información de cada "*oleada*"/nivel.
     - Cuando el Player mate a todos los enemigos de una "*oleada*"/nivel, se debe seguir con la siguiente (si es la última, esta no tiene fin y continua indefinidamente hasta que el Player muera).
     - Nota: deberá definir un sistema (función/método) para determinar la posición del nuevo enemigo a crear (instanciar).
