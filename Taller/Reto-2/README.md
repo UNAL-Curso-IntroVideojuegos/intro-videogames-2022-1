@@ -5,20 +5,22 @@
 > Este reto da bonificación extra! (Compensa/Sube otra nota) :gift:
 
 1. Agregue un sistema de "*oleadas*" de enemigos (o niveles, si asi lo desea llamar).
-  1.1. Cree un ScriptablesObjects (o los que considere necesarios) que contenga la información de la "*oleada*"/nivel.
+  
+  1. Cree un ScriptablesObjects (o los que considere necesarios) que contenga la información de la "*oleada*"/nivel.
     - Recomendación, llamar al script ***EnemyWave***.
     - Por ejemplo, cantidad de enemigos, cada cuanto se crea un enemigo, etc...
     - La ultima "*oleada*" (el ultimo nivel) debe ser tipo *suvival*, es decir, se crean enemigos continuamente hasta que el Player muera.
-  1.2. Actualice el script ***EnemySpawner*** para que utilice esta información de "*oleadas*" y se encargue de crear (instanciar) enemigos en base a la información de cada "*oleada*"/nivel.
+  
+  2. Actualice el script ***EnemySpawner*** para que utilice esta información de "*oleadas*" y se encargue de crear (instanciar) enemigos en base a la información de cada "*oleada*"/nivel.
     - Cuando el Player mate a todos los enemigos de una "*oleada*"/nivel, se debe seguir con la siguiente (si es la última, esta no tiene fin y continua indefinidamente hasta que el Player muera).
     - Nota: deberá definir un sistema (función/método) para determinar la posición del nuevo enemigo a crear (instanciar).
         - Por ejempl: Un punto aleatorio en el mapa, una lista de puntos predefinidos, etc...
         - Para obtener un punto alteario y asegurarse que este dentro del NavMesh (es decir, que sea válido), puede usar [NavMesh.SamplePosition](https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html).
     
-  1.3. Actualice el StateMachine del Enemigo, para que inmediatamente aparezca, este persigan al Player sin importar donde este.
+  3. Actualice el StateMachine del Enemigo, para que inmediatamente aparezca, este persigan al Player sin importar donde este.
     - Por facilidad, no queremos usar el estado de ***Patrol*** ya que implica trabajo extra al crear enemigos dinámicamente. Por ahora solo queremos que ataquen directamente al player.
     
-  1.4. **(Opcional)** Agregue un nuevo tipo de enemigo, que corra mucho más rapido y al estar cerca del Player, explote y haga daño en area.
+  4. **(Opcional)** Agregue un nuevo tipo de enemigo, que corra mucho más rapido y al estar cerca del Player, explote y haga daño en area.
     - Utilice el otro modelo 3D de enemigo tipo que se encuentra en el proyecto, asi como sus animaciones.
 
 
