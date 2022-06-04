@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyAttackType{ Default, RunAndExplode }
+
 [Serializable]
 public class EnemyAgentConfig 
 {
@@ -17,11 +19,13 @@ public class EnemyAgentConfig
     public float IdleTime = 2;
     public float PathfindingRefreshTime = 1;
     public List<Transform> PathPoints;
-    
-    [Header("Attack")]
+
+    [Header("Attack")] 
+    public EnemyAttackType AttackType = EnemyAttackType.Default;
     public float AttackRange = 1;
     public float AttackDuration = 1;
     public int AttackDamage = 10;
+    public GameObject ExplodeVFX;
 
     [Header("Death")] 
     public Transform DeathVFXPoint;

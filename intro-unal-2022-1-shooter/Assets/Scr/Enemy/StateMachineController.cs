@@ -18,7 +18,10 @@ public class StateMachineController
         _states.Add(EnemyStateType.Idle, new EnemyIdleState());
         _states.Add(EnemyStateType.Chase, new EnemyChaseState());
         _states.Add(EnemyStateType.Patrol, new EnemyPatrolState());
-        _states.Add(EnemyStateType.Attack, new EnemyAttackState());
+        if(_agent.AgentConfig.AttackType == EnemyAttackType.Default)
+            _states.Add(EnemyStateType.Attack,  new EnemyAttackState());
+        else
+            _states.Add(EnemyStateType.Attack,  new EnemyAttackExplode());
         _states.Add(EnemyStateType.Death, new EnemyDeathState());
         
         ChangeToState(_agent.AgentConfig.initialState);

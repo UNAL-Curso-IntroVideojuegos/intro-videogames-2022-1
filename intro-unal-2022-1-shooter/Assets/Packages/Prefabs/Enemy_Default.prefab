@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 9004809279719807904}
   - component: {fileID: 9004809279719807906}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Enemy_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,6 +332,7 @@ MonoBehaviour:
     PathPoints:
     - {fileID: 0}
     - {fileID: 0}
+    AttackType: 0
     AttackRange: 1.5
     AttackDuration: 1.8
     AttackDamage: 1

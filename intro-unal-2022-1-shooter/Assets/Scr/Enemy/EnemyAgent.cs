@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,7 +57,7 @@ public class EnemyAgent : LivingEntity
     
     public bool IsLookingTarget()
     {
-        if (_agentConfig.GlobalDetection)
+        if (_agentConfig.AttackType == EnemyAttackType.RunAndExplode || _agentConfig.GlobalDetection)
         {
             return true;
         }
@@ -116,5 +117,11 @@ public class EnemyAgent : LivingEntity
         transform.position = _initPosition;
         _collider.enabled = true;
         gameObject.SetActive(true);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _agentConfig.AttackRange);
     }
 }

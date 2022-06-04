@@ -11,7 +11,7 @@ public class EnemyDeathState : IEnemyState
         agent.Animator.SetTrigger("IsDeath");
         agent.Collider.enabled = false;
         _hideTimer = 3f;
-        }
+    }
 
     public void OnUpdate(EnemyAgent agent)
     {

@@ -7973,6 +7973,7 @@ MonoBehaviour:
   _enemyWaves:
   - {fileID: 11400000, guid: 707d8755b16d80144870ca8563c44e82, type: 2}
   - {fileID: 11400000, guid: 9a2ae7f1f0672004eb53b2500a634cd9, type: 2}
+  - {fileID: 11400000, guid: 993ce9487054eab4aa43e0567188b2b3, type: 2}
   _spawnArea: {x: 26, y: 20}
 --- !u!1001 &424283611
 PrefabInstance:

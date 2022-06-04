@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e4a192d1ffd9d4097c0fbb61f61aa1, type: 3}
-  m_Name: Wave_2
+  m_Name: Wave_3
   m_EditorClassIdentifier: 
   IsInfinite: 1
   EnemiesItems:
   - EnemyPrefab: {fileID: 9004809279719807907, guid: 3a8777c711083cc4abc43f90717c5eb2, type: 3}
-    Probability: 0.8
+    Probability: 0.5
   - EnemyPrefab: {fileID: 9020274538883578463, guid: f34e99c4883f26448953b1b3c8ff341e, type: 3}
-    Probability: 0.3
+    Probability: 0.5
   DelayToSpawn: 0.5
   TimeBetweenSpawns: 1.5
-  NumberOfSpawns: 10
+  NumberOfSpawns: 15
