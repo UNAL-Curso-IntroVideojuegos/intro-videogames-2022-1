@@ -80,7 +80,7 @@ public class PlayerShooter : MonoBehaviour
         {
             _isReloading = true;
             _reloadingTimer = _reloadTime;
-            //TODO: SFX
+            AudioManager.Instance.PlaySound2D("Reload");
         }
         
         _playerAnimation.SetIsShooting(_fireTimer > 0);
