@@ -66,6 +66,7 @@ Se agregaron algunos assets extra que puede usar para el desarollo del taller (s
 - Ícono de balas, para la UI relacionado a la munición y la recarga.
 - Modelos 3D de *Cupcake*, *Dona* y *Munición* para los drops (puede usar el *cupcake* para la vida y la dona para los puntos).
 - Explosión para el nuevo Enemigo (en caso que desee hacer este punto opcional.)
+    - Recuerde que el módelo 3D del Enemigo (y sus animaciones) ya se encuentran en el proyecto (`ThirdParty/PartyMonsterDuo`).
 
     ![Assets](./Assets.png "Assets")
 
