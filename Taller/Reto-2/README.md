@@ -10,6 +10,7 @@
         - Recomendación, llamar al script ***EnemyWave***.
         - Por ejemplo, información como: cantidad de enemigos, cada cuanto se crea un enemigo, etc...
         - La última "*oleada*" (el último nivel) debe ser tipo *suvival*, es decir, se crean enemigos continuamente hasta que el Player muera.
+    
     ![EnemyWave](./EnemyWave.png "Enemy Wave")
 
     2. Actualice el script ***EnemySpawner*** para que utilice esta información de "*oleadas*" y se encargue de crear (instanciar) enemigos en base a la información de cada "*oleada*"/nivel.
@@ -17,6 +18,7 @@
         - Nota: deberá definir un sistema (función/método) para determinar la posición del nuevo enemigo a crear (instanciar).
             - Por ejemplo: Un punto aleatorio en el mapa, una lista de puntos predefinidos, etc...
             - Para obtener un punto aleatorio y asegurarse que esté dentro del NavMesh (es decir, que sea válido), puede usar [NavMesh.SamplePosition](https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html).
+    
     ![EnemySpawner](./EnemySpawner.png "Enemy Spawner")
     
     3. Actualice el StateMachine del Enemigo, para cuando el enemigo aparezca (sea instanciado), automáticament persiga al Player sin importar donde esté.
@@ -24,6 +26,7 @@
     
     4. **(Opcional)** Agregue un nuevo tipo de enemigo, que corra mucho más rapido y al estar cerca del Player, explote y haga daño en área.
         - Utilice el otro modelo 3D de enemigo tipo que se encuentra en el proyecto, así como sus animaciones.
+    
     ![ExplodingEnemy](./ExplodingEnemy.gif "Exploding Enemy")
 
 
@@ -33,11 +36,14 @@
     3. Agregar la UI (HUD) necesaria para que muestre la cantidad de munición del Player.
         - Al menos un ícono y un texto.
     4. **(Opcional)** Agregue la animación de recarga (*reload*) al ***Animator*** del Player. Se debe activar cuando el Player esta recargando.
+    
     ![Reloading](./Reloading.gif "Reloading")
 
 3. Agregue *drops* cuando un enemigo muera. Es decir, que el enemigo "*suelte*" ítems/loot luego de morir.
     1. Cuando el enemigo muera debe "*soltar*" al menos un drop. Es decir, instanciar un objeto "drop" en su posición.
+    
     ![SpawnDrops](./SpawnDrops.gif "Spawn Drops")
+    
     2. Cree los script necesarios para manejar la lógica de los drops. 
         - Cuando el Player toque el drop, debe desaparecer y ejecutar su correspondiente acción.
         - **Hint:** Utilice `OnTriggerEnter` para detectar cuando el Player y el Drop se tocan.
@@ -45,10 +51,12 @@
         - Puntaje: al tocarlo, da puntos extras.
         - Vida: al tocarlo, restablece un punto de vida al Player (restablece un corazón).
         - **(Opcional)** Cree más drop con otro tipo de acciones: Aumentar la munición, Mayor daño de ataque, bomba que explote después de 3 seg., etc.
+    
     ![Drops](./Drops.png "Drops")
 
 4. Actualice la pantalla del final (Game Over) para que muestre: puntaje total, nivel ("*oleada*" de enemigos) en el que murió y tiempo total de juego.
     1. Esto implica agregar un sistema que cuente el tiempo de juego.
+    
     ![EndScreen](./EndScreen.png "End Screen")
 
 
