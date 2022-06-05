@@ -43,7 +43,7 @@
     1. Cuando el enemigo muera debe "*soltar*" al menos un drop. Es decir, instanciar un objeto "drop" en su posición.
     
     ![SpawnDrops](./SpawnDrops.gif "Spawn Drops")
-    
+
     2. Cree los script necesarios para manejar la lógica de los drops. 
         - Cuando el Player toque el drop, debe desaparecer y ejecutar su correspondiente acción.
         - **Hint:** Utilice `OnTriggerEnter` para detectar cuando el Player y el Drop se tocan.
@@ -59,6 +59,15 @@
     
     ![EndScreen](./EndScreen.png "End Screen")
 
+
+### Nota
+
+Se agregaron algunos assets extra que puede usar para el desarollo del taller (si así lo desea).
+- Ícono de balas, para la UI relacionado a la munición y la recarga.
+- Modelos 3D de *Cupcake*, *Dona* y *Munición* para los drops (puede usar el *cupcake* para la vida y la dona para los puntos).
+- Explosión para el nuevo Enemigo (en caso que desee hacer este punto opcional.)
+
+    ![Assets](./Assets.png "Assets")
 
 ### Otras ideas - Más retos :trollface:
 
