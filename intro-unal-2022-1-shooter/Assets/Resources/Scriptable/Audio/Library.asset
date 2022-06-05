@@ -31,3 +31,6 @@ MonoBehaviour:
   - groupID: EnemyDeath
     clips:
     - {fileID: 8300000, guid: 0b267777fcb028c4983190faa8af14db, type: 3}
+  - groupID: Reload
+    clips:
+    - {fileID: 8300000, guid: 4246ba608f79bbe4a9456aa3e0968236, type: 3}

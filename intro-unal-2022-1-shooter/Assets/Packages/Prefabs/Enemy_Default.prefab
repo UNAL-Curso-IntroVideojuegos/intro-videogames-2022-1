@@ -328,7 +328,7 @@ MonoBehaviour:
     DetectionRange: 4.5
     ViewAngle: 60
     IdleTime: 2
-    PathfindingRefreshTime: 1
+    PathfindingRefreshTime: 0.5
     PathPoints:
     - {fileID: 0}
     - {fileID: 0}
@@ -336,12 +336,14 @@ MonoBehaviour:
     AttackRange: 1.5
     AttackDuration: 1.8
     AttackDamage: 1
+    ExplodeVFX: {fileID: 0}
     DeathVFXPoint: {fileID: 6609051461942512702}
     DeathVFX: {fileID: 4363618136153406058, guid: dbc7c9664cf56ec4094915626f3db057, type: 3}
-    NumberOfDrops: 2
     DropItems:
     - ItemPrefab: {fileID: 6898097268064649784, guid: 5746afa494da20d4aab494a81ff70751, type: 3}
-      Probability: 1
+      Probability: 0.5
+    - ItemPrefab: {fileID: 6898097268064649784, guid: 9980a743bd212e84ab281415d7d4f796, type: 3}
+      Probability: 0.2
 --- !u!114 &9004809279719807904
 MonoBehaviour:
   m_ObjectHideFlags: 0

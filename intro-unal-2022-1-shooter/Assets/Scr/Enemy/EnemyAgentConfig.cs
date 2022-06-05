@@ -32,8 +32,6 @@ public class EnemyAgentConfig
     public GameObject DeathVFX;
     
     [Header("Drops")]
-    [Min(0)]
-    public int NumberOfDrops;
     public EnemyDropItem[] DropItems;
 }
 
