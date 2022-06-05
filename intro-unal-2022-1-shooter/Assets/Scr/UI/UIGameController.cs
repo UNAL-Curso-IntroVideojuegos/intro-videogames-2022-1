@@ -9,6 +9,8 @@ public class UIGameController : MonoBehaviour
     private GameObject _gameScreen;
     [SerializeField] 
     private GameObject _endScreen;
+    [SerializeField] 
+    private HUDEndScreen _hudEndScreen;
     
     void Start()
     {
@@ -38,11 +40,13 @@ public class UIGameController : MonoBehaviour
         _endScreen.SetActive(false);
     }
 
-    private void OnGameOver()
+    private void OnGameOver(int score, bool isMaxScore, float time, int level)
     {
         _startScreen.SetActive(false);
         _gameScreen.SetActive(false);
         _endScreen.SetActive(true);
+        
+        _hudEndScreen.SetResults(score, isMaxScore, time, level);
     }
     
     //Called from a Unity button

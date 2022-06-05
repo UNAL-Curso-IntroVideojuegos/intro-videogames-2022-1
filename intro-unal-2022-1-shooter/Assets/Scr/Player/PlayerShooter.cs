@@ -76,7 +76,7 @@ public class PlayerShooter : MonoBehaviour
             }
         }
         
-        if (!_isReloading && _remainingAmmo < _totalAmmo && Input.GetKeyDown(KeyCode.R))
+        if (!_isReloading && _remainingAmmo < _totalAmmo && Input.GetMouseButtonDown(1)/*Input.GetKeyDown(KeyCode.R)*/)
         {
             _isReloading = true;
             _reloadingTimer = _reloadTime;

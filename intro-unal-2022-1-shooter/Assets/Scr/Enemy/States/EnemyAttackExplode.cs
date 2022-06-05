@@ -42,6 +42,9 @@ public class EnemyAttackExplode : IEnemyState
                 entity.TakeDamage(agent.AgentConfig.AttackDamage);
             }
         }
+        
+        //TODO: Use another sfx
+        AudioManager.Instance.PlaySound("EnemyAttack", agent.transform.position);
 
         if (agent.AgentConfig.ExplodeVFX != null)
         {

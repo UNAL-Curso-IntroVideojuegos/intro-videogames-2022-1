@@ -34,3 +34,6 @@ MonoBehaviour:
   - groupID: Reload
     clips:
     - {fileID: 8300000, guid: 4246ba608f79bbe4a9456aa3e0968236, type: 3}
+  - groupID: LevelCompleted
+    clips:
+    - {fileID: 8300000, guid: 5c80865e6c73086478bc466f9b4e3e67, type: 3}

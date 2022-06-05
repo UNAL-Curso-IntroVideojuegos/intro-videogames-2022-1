@@ -201,5 +201,7 @@ public class PlayerMovement : LivingEntity
         transform.position = _initPosition;
         _playerShooter.Reload();
         gameObject.SetActive(true);
+        
+        GameEvents.OnPlayerHealthChangeEvent?.Invoke((int) _health);
     }
 }

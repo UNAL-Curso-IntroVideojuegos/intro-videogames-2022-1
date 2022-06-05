@@ -60,6 +60,9 @@ public class EnemySpawner : MonoBehaviour
                 //     isInfinite = enemyWaves[currentWaveIndex].isInfinite
                 // });
                 canSpawn = true;
+                GameEvents.OnLevelProgressEvent?.Invoke(_currentWaveIndex);
+                
+                AudioManager.Instance.PlaySound2D("LevelCompleted");
             }
             else
             {
@@ -97,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
         _timeToNextSpawn = 0;
     }
     
-    private void OnGameOver()
+    private void OnGameOver(int score, bool isMaxScore, float time, int level)
     {
         StopAllCoroutines();
         _shouldSpawn = false;
