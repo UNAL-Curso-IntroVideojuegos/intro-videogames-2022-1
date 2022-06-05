@@ -6,7 +6,7 @@ public class PointDropItem : DropItem
     [Range(1, 100)]
     private int _bonusPoints = 20;
     
-    protected  override void OnCollected()
+    protected  override void OnCollected(PlayerMovement player)
     {
         GameEvents.OnBonusCollectedEvent?.Invoke(_bonusPoints);
     }

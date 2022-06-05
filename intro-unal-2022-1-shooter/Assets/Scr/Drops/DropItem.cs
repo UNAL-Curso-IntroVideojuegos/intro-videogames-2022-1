@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class DropItem : MonoBehaviour
 {
-    void Collect()
+    void Collect(PlayerMovement player)
     {
-        OnCollected();
+        OnCollected(player);
         Destroy(gameObject);
     }
 
-    protected virtual void OnCollected() { }
+    protected virtual void OnCollected(PlayerMovement player) { }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out PlayerMovement player))
         {
-            Collect();
+            Collect(player);
+            
+            //TODO: Add sfx
         }
     }
 }

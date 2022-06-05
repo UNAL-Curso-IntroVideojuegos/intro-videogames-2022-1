@@ -341,9 +341,9 @@ MonoBehaviour:
     DeathVFX: {fileID: 4363618136153406058, guid: dbc7c9664cf56ec4094915626f3db057, type: 3}
     DropItems:
     - ItemPrefab: {fileID: 6898097268064649784, guid: 5746afa494da20d4aab494a81ff70751, type: 3}
+      Probability: 0.7
+    - ItemPrefab: {fileID: 5486529182532770436, guid: 7cbae03d2d9c8e74480c650f590730e1, type: 3}
       Probability: 0.5
-    - ItemPrefab: {fileID: 6898097268064649784, guid: 9980a743bd212e84ab281415d7d4f796, type: 3}
-      Probability: 0.2
 --- !u!114 &9004809279719807904
 MonoBehaviour:
   m_ObjectHideFlags: 0

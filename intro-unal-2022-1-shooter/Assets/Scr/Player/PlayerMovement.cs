@@ -199,7 +199,7 @@ public class PlayerMovement : LivingEntity
         base.Reset();
         Init();
         transform.position = _initPosition;
-        _playerShooter.Reload();
+        _playerShooter.Reset();
         gameObject.SetActive(true);
         
         GameEvents.OnPlayerHealthChangeEvent?.Invoke((int) _health);

@@ -24,7 +24,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     private float _rateFire = 1; //Bullet per second
     [SerializeField]
-    private int _totalAmmo = 10; 
+    private int _maxBaseAmmo = 10; 
     [SerializeField]
     private float _reloadTime = 2; //Bullet per second
     
@@ -37,12 +37,14 @@ public class PlayerShooter : MonoBehaviour
 
     private bool _isReloading = false;
     private int _remainingAmmo;
-    private float _reloadingTimer = 0; 
+    private float _reloadingTimer = 0;
+    private int _extraAmmo = 0;
+    private int _totalAmmo = 0;
 
     private void Start()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
-        Reload();
+        Reset();
     }
 
     void Update()
@@ -76,7 +78,7 @@ public class PlayerShooter : MonoBehaviour
             }
         }
         
-        if (!_isReloading && _remainingAmmo < _totalAmmo && Input.GetMouseButtonDown(1)/*Input.GetKeyDown(KeyCode.R)*/)
+        if (!_isReloading && _remainingAmmo < _totalAmmo && (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.R)))
         {
             _isReloading = true;
             _reloadingTimer = _reloadTime;
@@ -86,12 +88,27 @@ public class PlayerShooter : MonoBehaviour
         _playerAnimation.SetIsShooting(_fireTimer > 0);
         _playerAnimation.SetIsReloading(_isReloading);
     }
+
+    public void Reset()
+    {
+        _extraAmmo += 0;
+        _totalAmmo = _maxBaseAmmo + _extraAmmo;
+        Reload();
+    }
     
-    public void Reload()
+    private void Reload()
     {
         _reloadingTimer = 0;
         _isReloading = false;
         _remainingAmmo = _totalAmmo;
+        GameEvents.OnPlayerAmmoUpdatedEvent?.Invoke(_remainingAmmo);
+    }
+
+    public void AddExtraAmmo(int ammo)
+    {
+        _extraAmmo += ammo;
+        _totalAmmo = _maxBaseAmmo + _extraAmmo;
+        _remainingAmmo += _extraAmmo;
         GameEvents.OnPlayerAmmoUpdatedEvent?.Invoke(_remainingAmmo);
     }
     
