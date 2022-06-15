@@ -5,12 +5,20 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [Header("Mobile")]
     [SerializeField] 
-    private bool _useMobileJoystick = false;
+    private bool _useMobileInputs = false;
     [SerializeField] 
     private UIJoystick _leftJoystick;
     [SerializeField] 
     private UIJoystick _rightJoystick;
+    [SerializeField]
+    private UIMobileButton _dashButton;
+    
+    [SerializeField] 
+    private bool _useFireStaticButton = false;
+    [SerializeField]
+    private UIMobileButton _fireButton;
     
     [Header("Mouse and rotation")]
     [SerializeField]
@@ -22,9 +30,20 @@ public class PlayerInput : MonoBehaviour
     private Plane _woldPlane;
     private Vector3 _lastLookDirection;
     
-    public Vector2 Movement => _useMobileJoystick ? _leftJoystick.Delta : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    public bool Dash => Input.GetKeyDown(KeyCode.LeftShift);
-    public bool Fire => _useMobileJoystick ? _rightJoystick.IsBeingHeld : Input.GetButton("Fire1");
+    public Vector2 Movement => _useMobileInputs && _leftJoystick.IsBeingHeld ? _leftJoystick.Delta : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    public bool Dash => _useMobileInputs ? _dashButton.IsBeingPressed : Input.GetKeyDown(KeyCode.LeftShift);
+    public bool Fire
+    {
+        get
+        {
+            if (_useMobileInputs)
+            {
+                return _useFireStaticButton ? _fireButton.IsBeingPressed : _rightJoystick.IsBeingHeld;
+            }
+            
+            return Input.GetButton("Fire1");
+        }
+    }
 
     public void Start()
     {
@@ -37,13 +56,15 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        _leftJoystick.gameObject.SetActive(_useMobileJoystick);
-        _rightJoystick.gameObject.SetActive(_useMobileJoystick);
+        _leftJoystick.gameObject.SetActive(_useMobileInputs);
+        _rightJoystick.gameObject.SetActive(_useMobileInputs);
+        _dashButton.gameObject.SetActive(_useMobileInputs);
+        _fireButton.gameObject.SetActive(_useMobileInputs);
     }
 
     public Vector3 GetLookDirection()
     {
-        if (_useMobileJoystick)
+        if (_useMobileInputs)
         {
             if (_rightJoystick.IsBeingHeld)
             {
