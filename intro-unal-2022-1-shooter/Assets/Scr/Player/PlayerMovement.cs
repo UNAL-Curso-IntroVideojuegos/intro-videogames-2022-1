@@ -9,12 +9,6 @@ public class PlayerMovement : LivingEntity
     private Transform _body;
     [SerializeField]
     private float speed = 2;
-    [SerializeField]
-    private LayerMask _collisionMask;
-    
-    [Header("Mouse and rotation")]
-    [SerializeField]
-    private bool _usePlaneForRotation = false;
 
     [Header("Dash")]
     [SerializeField]
@@ -30,10 +24,8 @@ public class PlayerMovement : LivingEntity
     [SerializeField]
     private float _dashDragforce = 8f;
     
-    
-    private Camera _cam;
-    private Plane _woldPlane;
-    
+
+    private PlayerInput _playerInput;
     private Rigidbody _rb;
     private PlayerAnimation _playerAnimation;
     private Vector3 _velocity;
@@ -57,11 +49,9 @@ public class PlayerMovement : LivingEntity
     {
         base.Start();
         
-        _cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
+        _playerInput = GetComponent<PlayerInput>();
         _playerAnimation = GetComponent<PlayerAnimation>();
-
-        _woldPlane = new Plane(Vector3.up, 0);
 
         base.OnTakeDamage = OnTakeDamageCallback;
         
@@ -70,25 +60,16 @@ public class PlayerMovement : LivingEntity
     
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        bool wantToDash = Input.GetKeyDown(KeyCode.LeftShift);
+        Vector2 movementInput = _playerInput.Movement;
+        bool wantToDash = _playerInput.Dash;
         
-        Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
-        if (_usePlaneForRotation)
-        {
-            LookAtMousePointWithPlane(ray);
-        }
-        else
-        {
-            LookAtMousePointWithRaycast(ray);
-        }
-
         
-        Vector3 _dir  = new Vector3(horizontal, 0, vertical);
+        Vector3 _dir  = new Vector3(movementInput.x, 0, movementInput.y);
         _dir.Normalize();
         Vector3 movementVelocity = speed * _dir;
 
+        _body.rotation = Quaternion.LookRotation(_playerInput.GetLookDirection());
+        
         //Dash!
         if (_useDashByTime)
         {
@@ -108,40 +89,7 @@ public class PlayerMovement : LivingEntity
         //Apply velocity to RigidBody. An alternative it's to use AddForce
         _rb.velocity = _velocity;
     }
-    
-    //Calculate Mouse world position using Physics world and Physics.Raycast
-    private void LookAtMousePointWithRaycast(Ray ray)
-    {
-        RaycastHit hitInfo;
-        // Does the ray intersect any objects excluding the player layer
-        bool hitSomething = Physics.Raycast(ray, out hitInfo, 500,_collisionMask); 
-        if (hitSomething)
-        {
-            //transform.position = hitInfo.point;
-            Vector3 point = hitInfo.point;
-            point.y = transform.position.y;
-            Vector3 dir = (point - transform.position).normalized;
-            //transform.forward = dir;
-            //transform.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
-            _body.LookAt(point);
-        }
-    }
-    
-    //Calculate Mouse world position using internal Plane object and Plane.Raycast
-    private void LookAtMousePointWithPlane(Ray ray)
-    {
-        float distanceToPlane;
-        bool hitSomething = _woldPlane.Raycast(ray, out distanceToPlane);
-        if (hitSomething)
-        {
-            Vector3 point = ray.GetPoint(distanceToPlane);
-            point.y = transform.position.y;
-            Vector3 dir = (point - transform.position).normalized;
-            _body.rotation = Quaternion.LookRotation(dir); //Mire a la direccion
-        }
-    }
-    
-    
+
     private void SetDashVelocityByTimer(bool wantToDash, Vector3 dashDirection)
     {
         if (wantToDash && _dashTimer <= 0)

@@ -28,11 +28,13 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
 
+    private PlayerInput _playerInput;
     private PlayerAnimation _playerAnimation;
     private float _fireTimer = 0;
 
     private void Start()
     {
+        _playerInput = GetComponent<PlayerInput>();
         _playerAnimation = GetComponent<PlayerAnimation>();
     }
 
@@ -44,7 +46,7 @@ public class PlayerShooter : MonoBehaviour
         }
         
         
-        if (_fireTimer <= 0 && Input.GetButton("Fire1"))
+        if (_fireTimer <= 0 && _playerInput.Fire)
         {
             //To get the time between each bullet we do  1 / rate
             _fireTimer = 1 / _rateFire; 
