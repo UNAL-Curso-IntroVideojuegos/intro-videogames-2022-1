@@ -48,7 +48,7 @@ public class PlayerInput : MonoBehaviour
     public void Start()
     {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
-        _useMobileJoystick = true;
+        _useMobileInputs = true;
 #endif
         _cam = Camera.main;
         _woldPlane = new Plane(Vector3.up, 0);
