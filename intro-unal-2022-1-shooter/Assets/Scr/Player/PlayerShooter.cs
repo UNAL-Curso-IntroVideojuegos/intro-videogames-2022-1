@@ -72,7 +72,7 @@ public class PlayerShooter : MonoBehaviour
         
         if (_remainingAmmo > 0)
         {
-            if (_fireTimer <= 0 && Input.GetButton("Fire1"))
+            if (_fireTimer <= 0 && _playerInput.Fire)
             {
                 //To get the time between each bullet we do  1 / rate
                 _fireTimer = 1 / _rateFire;
@@ -80,7 +80,7 @@ public class PlayerShooter : MonoBehaviour
             }
         }
         
-        if (!_isReloading && _remainingAmmo < _totalAmmo && (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.R)))
+        if (!_isReloading && _remainingAmmo < _totalAmmo && _playerInput.Reload)
         {
             _isReloading = true;
             _reloadingTimer = _reloadTime;

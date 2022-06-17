@@ -14,11 +14,8 @@ public class PlayerInput : MonoBehaviour
     private UIJoystick _rightJoystick;
     [SerializeField]
     private UIMobileButton _dashButton;
-    
-    [SerializeField] 
-    private bool _useFireStaticButton = false;
     [SerializeField]
-    private UIMobileButton _fireButton;
+    private UIMobileButton _reloadButton;
     
     [Header("Mouse and rotation")]
     [SerializeField]
@@ -32,19 +29,9 @@ public class PlayerInput : MonoBehaviour
     
     public Vector2 Movement => _useMobileInputs && _leftJoystick.IsBeingHeld ? _leftJoystick.Delta : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     public bool Dash => _useMobileInputs ? _dashButton.IsBeingPressed : Input.GetKeyDown(KeyCode.LeftShift);
-    public bool Fire
-    {
-        get
-        {
-            if (_useMobileInputs)
-            {
-                return _useFireStaticButton ? _fireButton.IsBeingPressed : _rightJoystick.IsBeingHeld;
-            }
-            
-            return Input.GetButton("Fire1");
-        }
-    }
-
+    public bool Fire => _useMobileInputs ? _rightJoystick.IsBeingHeld : Input.GetButton("Fire1");
+    public bool Reload => _useMobileInputs ? _reloadButton.IsBeingPressed : Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.R);
+    
     public void Start()
     {
 #if !UNITY_EDITOR   
@@ -63,7 +50,7 @@ public class PlayerInput : MonoBehaviour
         _leftJoystick.gameObject.SetActive(_useMobileInputs);
         _rightJoystick.gameObject.SetActive(_useMobileInputs);
         _dashButton.gameObject.SetActive(_useMobileInputs);
-        _fireButton.gameObject.SetActive(_useMobileInputs);
+        _reloadButton.gameObject.SetActive(_useMobileInputs);
     }
 
     public Vector3 GetLookDirection()
