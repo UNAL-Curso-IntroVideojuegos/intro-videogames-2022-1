@@ -19,6 +19,10 @@ public class EnemySpawner : MonoBehaviour
     private float _initialDelay = 0;
     private float _timeToNextSpawn = 0; 
     private List<EnemyAgent> _spawnedAliveEnemies = new List<EnemyAgent>();
+
+    private bool IsWaveSpawnCompleted => _spawnCountThisWave >= _enemyWaves[_currentWaveIndex].NumberOfSpawns;
+    private bool AreEnemiesPendingToSpawn => _pendingEnemiesToSpawn > 0;
+    private bool AreEnemiesAliveOnThisWave => _spawnedAliveEnemies.Count == 0;
     
     void Start()
     {
@@ -42,39 +46,38 @@ public class EnemySpawner : MonoBehaviour
         }
         
         bool canSpawn = false;
+        
         //Go to next way?
+        // - Edge condition: current index < 0
+        // - If we already spawn all enemies on this way AND all enemies did died
         if (_currentWaveIndex < 0 ||
-            (_spawnCountThisWave >= _enemyWaves[_currentWaveIndex].NumberOfSpawns && _pendingEnemiesToSpawn <= 0 &&
-             _spawnedAliveEnemies.Count == 0))
+            (IsWaveSpawnCompleted && !AreEnemiesPendingToSpawn && AreEnemiesAliveOnThisWave))
         {
             _currentWaveIndex++;
             _spawnCountThisWave = 0;
             _pendingEnemiesToSpawn = 0;
+            
+            //Next wave
             if (_currentWaveIndex < _enemyWaves.Length)
             {
                 _initialDelay = _enemyWaves[_currentWaveIndex].DelayToSpawn;
-                // EventDispatcher.Instance.Dispatch(new StartWaveEvent
-                // {
-                //     waveNumber = currentWaveIndex + 1,
-                //     isBoos = enemyWaves[currentWaveIndex].wordType == WordGroupType.Boss,
-                //     isInfinite = enemyWaves[currentWaveIndex].isInfinite
-                // });
                 canSpawn = true;
                 GameEvents.OnLevelProgressEvent?.Invoke(_currentWaveIndex);
                 
                 AudioManager.Instance.PlaySound2D("LevelCompleted");
             }
+            //In case we don't have more ways -> Game Ends
             else
             {
-                //EventDispatcher.Instance.Dispatch(new EndGameEvent { playerWon = true });
                 GameManager.Instance.GameOver();
             }
         }
-        else if (_spawnCountThisWave < _enemyWaves[_currentWaveIndex].NumberOfSpawns)
+        else if (!IsWaveSpawnCompleted) //If we haven't spawn all the enemies on this way -> Continue spawnming
         {
             canSpawn = true;
         }
         
+        //Delay after complete each wave
         if (_initialDelay > 0)
         {
             _initialDelay -= Time.deltaTime;
@@ -146,9 +149,14 @@ public class EnemySpawner : MonoBehaviour
         Vector3 randomPoint = new Vector3(Random.Range(-_spawnArea.x, _spawnArea.x), 0,
             Random.Range(-_spawnArea.y, _spawnArea.y));
         NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 3, 1);
-        Vector3 spawnPoint = hit.position; 
-        
-        _spawnCountThisWave++;
+        Vector3 spawnPoint = hit.position;
+
+        //If is infinite -> just don't count them
+        if (!wave.IsInfinite)
+        {
+            _spawnCountThisWave++;
+        }
+
         StartCoroutine(SpawnEnemyWithDelay(enemyPrefab, spawnPoint));
     }
 
@@ -156,7 +164,7 @@ public class EnemySpawner : MonoBehaviour
     {
         _pendingEnemiesToSpawn++;
         
-        //Get indicator prefab
+        //TODO: Add indicator object to indicate where it's gonna spawn
         yield return new WaitForSeconds(1);
         EnemyAgent newEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.Euler(0, Random.value * 360, 0));
 
