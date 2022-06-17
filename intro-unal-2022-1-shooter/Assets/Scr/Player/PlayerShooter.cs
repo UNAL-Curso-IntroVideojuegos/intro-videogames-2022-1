@@ -32,6 +32,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
 
+    private PlayerInput _playerInput;
     private PlayerAnimation _playerAnimation;
     private float _fireTimer = 0;
 
@@ -43,6 +44,7 @@ public class PlayerShooter : MonoBehaviour
 
     private void Start()
     {
+        _playerInput = GetComponent<PlayerInput>();
         _playerAnimation = GetComponent<PlayerAnimation>();
         Reset();
     }
