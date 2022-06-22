@@ -75,7 +75,7 @@
 - **Clase 12:** Invitado: **Cristian Mazo**. [Video](https://www.youtube.com/watch?v=FJlf5u7pgQc&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=13)
 	- Profilling y Optimización con DOTS.
 - **Clase 13:** Comodin <u>(No hay clase)</u>.
-- **Clase 14:** Builds + Desarrollo Mobile. <u>Asesoria Proyectos</u>.
+- **Clase 14:** Builds + Desarrollo Mobile. <u>Asesoria Proyectos</u>. [Video](https://www.youtube.com/watch?v=U5bstAPEryA&list=PL-bINtbD4fuPilX5UsATnRpS66ed4fuB4&index=14)
 	- Generación de Builds y Publicación
 	- Mobile: Intro. al desarrollo e Inputs.
 	- Asesoria: Sobre conecciones en Dungeos.
