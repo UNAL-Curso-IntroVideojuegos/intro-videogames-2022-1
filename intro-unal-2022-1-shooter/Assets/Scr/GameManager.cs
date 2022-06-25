@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public static int score = 10;
+
     [SerializeField]
     private Transform _player;
     [SerializeField]
